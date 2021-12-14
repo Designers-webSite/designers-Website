@@ -78,5 +78,19 @@ public class DesignerService {
       designer.getUserName();
       return designer;
     }
-}
 
+    public List<Utility> getAllUtilityByDesignType(String designType) {
+        List<Designer> dL = designerRepository.findAllByDesignType(designType);
+        List<Utility> utilities = new ArrayList<>();
+        for(Designer i : dL){
+            utilities.addAll(i.getUtilities());
+        }
+        return utilities;
+        }
+
+
+
+
+
+
+}

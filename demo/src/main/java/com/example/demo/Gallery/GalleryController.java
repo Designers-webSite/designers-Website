@@ -32,7 +32,6 @@ public class GalleryController {
     }
     @DeleteMapping("/{id}")
     public void deleteGallery(@PathVariable String id){
-
         galleryService.deleteGallery(id);
 
     }

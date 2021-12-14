@@ -50,6 +50,12 @@ public class DesignerController {
     public Designer getByUserName(@PathVariable String userName){
         return designerService.getByUserName(userName);
     }
+    @GetMapping("/AllUtilities/{designType}")
+    public List<Utility> getAllUtilityByDesignType(@PathVariable String designType){
+        System.out.println("1111111");
+        return designerService.getAllUtilityByDesignType(designType);
+  }
+
 
 
 

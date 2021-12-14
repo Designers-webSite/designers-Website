@@ -20,9 +20,8 @@ public class Designer {
     private int password;
     private int age;
     private double  rate;
-    @Column
-    @ElementCollection(targetClass=String.class)
-    private List<String>designType;
+
+    private String designType;
     @Column
     @ElementCollection(targetClass=String.class)
     private List<String> protofolio;
@@ -31,12 +30,24 @@ public class Designer {
 //    @ElementCollection(targetClass=String.class)
 
 
-    @JsonIgnore
+//    @JsonIgnore
     @OneToMany(mappedBy = "designer")
     private List<Utility>  utilities;
 
     public Designer(){}
 
+    public Designer(Long id, String fullName, String userName, int password, int age, double rate, String designType, List<String> protofolio, boolean availabilty, List<Utility> utilities) {
+        this.id = id;
+        this.fullName = fullName;
+        this.userName = userName;
+        this.password = password;
+        this.age = age;
+        this.rate = rate;
+        this.designType = designType;
+        this.protofolio = protofolio;
+        this.availabilty = availabilty;
+        this.utilities = utilities;
+    }
 
     public Long getId() {
         return id;
@@ -58,18 +69,6 @@ public class Designer {
         return userName;
     }
 
-    public Designer(Long id, String fullName, String userName, int password, int age, double rate, List<String> designType, List<String> protofolio, boolean availabilty, List<Utility> utilities) {
-        this.id = id;
-        this.fullName = fullName;
-        this.userName = userName;
-        this.password = password;
-        this.age = age;
-        this.rate = rate;
-        this.designType = designType;
-        this.protofolio = protofolio;
-        this.availabilty = availabilty;
-        this.utilities = utilities;
-    }
 
     public void setUserName(String userName) {
         this.userName = userName;
@@ -115,11 +114,11 @@ public class Designer {
         this.availabilty = availabilty;
     }
 
-    public List<String> getDesignType() {
+    public String getDesignType() {
         return designType;
     }
 
-    public void setDesignType(List<String> designType) {
+    public void setDesignType(String designType) {
         this.designType = designType;
     }
 

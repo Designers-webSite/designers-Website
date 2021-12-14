@@ -19,6 +19,7 @@ public class Utility {
         private Date duration;
         private double price;
         private String type;
+        @JsonIgnore
         @ManyToOne(fetch = FetchType.EAGER, optional = false)
         private Designer designer;
 //        @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

@@ -44,7 +44,16 @@ public class UtilityService {
        return  utilityRepository.save(s);
 
     }
+    public Designer getByUserName(String userName) {
+        Designer designer=  designerRepository.getByUserName(userName);
+        designer.getUserName();
+        return designer;
+    }
 
-
+//    public Utility getByTitle(String title) {
+//        Utility utility=utilityRepository.getByTitle(title);
+//        utility.getTitle();
+//        return utility;
+//    }
 }
 
