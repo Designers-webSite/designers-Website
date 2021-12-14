@@ -43,21 +43,8 @@ public class UtilityService {
         s.setGallery(g);
        return  utilityRepository.save(s);
 
-
-
-
     }
 
-    public List<Utility> getAllServiesByDesigner(String id) {
-        List<Utility> allServices= utilityRepository.findAll();
-        Long designer_id= Long.parseLong(id);
-        List<Utility> servicesOfDesigner = new ArrayList<>();
-        for ( Utility s : allServices){
-            if(s.getDesigner().getId() == designer_id){
-                servicesOfDesigner.add(s);
-            }
-        }
-        return  servicesOfDesigner;
-    }
+
 }
 

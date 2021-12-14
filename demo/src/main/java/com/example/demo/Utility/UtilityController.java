@@ -27,9 +27,6 @@ public class UtilityController {
     public Utility addUtility(@RequestBody Utility s){
         return  utilityService.addUtility(s);
     }
-    @GetMapping("all/{id}")
-    public List<Utility> getAllServiesByDesigner(@PathVariable String id){
-        return utilityService.getAllServiesByDesigner(id);
-    }
+
 
 }

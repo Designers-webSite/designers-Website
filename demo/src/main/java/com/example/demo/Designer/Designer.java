@@ -15,6 +15,7 @@ public class Designer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String fullName;
+
     private String userName;
     private int password;
     private int age;

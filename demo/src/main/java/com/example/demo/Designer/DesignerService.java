@@ -73,5 +73,10 @@ public class DesignerService {
     }
 
 
+    public Designer getByUserName(String userName) {
+      Designer designer=  designerRepository.getByUserName(userName);
+      designer.getUserName();
+      return designer;
+    }
 }
 

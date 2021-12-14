@@ -45,4 +45,12 @@ public class DesignerController {
         return designerService.getAllUtilityByDesignerId(id);
 
     }
+    //function search by designerUserNam
+    @GetMapping("search/{userName}")
+    public Designer getByUserName(@PathVariable String userName){
+        return designerService.getByUserName(userName);
+    }
+
+
+
 }
