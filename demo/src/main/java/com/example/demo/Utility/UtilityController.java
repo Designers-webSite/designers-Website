@@ -28,9 +28,9 @@ public class UtilityController {
     public Utility addUtility(@RequestBody Utility s){
         return  utilityService.addUtility(s);
     }
-//   @GetMapping("search/{title}")
-//    public Utility getByTitle(@PathVariable String title){
-//        return utilityService.getByTitle(title);
-//    }
+   @GetMapping("search/{title}")
+    public Utility getByTitle(@PathVariable String title){
+        return utilityService.getByTitle(title);
+    }
 
 }
