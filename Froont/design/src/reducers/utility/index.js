@@ -4,7 +4,7 @@ const initialState={
 
 const utilityReducer=(state=initialState,{type,payload})=>{
     switch (type) {
-        case "SET_UTILITY":
+        case "ADD_UTILITY":
             console.log(payload);
             return {
                 utility:payload

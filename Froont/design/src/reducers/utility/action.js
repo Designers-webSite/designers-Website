@@ -1,6 +1,6 @@
-export const setUtility=(utility)=>{
+export const addUtility=(utility)=>{
     return {
-        action:"SET_UTILITY",
+        action:"ADD_UTILITY",
         payload:utility
     }
 

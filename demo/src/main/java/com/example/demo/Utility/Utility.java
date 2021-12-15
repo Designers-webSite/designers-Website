@@ -19,6 +19,8 @@ public class Utility {
         private Date duration;
         private double price;
         private String type;
+        private String instructions;
+
         @JsonIgnore
         @ManyToOne(fetch = FetchType.EAGER, optional = false)
         private Designer designer;
@@ -28,16 +30,7 @@ public class Utility {
 
         public Utility(){}
 
-        public Utility(Long id, String title, String description, Date duration, double price, String type, Designer designer, Gallery gallery) {
-            this.id = id;
-            this.title = title;
-            this.description = description;
-            this.duration = duration;
-            this.price = price;
-            this.type = type;
-            this.designer = designer;
-            this.gallery = gallery;
-        }
+
 
         public Long getId() {
             return id;
@@ -55,7 +48,19 @@ public class Utility {
             this.title = title;
         }
 
-        public String getDescription() {
+    public Utility(Long id, String title, String description, Date duration, double price, String type, String instructions, Designer designer, Gallery gallery) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.duration = duration;
+        this.price = price;
+        this.type = type;
+        this.instructions = instructions;
+        this.designer = designer;
+        this.gallery = gallery;
+    }
+
+    public String getDescription() {
             return description;
         }
 
@@ -102,6 +107,14 @@ public class Utility {
         public void setGallery(Gallery gallery) {
             this.gallery = gallery;
         }
+
+    public String getInstructions() {
+        return instructions;
     }
+
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
+    }
+}
 
 

@@ -15,7 +15,6 @@ public class Designer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String fullName;
-
     private String userName;
     private int password;
     private int age;
@@ -25,6 +24,7 @@ public class Designer {
     @Column
     @ElementCollection(targetClass=String.class)
     private List<String> protofolio;
+    private String info;
     private boolean availabilty;
 //    @Column
 //    @ElementCollection(targetClass=String.class)
@@ -36,7 +36,7 @@ public class Designer {
 
     public Designer(){}
 
-    public Designer(Long id, String fullName, String userName, int password, int age, double rate, String designType, List<String> protofolio, boolean availabilty, List<Utility> utilities) {
+    public Designer(Long id, String fullName, String userName, int password, int age, double rate, String designType, List<String> protofolio, String info, boolean availabilty, List<Utility> utilities) {
         this.id = id;
         this.fullName = fullName;
         this.userName = userName;
@@ -45,6 +45,7 @@ public class Designer {
         this.rate = rate;
         this.designType = designType;
         this.protofolio = protofolio;
+        this.info = info;
         this.availabilty = availabilty;
         this.utilities = utilities;
     }
@@ -128,6 +129,14 @@ public class Designer {
 
     public void setUtilities(List<Utility> utilities) {
         this.utilities = utilities;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
     }
 }
 

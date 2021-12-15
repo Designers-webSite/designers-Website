@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,18 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+#table {
+  width: 480px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border:#D9DDE2 solid;
+ 
+
+}
+#brn_service{
+  background-color: rgb(202, 202, 88);
+  width: 80px;
+  text-align: center;
 }
