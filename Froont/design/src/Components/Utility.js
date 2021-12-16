@@ -1,8 +1,9 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState ,useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import {addUtility} from "../reducers/utility/action"
 import axios from 'axios'
+import DesignerInfo from './DesignerInfo'
 
  function Utility() {
 
@@ -11,7 +12,22 @@ import axios from 'axios'
     const[description,setDescription]=useState("")
     const[date,setDate ]=useState("")
     const[instructions,setInstructions]=useState("")
+    
+    // const[gallery,setGallery]=useState([])
 
+
+    
+
+    //   useEffect(() => {
+    //     axios.get("http://localhost:8080/gallery").then((r) => {
+         
+    //       console.log(r);
+    //       console.log(r.data);
+    
+    //       setDesigner(r.data);
+    //       //console.log(r.data)
+    //     });
+    //   }, []);
 
     const handelChangeTitle=(e)=>{
         setTitle(e.target.value)
@@ -28,6 +44,7 @@ import axios from 'axios'
     const handelChangeinstructions=(e)=>{
      setInstructions(e.target.value)  
     }
+    let designId=document.getElementById("design")
     
     const add=()=>{
         const data={  
@@ -36,7 +53,7 @@ import axios from 'axios'
             date,
             instructions,
             designer:{
-                id : 1
+                id : designId
                 },
             gallery :{
                 id:1
@@ -77,7 +94,15 @@ import axios from 'axios'
          <label > Instructions</label><br/>
 
         <input type="text" id="name" name="name" style={{height:120, width:200}} onChange={handelChangeinstructions}/><br/>
+        <div id="design">
+           
+       </div>{' '}
         <button  id="brn_service"onClick={add}>Add</button><br/>
+        
+       
+
+
+
             
         </div>
     )

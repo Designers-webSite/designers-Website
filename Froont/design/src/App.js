@@ -8,6 +8,9 @@ import DesignType from './Components/DesignType';
 import Home from './Components/Home';
 import NavBar from './Components/NavBar';
 import Login from './Components/Login';
+import Section from './Components/Sections';
+import DesignerInfo from './Components/DesignerInfo';
+import Sections from './Components/Sections';
 function App() {
   return (
     <BrowserRouter>
@@ -24,6 +27,10 @@ function App() {
 					<Route path="/" element={<Home />} />
 		
 					<Route path="/designers" element={<Home />} />
+          <Route path="/sections" element={<Sections/>} />
+          <Route path="/designerInfo" element={<DesignerInfo />} />
+          
+
 					<Route path="/support" element={<Home />} />
           <Route path="/CreateDesigner" element={<CreateDesigner />} />
           <Route path="/register" element={<Register />} />
