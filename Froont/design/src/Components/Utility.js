@@ -28,15 +28,23 @@ import axios from 'axios'
     const handelChangeinstructions=(e)=>{
      setInstructions(e.target.value)  
     }
+    
     const add=()=>{
-        const data={
+        const data={  
             title,
             description,
             date,
-            instructions
+            instructions,
+            designer:{
+                id : 1
+                },
+            gallery :{
+                id:1
+            }
             
             
         }
+
     
     axios
         .post("http://localhost:8080/utility",data)
@@ -48,24 +56,25 @@ import axios from 'axios'
         .catch((err)=>{
     
             console.log(err);
+
         });
     }
 
     return (
         <div id="table">
              <label for="add">Add New service:</label><br/>  
-            <label for="name">Title</label><br/>
+            <label >Title</label><br/>
 
            <input type="text" id="name" name="name" onChange={handelChangeTitle} /><br/>
-           <label for="name">Service creation date</label><br/>
+           <label >Service creation date</label><br/>
 
            <input type="date" id="name" name="name"  onChange={handelChangeDate}/><br/>
     
-         <label for="title"> Description</label><br/>
+         <label > Description</label><br/>
 
          <input type="text" id="name" name="name" style={{height:120 , width:200}} onChange={handelChangeDescrption}/><br/>
 
-         <label for="title"> Instructions</label><br/>
+         <label > Instructions</label><br/>
 
         <input type="text" id="name" name="name" style={{height:120, width:200}} onChange={handelChangeinstructions}/><br/>
         <button  id="brn_service"onClick={add}>Add</button><br/>

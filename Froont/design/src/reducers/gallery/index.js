@@ -3,7 +3,7 @@ const initialState={
 
 }
 
-const galleryReducer=(state=initialState,{type,payload})=>{
+ const galleryReducer=(state=initialState,{type,payload})=>{
     switch (type) {
         case "ADD_GALLERY":
             console.log(payload);

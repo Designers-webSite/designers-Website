@@ -1,7 +1,7 @@
-export const addUtility=(utility)=>{
+export const addUtility=( utility)=>{
     return {
-        action:"ADD_UTILITY",
-        payload:utility
+        type:"ADD_UTILITY",
+        payload: utility
     }
 
 }

@@ -1,7 +1,7 @@
 export const addGallery=(gallery)=>{
     return {
         type:"ADD_GALLERY",
-        payload:user
+        payload:gallery
     }
 
 }

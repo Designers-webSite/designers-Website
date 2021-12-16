@@ -10,6 +10,18 @@ function CreateDesigner() {
     const [userName, setUserName] = useState("")
     const [designType, setDesignType] = useState("")
     // const [availabilty, setAvailabilty] = useState("")
+// const [searshUserName,setSearchUserName]=useState()
+    // useEffect(() => {
+    //     axios.get("http://localhost:8080/designer").then((response) => {
+        
+    //       console.log(response);
+    //       console.log(response.data);
+    
+    //       setSpecialties(r.data);
+    //       //console.log(r.data)
+    //     });
+    //   }, []);
+
 
     const handelChangefullName=(e)=>{
         setFullName(e.target.value)
@@ -24,13 +36,6 @@ function CreateDesigner() {
         setDesignType(e.target.value)  
     }
 
-
-
-
-    // this.designType = designType;
-    // this.protofolio = protofolio;
-    // this.availabilty = availabilty;
-    // this.utilities = utilities;
     function add() {
         // let fullName = document.querySelector("#fname").value;
         // let userName = document.querySelector("#userName").value;
