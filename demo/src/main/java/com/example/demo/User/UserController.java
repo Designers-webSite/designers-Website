@@ -15,8 +15,6 @@ public class UserController {
         this.userService = userService;
     }
 
-
-
     @GetMapping
     public List<User> getAllUser(){
         return  userService.getAllUser();
@@ -27,9 +25,9 @@ public class UserController {
     }
 
     @PostMapping
-    public User addUser(@RequestBody User user ){
-        System.out.println(user);
-        return  userService.addUser(user);
+    public User addUser(@RequestBody Form form ){
+//        System.out.println(form);
+        return  userService.addUser(form);
 
     }
     @PutMapping("/{id}")
@@ -38,8 +36,21 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteuser (@PathVariable String id ){
+    public void deleteUser (@PathVariable String id ){
         userService.deleteuser(id);
     }
 
+}
+class Form {
+    private User user;
+    private Long role_id;
+
+
+    public User getUser() {
+        return user;
+    }
+
+    public Long getRole_id() {
+        return role_id;
+    }
 }

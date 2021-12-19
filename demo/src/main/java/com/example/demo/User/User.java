@@ -1,7 +1,11 @@
 package com.example.demo.User;
 
+import com.example.demo.Role.Role;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="Users")
@@ -17,7 +21,20 @@ public class User {
     private Date creationDate;
     private boolean status;
     public  User(){}
+@ManyToMany(fetch = FetchType.EAGER)
+private List<Role> roles=new ArrayList<>();
 
+    public User(Long id, String fullName, String userName, int password, String email, int age, Date creationDate, boolean status, List<Role> roles) {
+        this.id = id;
+        this.fullName = fullName;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.age = age;
+        this.creationDate = creationDate;
+        this.status = status;
+        this.roles = roles;
+    }
 
     public Long getId() {
         return id;
@@ -35,16 +52,7 @@ public class User {
         this.fullName = fullName;
     }
 
-    public User(Long id, String fullName, String userName, int password, String email, int age, Date creationDate, boolean status) {
-        this.id = id;
-        this.fullName = fullName;
-        this.userName = userName;
-        this.password = password;
-        this.email = email;
-        this.age = age;
-        this.creationDate = creationDate;
-        this.status = status;
-    }
+
 
     public String getUserName() {
         return userName;
@@ -94,6 +102,14 @@ public class User {
         this.email = email;
 
 
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     @Override

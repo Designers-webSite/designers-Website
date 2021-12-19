@@ -69,5 +69,16 @@ public class Gallery {
     public void setUtility(Utility utility) {
         this.utility = utility;
     }
+
+    @Override
+    public String toString() {
+        return "Gallery{" +
+                "id=" + id +
+                ", pictures='" + pictures + '\'' +
+                ", name='" + name + '\'' +
+                ", Description='" + Description + '\'' +
+                ", utility=" + utility +
+                '}';
+    }
 }
 

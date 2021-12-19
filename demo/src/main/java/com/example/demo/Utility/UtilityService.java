@@ -4,6 +4,7 @@ import com.example.demo.Designer.Designer;
 import com.example.demo.Designer.DesignerRepository;
 import com.example.demo.Gallery.Gallery;
 import com.example.demo.Gallery.GalleryRepository;
+import com.example.demo.User.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,5 +56,26 @@ public class UtilityService {
         utility.getTitle();
         return utility;
     }
-}
+
+    public void deleteUtility(String id) {
+        Long utility_id=Long.parseLong(id);
+        utilityRepository.deleteById(utility_id);
+
+    }
+
+    public void updateUtility(String id,Utility data) {
+        Long utility_id=Long.parseLong(id);
+        Utility utility = utilityRepository.findById(utility_id).orElse(null);
+        if (utility != null) {
+            utility.setTitle(data.getTitle());
+            utility.setDescription(data.getDescription());
+            utility.setDuration(data.getDuration());
+            utility.setInstructions(data.getInstructions());
+
+            utilityRepository.save(utility);
+        }
+    }
+
+    }
+
 

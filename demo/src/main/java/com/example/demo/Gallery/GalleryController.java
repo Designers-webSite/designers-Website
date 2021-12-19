@@ -7,6 +7,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path="gallery")
+@CrossOrigin("*")
+
 public class GalleryController {
     private  final GalleryService galleryService;
     @Autowired
@@ -23,6 +25,7 @@ public class GalleryController {
     }
     @PostMapping
     public Gallery addGallery(@RequestBody Gallery gallery  ){
+        System.out.println("add gallery");
         return  galleryService.addGallery(gallery);
 
     }

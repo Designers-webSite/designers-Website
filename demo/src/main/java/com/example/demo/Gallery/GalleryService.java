@@ -24,6 +24,7 @@ public class GalleryService {
     }
 
     public Gallery addGallery(Gallery gallery) {
+//        System.out.println(gallery.toString());
         return galleryRepository.save(gallery);
     }
 

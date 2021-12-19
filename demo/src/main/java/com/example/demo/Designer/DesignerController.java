@@ -29,6 +29,7 @@ public class DesignerController {
     }
     @PostMapping
     public Designer addDesigner(@RequestBody Designer designer  ){
+        System.out.println("add designer");
         return  designerService.addDesigner(designer);
     }
     @PutMapping("/{id}")

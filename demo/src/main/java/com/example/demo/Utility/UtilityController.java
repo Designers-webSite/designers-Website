@@ -15,22 +15,35 @@ public class UtilityController {
     public UtilityController(UtilityService utilityService) {
         this.utilityService = utilityService;
     }
-    @GetMapping
+    @GetMapping("all")
     public List<Utility> getAllUtilities(){
         return  utilityService.getAllUtilities();
     }
-    @GetMapping("/{id}")
+    // get utility by id
+
+    @GetMapping("row/{id}")
     public Utility getUtility(@PathVariable String id){
         System.out.println(id);
         return utilityService.getUtilities(id);
     }
-    @PostMapping
+    @PostMapping("add")
     public Utility addUtility(@RequestBody Utility s){
         return  utilityService.addUtility(s);
     }
+
+
+    // search utility by title
    @GetMapping("search/{title}")
     public Utility getByTitle(@PathVariable String title){
         return utilityService.getByTitle(title);
+    }
+    @DeleteMapping("/{id}")
+    public  void deleteUtility(@PathVariable String id ){
+        utilityService.deleteUtility(id);
+    }
+    @PutMapping("update/{id}")
+    public void updateUtility(@PathVariable String id,@RequestBody Utility data){
+        utilityService.updateUtility(id,data);
     }
 
 }

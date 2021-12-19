@@ -1,6 +1,8 @@
 package com.example.demo.User;
 
 
+import com.example.demo.Role.Role;
+import com.example.demo.Role.RoleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,21 +11,27 @@ import java.util.List;
 @Service
 public class UserService {
     private  final UserRepository userRepository;
+    private final RoleRepo roleRepo;
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, RoleRepo roleRepo) {
         this.userRepository = userRepository;
+        this.roleRepo = roleRepo;
     }
 
     public List<User> getAllUser() {
         return userRepository.findAll();
     }
 
-    public User getUser(String id) {
+    public User getUser(String id ) {
         Long user_id=Long.parseLong(id);
         return userRepository.findById(user_id).orElse(null);
     }
+    public User addUser(Form form) {
+        User user=form.getUser();
+        Long role_id =form.getRole_id();
+        Role role =roleRepo.findById(role_id).orElse(null);
+        user.getRoles().add(role);
 
-    public User addUser(User user) {
         System.out.println(user.toString());
         return userRepository.save(user);
     }
