@@ -68,7 +68,7 @@ function CreateDesigner() {
     
 
     return (
-        <div>
+        <div className='createDesigner'>
 
             <label > fullName:</label>
             <br />

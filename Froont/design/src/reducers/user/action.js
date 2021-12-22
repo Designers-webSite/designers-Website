@@ -5,6 +5,12 @@ export const addUser=(user)=>{
     }
 
 }
+export const addToken = (token) => {
+    return {
+      type: "ADD_TOKEN",
+      payload: token,
+    };
+  };
 export const removeUser=()=>{
     return {
         type:"REMOVE_USER"

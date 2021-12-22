@@ -11,7 +11,7 @@ const Home = () => {
                         <div className="col-md-6">
                             <div className="text">
                                 <h1 className='mb-2'>Best Services from Best Designers in Arabic World</h1>
-                                <h3 className='mb-3'>Fint Best Design Services</h3>
+                                <h3 className='mb-3'>Find Best Design Services</h3>
                                 <div className="search-box my-4">
                                     <input type="text" placeholder='Find Design Services . . .' />
                                     <button>search</button>

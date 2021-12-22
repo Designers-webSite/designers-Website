@@ -1,8 +1,11 @@
 package com.example.demo.Role;
 
 
+import com.example.demo.Gallery.Gallery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(path="roles")
@@ -19,4 +22,7 @@ public class RoleController {
     public Role saveRole(@RequestBody Role role){
     return roleService.saveRole(role);
     }
-}
+    @GetMapping
+    public List<Role> getAllRoles(){
+        return roleService.getAllRoles();
+    }}

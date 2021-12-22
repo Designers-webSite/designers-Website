@@ -2,8 +2,10 @@ package com.example.demo.Designer;
 
 
 
+import com.example.demo.User.User;
 import com.example.demo.Utility.Utility;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.util.List;
@@ -26,7 +28,11 @@ public class Designer {
     private List<String> protofolio;
     private String info;
     private boolean availabilty;
-//    @Column
+    @OneToOne (fetch = FetchType.LAZY,optional = false)
+    @JoinColumn(name ="user_id")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private User user;
+    //    @Column
 //    @ElementCollection(targetClass=String.class)
 
 

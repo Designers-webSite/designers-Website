@@ -1,5 +1,6 @@
 package com.example.demo.User;
 
+import com.example.demo.Designer.Designer;
 import com.example.demo.Role.Role;
 
 import javax.persistence.*;
@@ -14,17 +15,21 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String fullName;
+    @Column(unique=true)
     private String userName;
-    private int password;
+    private String password;
     private String email;
     private int age;
     private Date creationDate;
     private boolean status;
-    public  User(){}
-@ManyToMany(fetch = FetchType.EAGER)
-private List<Role> roles=new ArrayList<>();
+    private String role;
 
-    public User(Long id, String fullName, String userName, int password, String email, int age, Date creationDate, boolean status, List<Role> roles) {
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+    private Designer designer;
+
+    public  User(){}
+
+    public User(Long id, String fullName, String userName, String password, String email, int age, Date creationDate, boolean status, String role) {
         this.id = id;
         this.fullName = fullName;
         this.userName = userName;
@@ -33,7 +38,7 @@ private List<Role> roles=new ArrayList<>();
         this.age = age;
         this.creationDate = creationDate;
         this.status = status;
-        this.roles = roles;
+        this.role = role;
     }
 
     public Long getId() {
@@ -62,11 +67,11 @@ private List<Role> roles=new ArrayList<>();
         this.userName = userName;
     }
 
-    public int getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -104,12 +109,20 @@ private List<Role> roles=new ArrayList<>();
 
     }
 
-    public List<Role> getRoles() {
-        return roles;
+    public String getRole() {
+        return role;
     }
 
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public Designer getDesigner() {
+        return designer;
+    }
+
+    public void setDesigner(Designer designer) {
+        this.designer = designer;
     }
 
     @Override

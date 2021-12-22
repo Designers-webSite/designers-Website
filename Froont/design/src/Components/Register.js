@@ -13,15 +13,7 @@ const[email,setEmail]=useState("")
 const[password,setPassword]=useState("")
 
  
-// function add() {
-    
 
-//     let fullName = document.querySelector("#fullName").value;
-//     let userName = document.querySelector("#uName").value;
-//     let email=document.querySelector("#email").value;
-//     let password=document.querySelector("#password").value;
-
-// let x={fullName:fullName,userName:userName,email:email,password:password};
 
 
 const handelChangeFullName=(e)=>{
