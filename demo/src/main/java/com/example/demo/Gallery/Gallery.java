@@ -4,6 +4,7 @@ import com.example.demo.Utility.Utility;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="Galleries")
@@ -11,22 +12,17 @@ public class Gallery {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-//    @Column
-//    @ElementCollection(targetClass=String.class)
-    private String  pictures;
-    private String name;
-    private String Description;
+    private String picture;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "gallery")
+    @ManyToOne
     private Utility utility;
 
     public Gallery(){}
 
-    public Gallery(String  pictures, String name, String description, Utility utility) {
-        this.pictures = pictures;
-        this.name = name;
-        this.Description = description;
+    public Gallery(Long id, String picture, Utility utility) {
+        this.id = id;
+        this.picture = picture;
         this.utility = utility;
     }
 
@@ -38,28 +34,12 @@ public class Gallery {
         this.id = id;
     }
 
-    public String  getPictures() {
-        return pictures;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setPictures(String  pictures) {
-        this.pictures = pictures;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return Description;
-    }
-
-    public void setDescription(String description) {
-        Description = description;
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     public Utility getUtility() {
@@ -74,9 +54,7 @@ public class Gallery {
     public String toString() {
         return "Gallery{" +
                 "id=" + id +
-                ", pictures='" + pictures + '\'' +
-                ", name='" + name + '\'' +
-                ", Description='" + Description + '\'' +
+                ", picture='" + picture + '\'' +
                 ", utility=" + utility +
                 '}';
     }

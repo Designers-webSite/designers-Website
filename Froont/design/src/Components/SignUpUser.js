@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from 'axios';
+import axios from 'axios'; 
 import { useState,useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import {addUser} from "../reducers/user/action"
@@ -78,7 +78,7 @@ axios
     .then((res)=>{
         const action=addUser(res.data)
         dispatch(action)
-        // navigate("/login")
+         navigate("/login")
 
     })
     .catch((err)=>{
@@ -118,7 +118,7 @@ axios
 
                 </div>
                 <div  className="form-group fone mt-2"> <i class="fas fa-lock"></i>
-                 <input type="password" className="form-control" placeholder={fill.length>1?fill:"confirm Password"} onChange={ handlChangePassword2}/>
+                 <input type="password" className="form-control" placeholder={fill.length>1?fill:matchPas,"confirm Password"} onChange={ handlChangePassword2}/>
                     <div  className="image"><i  className="fas fa-eye"></i></div>
 
                 </div>

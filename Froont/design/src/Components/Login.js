@@ -43,7 +43,9 @@ setPassword(e.target.value)
     .post("http://localhost:8080/login",data)
     .then((res)=>{
         const token = res.data.access_token
-         const decoded = jwt_decode(token);
+
+        const decoded = jwt_decode(token);
+        console.log(decoded);
 
         const user_action = addUser({
             id: decoded.id,
@@ -54,7 +56,9 @@ setPassword(e.target.value)
   
            dispatch(user_action);
           dispatch(token_action);
-        //   navigate("/");
+          console.log(user_action);
+          
+           navigate("/");
         
 
     })
@@ -75,7 +79,7 @@ setPassword(e.target.value)
             </div>
             
         </div>
-        {!state.token ? (
+        {/* {!state.token ? ( */}
         <div class="col-md-6 rcol">
        
              {/* <form  className="sign-up" >  */}
@@ -99,8 +103,8 @@ setPassword(e.target.value)
             
         </div>
         ) : (
-                <Navigate to="/" from={{ from: location }} />
-              )}
+                {/* <Navigate to="/" from={{ from: location }} />
+              )} */}
     </div>
 </div>
         </div>

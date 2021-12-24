@@ -52,7 +52,7 @@ function Utility() {
             description,
             date,
             instructions,
-            designer: {
+            user: {
                 id: 2
             },
             gallery: {
@@ -62,6 +62,7 @@ function Utility() {
 
         }
 
+        
 
         axios
             .post("http://localhost:8080/utility", data)
@@ -80,7 +81,19 @@ function Utility() {
     }
 
     return (
-        <div  className='addServiceForm'>
+        <div>
+            <form className='form-1'>
+            <label for="add">Add New service:</label><br />
+             <input name="title" type="text" class="feedback-input" placeholder="Title"onChange={handelChangeTitle}  />   
+  <input name="date" type="date" class="feedback-input" placeholder="Service creation date"onChange={handelChangeDate} />
+  <textarea  rows={5} name="description" class="feedback-input" placeholder="Description" onChange={handelChangeDescrption}></textarea>
+  <textarea  rows={5} name="description" class="feedback-input" placeholder="Instructions"onChange={handelChangeinstructions}></textarea>
+ 
+  <button className='submit' onClick={add}>Submit</button>
+</form>
+</div>
+
+/* <div  className='addServiceForm'>
             <div className='container'>
             <div className='roww'>
                 <div className='form-groupp'>
@@ -104,18 +117,18 @@ function Utility() {
                     <textarea  id="instructions" rows={5} name="instructions" className='form-control' onChange={handelChangeinstructions}></textarea>
                 </div>
                <div className='form-group'>
-               {/* <Gallery /> */}
-               </div>
-               <div className='form-group my-3'>
-                    <button id="brn_service" className='btn' onClick={add}>Add</button>
-               </div>
+               {/* <Gallery /> */
+            //    </div>
+            //    <div className='form-group my-3'>
+            //         <button id="brn_service" className='btn' onClick={add}>Add</button>
+            //    </div>
                 
                 
 
 
-            </div>
-            </div>
-        </div>
+            // </div>
+            // </div>
+        // </div> */}
             
     )
 }

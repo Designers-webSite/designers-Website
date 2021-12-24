@@ -2,6 +2,7 @@ package com.example.demo.Security;
 
 import com.example.demo.Filter.CustomAuthenticationFilter;
 import com.example.demo.Filter.CustomAuthorizationFilter;
+import com.example.demo.User.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -24,10 +25,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService userDetailsService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private  final UserRepository userRepository;
 
-    public SecurityConfig(UserDetailsService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public SecurityConfig(UserDetailsService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder, UserRepository userRepository) {
         this.userDetailsService = userDetailsService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.userRepository = userRepository;
     }
 
 
@@ -38,27 +41,35 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManagerBean());
+        CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManagerBean(), userRepository);
         customAuthenticationFilter.setFilterProcessesUrl("/login");
+        http.csrf().disable();
         http.cors().configurationSource(request -> {
             var cors = new CorsConfiguration();
             cors.setAllowedOrigins(List.of("*"));
             cors.setAllowedMethods(List.of("GET","POST", "PUT", "DELETE", "OPTIONS"));
             cors.setAllowedHeaders(List.of("*"));
             return cors;});
-        http.csrf().disable();
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        // Define the authorization patterns below
-//        http.authorizeRequests().anyRequest().permitAll();
-        http.authorizeRequests().antMatchers( HttpMethod.POST,"/user").permitAll();
-        http.authorizeRequests().antMatchers( HttpMethod.POST,"/designer").permitAll();
-//        http.authorizeRequests().antMatchers( HttpMethod.POST,"/utility").permitAll();
-        http.authorizeRequests().antMatchers( HttpMethod.DELETE,"/utility/**").hasAuthority("designer");
-        http.authorizeRequests().antMatchers( HttpMethod.PUT,"/utility/update/**").hasAuthority("designer");
-        http.authorizeRequests().antMatchers( HttpMethod.POST,"/gallery").hasAuthority("designer");
-        http.authorizeRequests().antMatchers( HttpMethod.DELETE,"/gallery/**").hasAuthority("designer");
-        http.authorizeRequests().antMatchers( HttpMethod.PUT,"/gallery/**").hasAuthority("designer");
 
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
+//       http.authorizeRequests().anyRequest().permitAll();
+        http.authorizeRequests().antMatchers(  HttpMethod.POST,"/login").permitAll();
+        http.authorizeRequests().antMatchers( HttpMethod.POST,"/user").permitAll();
+        http.authorizeRequests().antMatchers( "/user").permitAll();
+        http.authorizeRequests().antMatchers("/user/**").hasAnyAuthority("Designer");
+       http.authorizeRequests().antMatchers( HttpMethod.POST,"/gallery").permitAll();
+        http.authorizeRequests().antMatchers( HttpMethod.GET,"/gallery").permitAll();
+        http.authorizeRequests().antMatchers( HttpMethod.POST,"/gallery/**").permitAll();
+       http.authorizeRequests().antMatchers( HttpMethod.POST,"/utility").permitAll();
+       http.authorizeRequests().antMatchers( HttpMethod.POST,"/utility/**").permitAll();
+
+        http.authorizeRequests().antMatchers(HttpMethod.GET,"/utility/**").permitAll();
+      http.authorizeRequests().antMatchers( HttpMethod.DELETE,"/utility/**").hasAuthority("designer");
+      http.authorizeRequests().antMatchers( HttpMethod.PUT,"/utility/**").hasAuthority("designer");
+      http.authorizeRequests().antMatchers( HttpMethod.DELETE,"/gallery/**").hasAuthority("designer");
+       http.authorizeRequests().antMatchers( HttpMethod.PUT,"/gallery/**").hasAuthority("designer");
+        //لازم كل ريكويست يكون authenticated
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthenticationFilter);
         http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
@@ -68,5 +79,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception{
         return super.authenticationManagerBean();
     }
+    
+
 
 }

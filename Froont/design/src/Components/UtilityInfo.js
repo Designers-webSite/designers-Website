@@ -20,6 +20,7 @@ export default function UtilityInfo() {
         });
       }, []);
 
+      
           
       function remove() {
         axios.delete("http://localhost:8080/utility");

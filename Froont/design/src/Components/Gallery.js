@@ -3,13 +3,22 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import {addGallery} from "../reducers/gallery/action"
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
  function Gallery() {
- const dispatch=useDispatch();   
+ const dispatch=useDispatch();  
+ const navigate=useNavigate()
 // const[pictures,setPictures]=useState("")
 const[name,setName]=useState("")
 const[description,setDescription]=useState("")
 const[pic,setPic]=useState("")
+const state = useSelector((state)=>{
+  return {
+      user: state.userReducer.user,
+      token: state.userReducer.token
+  }
+})
+
 
 
 
@@ -50,6 +59,7 @@ axios
 
       console.log(err);
   });
+  navigate("/addService")
 }
 // https://www.devglan.com/react-js/file-upload-react-spring-rest
 
@@ -76,9 +86,13 @@ axios
       <div className='createGallery'>
         {/* <form className='add-gallery' onSubmit={(e)=>add(e)} encType='multipart/form-data'> */}
             {/* <input type="image " on */}
-            <label>Gallery</label><br/>
-            <label >name</label>
-            <input type="text" onChange={handelChangeName}/>
+            
+            <form className='form-1'>
+            <label>Gallery Add</label><br/>
+            
+             <input name="title" type="text" class="feedback-input" placeholder="name"onChange={handelChangeName}  /> 
+             <button className='submit' onClick={add}>Submit</button>  
+           </form>
 
             {/* <label className='uploade-image-label' htmlFor="image-upload">
                 Image Upload
@@ -87,7 +101,7 @@ axios
             {/* <img src= */}
             {/* <lable>Description</lable><br/>
             <input type="text" onChange={handelChangDescription}/> */}
-            <button  onClick={add} >ADD</button>
+            {/* <button  onClick={add} >ADD</button> */}
 
 
             

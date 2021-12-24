@@ -1,26 +1,22 @@
 package com.example.demo.Utility;
 
-import com.example.demo.Designer.Designer;
-import com.example.demo.Designer.DesignerRepository;
+
+
 import com.example.demo.Gallery.Gallery;
 import com.example.demo.Gallery.GalleryRepository;
-import com.example.demo.User.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class UtilityService {
     private final UtilityRepository utilityRepository;
-    private final DesignerRepository designerRepository;
     private final GalleryRepository galleryRepository;
 
     @Autowired
-    public UtilityService(UtilityRepository utilityRepository, DesignerRepository designerRepository, GalleryRepository galleryRepository) {
+    public UtilityService(UtilityRepository utilityRepository, GalleryRepository galleryRepository) {
         this.utilityRepository = utilityRepository;
-        this.designerRepository = designerRepository;
         this.galleryRepository = galleryRepository;
     }
 
@@ -38,21 +34,21 @@ public class UtilityService {
     }
 
     public Utility addUtility(Utility s) {
-        Designer d = designerRepository.findById(s.getDesigner().getId()).orElse(null);
-        Gallery g=galleryRepository.findById(s.getGallery().getId()).orElse(null);
-        s.setDesigner(d);
-        s.setGallery(g);
-       return  utilityRepository.save(s);
+        List <Gallery> g_list = s.getGallery();
+        for (Gallery i :g_list ) {
+            galleryRepository.save(i);
+        }
+        return  utilityRepository.save(s);
 
     }
-    public Designer getByUserName(String userName) {
-        Designer designer=  designerRepository.getByUserName(userName);
-        designer.getUserName();
-        return designer;
-    }
+//    public Designer getByUserName(String userName) {
+//        Designer designer=  designerRepository.getByUserName(userName);
+//        designer.getUserName();
+//        return designer;
+//    }
 
     public Utility getByTitle(String title) {
-        Utility utility=utilityRepository.getByTitle(title);
+        Utility utility=utilityRepository.findByTitle(title);
         utility.getTitle();
         return utility;
     }
@@ -76,6 +72,11 @@ public class UtilityService {
         }
     }
 
+    public Utility getUtilityByDesignType(String designType) {
+        Utility utility=utilityRepository.findByDesignType(designType);
+        utility.getDesignType().equalsIgnoreCase(designType);
+        return utility;
     }
+}
 
 

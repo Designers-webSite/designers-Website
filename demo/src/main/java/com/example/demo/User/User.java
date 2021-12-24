@@ -1,7 +1,7 @@
 package com.example.demo.User;
 
-import com.example.demo.Designer.Designer;
 import com.example.demo.Role.Role;
+import com.example.demo.Utility.Utility;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -19,26 +19,24 @@ public class User {
     private String userName;
     private String password;
     private String email;
-    private int age;
     private Date creationDate;
     private boolean status;
     private String role;
-
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
-    private Designer designer;
+    @OneToMany(mappedBy = "user")
+    private List<Utility> utilities;
 
     public  User(){}
 
-    public User(Long id, String fullName, String userName, String password, String email, int age, Date creationDate, boolean status, String role) {
+    public User(Long id, String fullName, String userName, String password, String email, Date creationDate, boolean status, String role, List<Utility> utilities) {
         this.id = id;
         this.fullName = fullName;
         this.userName = userName;
         this.password = password;
         this.email = email;
-        this.age = age;
         this.creationDate = creationDate;
         this.status = status;
         this.role = role;
+        this.utilities = utilities;
     }
 
     public Long getId() {
@@ -75,13 +73,6 @@ public class User {
         this.password = password;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
 
     public Date getCreationDate() {
         return creationDate;
@@ -117,13 +108,8 @@ public class User {
         this.role = role;
     }
 
-    public Designer getDesigner() {
-        return designer;
-    }
 
-    public void setDesigner(Designer designer) {
-        this.designer = designer;
-    }
+
 
     @Override
     public String toString() {
@@ -133,7 +119,6 @@ public class User {
                 ", userName='" + userName + '\'' +
                 ", password=" + password +
                 ", email='" + email + '\'' +
-                ", age=" + age +
                 ", creationDate=" + creationDate +
                 ", status=" + status +
                 '}';

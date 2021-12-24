@@ -16,7 +16,7 @@
 
 }
 #brn_service{
-  background-color: rgb(202, 202, 88);
+  background-color: #ffd556;
   width: 80px;
   text-align: center;
 }
@@ -499,3 +499,50 @@ p.exist span {
     .rcol {
         padding: 60px 50px 60px 50px
     }}
+
+  
+.form-1 { max-width:420px; margin:5px auto; } 
+
+.feedback-input {
+  padding-top: 50px;
+  color:black;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight:500;
+  font-size: 18px;
+  border-radius: 5px;
+  line-height: 22px;
+  background-color: transparent;
+  border:2px solid #0a1832;
+  transition: all 0.3s;
+  padding: 13px;
+  margin-bottom: 15px;
+  width:100%;
+  box-sizing: border-box;
+  outline:0;
+}
+
+.feedback-input:focus { border:2px solid #0a1832; }
+
+textarea {
+  height: 150px;
+  line-height: 150%;
+  resize:vertical;
+}
+
+.submit {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  width: 25%;
+  background:#ffd556;
+  border-radius:5px;
+  border:0;
+  cursor:pointer;
+  color:white;
+  font-size:24px;
+  padding-top:5px;
+  padding-bottom:10px;
+  transition: all 0.3s;
+  /* margin-top:-4px; */
+  font-weight:700;
+}
+.submit:hover { background:blanchedalmond; }
+.d1{padding-top: 50px;}

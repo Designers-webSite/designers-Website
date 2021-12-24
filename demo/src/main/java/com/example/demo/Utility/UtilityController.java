@@ -1,6 +1,9 @@
 package com.example.demo.Utility;
 
-import com.example.demo.Designer.Designer;
+import com.example.demo.Gallery.Gallery;
+import com.example.demo.User.User;
+import com.example.demo.User.UserRepository;
+import com.example.demo.Gallery.GalleryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path="utility")
+@CrossOrigin("*")
 public class UtilityController {
     private final UtilityService utilityService;
 
@@ -28,14 +32,25 @@ public class UtilityController {
     }
     @PostMapping("add")
     public Utility addUtility(@RequestBody Utility s){
+//       Gallery g=GalleryRepository.findById(s.getGallery().getID()).orElse(null);
+//        s.setDesigner(d);
+//        s.setGallery(g);
+        System.out.println(s);
+        System.out.println(s.getUser());
+        System.out.println(s.getGallery());
         return  utilityService.addUtility(s);
     }
 
 
     // search utility by title
-   @GetMapping("search/{title}")
+    @GetMapping("search/{title}")
     public Utility getByTitle(@PathVariable String title){
         return utilityService.getByTitle(title);
+    }
+
+    @GetMapping("search/{designType}")
+    public Utility getUtilityByDesignType(@PathVariable String designType){
+        return utilityService.getUtilityByDesignType(designType);
     }
     @DeleteMapping("/{id}")
     public  void deleteUtility(@PathVariable String id ){
