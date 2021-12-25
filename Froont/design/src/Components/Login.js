@@ -31,8 +31,8 @@ setPassword(e.target.value)
 }
 
    
-   const add=(e)=>{
-       e.preventDefault()
+   const add=()=>{
+      
     const data={
         "userName":userName,
         "password":password
@@ -42,6 +42,7 @@ setPassword(e.target.value)
     axios
     .post("http://localhost:8080/login",data)
     .then((res)=>{
+        console.log(res.data);
         const token = res.data.access_token
 
         const decoded = jwt_decode(token);

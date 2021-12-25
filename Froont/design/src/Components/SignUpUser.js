@@ -4,16 +4,20 @@ import { useState,useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import {addUser} from "../reducers/user/action"
 import { useNavigate } from 'react-router-dom';
+import {storage} from "../FireBase/Index"
+
 
 export default function SignUpUser() {
- const[fullName,setFullName]=useState("")
+const[fullName,setFullName]=useState("")
 const[userName,setUserName]=useState("")
 const[email,setEmail]=useState("")
 const[password,setPassword]=useState("")
- const[password2,setPassword2]=useState("")
- const[fill,setFill]=useState("")
- const[matchPas,setMatchPass]=useState("")
-
+const[password2,setPassword2]=useState("")
+const[fill,setFill]=useState("")
+const[matchPas,setMatchPass]=useState("")
+const[picture,setPicture]=useState(null)
+const[url,setUrl]=useState("")
+const [progress, setProgress] = useState(0);
 
 const dispatch=useDispatch();
 const navigate=useNavigate()
@@ -34,15 +38,51 @@ const handlChangePassword=(e)=>{
  const handlChangePassword2=(e)=>{
     setPassword2(e.target.value)
  }
-
+ const handleChange=e=>{
+    if(e.target.files[0]){
+      setPicture(e.target.files[0]);
+  
+    }
+  }
+  
+  const handleUpload=(e)=>{
+    e.preventDefault()
+    const uploadTask = storage.ref(`images/${picture.name}`).put(picture);
+    uploadTask.on(
+        "state_changed",
+        snapshot => {
+            const progress = Math.round(
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+            );
+            setProgress(progress);
+        },
+        error => {
+            console.log(error);
+        },
+        () => {
+            storage
+               .ref("images")
+               .child(picture.name)
+               .getDownloadURL()
+               .then(url => {
+                   setUrl(url);
+               });
+        }
+        );
+  
+  }
+  console.log("image :" , picture);
+  
+  
 
 
 
 const data={
-  "fullName":fullName,
-        "userName":userName,
-        "email":email,
-        "password":password,
+       fullName,
+        userName,
+        email,
+        password,
+        picture:url,
         "role":1
      
 }
@@ -52,7 +92,8 @@ const data={
 
 
 
-const add=()=>{
+const add=(e)=>{
+    e.preventDefault();
     // if((email).includes("@gmail.com")||(email).includes("@hotmail.com")||(email).includes("@yahoo.com")|| (email).includes("@outlook.com")){
         //         setEmail(true)
         //         navigate("/login");
@@ -117,12 +158,20 @@ axios
                     <div  className="image"><i  className="fas fa-eye"></i></div>
 
                 </div>
+
                 <div  className="form-group fone mt-2"> <i class="fas fa-lock"></i>
                  <input type="password" className="form-control" placeholder={fill.length>1?fill:matchPas,"confirm Password"} onChange={ handlChangePassword2}/>
                     <div  className="image"><i  className="fas fa-eye"></i></div>
 
                 </div>
                 
+                <div  className="form-group custom-upload mt-2"> <i class="fas fa-lock"></i>
+                 <label htmlFor='file_img'>Upload Photo</label>
+                 <input type="file" id='file_img' className="form-control"onChange={handleChange}/>
+                 <button class="fas fa-lock"  onClick={handleUpload}>Upload</button> 
+                    {/* <div  className="image"><i  className="fas fa-eye"></i></div> */}
+
+                </div>
                 
             </form> 
             <button type="button"  className="btn btn-success mt-5" onClick={add}>Get satrted now</button>

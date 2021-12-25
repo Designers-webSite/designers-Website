@@ -421,6 +421,7 @@ h2.heading {
     position: relative
 }
 
+
 .fone .fas {
     position: absolute;
     left: 0;
@@ -445,6 +446,19 @@ h2.heading {
     color: #C2C2CC
 }
 
+.custom-upload{
+
+}
+.custom-upload input[type='file']{
+  display: none;
+}
+.custom-upload label{
+  border-radius: 5px;
+  border: 1px dashed #1e53b6;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+}
 .btn-success {
     padding: 7px 40px;
     background: #ffd556;
@@ -546,3 +560,26 @@ textarea {
 }
 .submit:hover { background:blanchedalmond; }
 .d1{padding-top: 50px;}
+
+/*Profile*/
+.profile{
+  padding-top: 100px;
+}
+.profile .top-info{
+  text-align: center;
+}
+.profile .top-info img{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1px solid #0a1832;
+  margin: 10px auto;
+}
+.profile .box{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.profile .box p{
+  padding: 8px;
+}

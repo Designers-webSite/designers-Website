@@ -17,7 +17,7 @@ const Home = () => {
                                     <button>search</button>
                                 </div>
                                 <div className="links">
-                                    <Link to="/CreateDesigner" className='main-btn'>Find Job</Link>
+                                    {/* <Link to="/CreateDesigner" className='main-btn'>Find Job</Link> */}
                                 </div>
                             </div>
                         </div>

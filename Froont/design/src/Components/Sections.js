@@ -11,7 +11,7 @@ const Sections = () => {
     const [external,setExternal] = useState([])
     useEffect(() => {
         types.forEach(type => {
-            axios.get(`http://localhost:8080/designer/AllUtilities/${type}`)
+            axios.get(`http://localhost:8080/designer/AllUtilities/design_${type}`)
         .then((response) => {
         
           console.log(response);
