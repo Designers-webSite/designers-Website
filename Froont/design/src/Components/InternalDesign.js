@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import { BsStarFill, BsStar, BsStarHalf } from 'react-icons/bs'
-import { useParams } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-const Sections = () => {
-    // const{} =useParams 
-    // 
+import  React, { useState ,useEffect } from 'react'
+import axios  from 'axios';
+import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+export default function InternalDesign() {
     const types = ["internal","external"]
     const [internal,setInternal] = useState([])
     const [external,setExternal] = useState([])
@@ -21,11 +18,7 @@ const Sections = () => {
           if(design_type === 'internal'){
               setInternal(response.data)
           }
-          else if(design_type === 'external'){
-              setExternal(response.data)
-          }
-          //setContent(response.data);
-          //console.log(r.data)
+          
         })
         .catch((err)=>{ 
             console.log(err);
@@ -37,11 +30,10 @@ const Sections = () => {
 
 
       }, []);
-
-
-
     return (
-        <div className='content sections'>
+        <div>
+
+<div className='content sections'>
             <div className="search-box">
                 <input type="text" placeholder='Find Design Service . . .' />
                 <button>Search</button>
@@ -56,12 +48,12 @@ const Sections = () => {
                 <div className="items">
                     {internal.map(ele=>(
                         <Link to={`/service/${ele.id}`} className="item">
-                        <Link to="/profileUser" className="user"><img src="./images/img3.jpg" alt="" /></Link>
+                            <Link to={`/providerServies/${ele.user.id}`} className="user"><img src="./images/img3.jpg" alt="" /></Link>
                        
                           
                             <div className="head">
                              
-                                <img src="./images/img4.jpg" alt="" />
+                                <img src={ele.picture} alt="" />
                             </div>
                             {/* <div className="footer"> */}
                                 <h3>{ele.title}</h3>
@@ -72,31 +64,9 @@ const Sections = () => {
                     ))}
                 </div>
             </div>
-            <div className="section">
-                <div className="header">
-                    <h1 className="main-title">Exterior Design services</h1>
-                    <select name="" id="">
-                        <option value="">Filter</option>
-                    </select>
-                </div>
-                <div className="items">
-                    {external.map(ele=>(
-                        <Link to={`/service/${ele.id}`} className="item">
-                            <Link to="/profileUser" className="user"><img src="./images/img3.jpg" alt="" /></Link>
-                            <div className="head">
-                                {/* Put image src here */}
-                                <img src="./images/img4.jpg" alt="" />
-                            </div>
-                            {/* <div className="footer"> */}
-                                <h3>{ele.title}</h3>
-                            
-                            {/* </div> */}
-                        </Link>
-                    ))}
-                </div>
-            </div>
+
+            
+        </div>
         </div>
     )
 }
-
-export default Sections

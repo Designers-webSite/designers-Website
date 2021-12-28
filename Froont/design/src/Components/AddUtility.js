@@ -10,18 +10,22 @@ function AddUtility() {
 
     const dispatch = useDispatch()
     const [title, setTitle] = useState("")
-    const [designType, setDesignType] = useState("")
+    const [designType,setDesignType ] = useState("")
     const [description, setDescription] = useState("")
     const [date, setDate] = useState("")
     const [instructions, setInstructions] = useState("")
+    const[picture,setPicture]=useState(null)
+    const[url,setUrl]=useState("")
+     const [progre, setProgre] = useState(0); 
 
-    const [picture, setPicture] = useState(null)
-    const [url, setUrl] = useState("")
+    const [pictures, setPictures] = useState([])
+    const [urls, setUrls] = useState([])
     const [progress, setProgress] = useState(0);
 
     const navigate = useNavigate()
+
     const state = useSelector((state) => {
-        return {
+        return {    
             user: state.userReducer.user,
             token: state.userReducer.token
         }
@@ -39,6 +43,7 @@ function AddUtility() {
 
 
     }
+
     const handelChangeDate = (e) => {
         setDate(e.target.value)
 
@@ -51,67 +56,81 @@ function AddUtility() {
     }
 
     const handleChange = e => {
-        if (e.target.files[0]) {
-            setPicture(e.target.files[0]);
+    
+            for (let i = 0; i < e.target.files.length; i++) {
+                const newImage = e.target.files[i];
+                newImage["id"] = Math.random();
+                setPictures((prevState) =>[...prevState, newImage]);
 
         }
-    }
+        console.log(pictures);
 
+    }
     const handleUpload = (e) => {
         e.preventDefault()
-        const uploadTask = storage.ref(`images/${picture.name}`).put(picture);
-        uploadTask.on(
+        const promises = [];
+        pictures.map((image) => {
+         const uploadTask = storage.ref(`images/${image.name}`).put(image);
+          promises.push(uploadTask);
+          uploadTask.on(
             "state_changed",
-            snapshot => {
-                const progress = Math.round(
-                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-                );
-                setProgress(progress);
+            (snapshot) => {
+              const progress = Math.round(
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+              );
+              setProgress(progress);
             },
-            error => {
-                console.log(error);
+            (error) => {
+              console.log(error);
             },
-            () => {
-                storage
-                    .ref("images")
-                    .child(picture.name)
-                    .getDownloadURL()
-                    .then(url => {
-                        setUrl(url);
-                    });
+            async () => {
+              await storage
+                .ref("images")
+                .child(image.name)
+                .getDownloadURL()
+                .then((urls) => {
+                    console.log(urls);
+                  setUrls((prevState) => [...prevState, urls]);
+
+
+                });
             }
-        );
-
-    }
-    console.log("image :", picture);
+          );
+        });
 
 
-    // let designId = document.getElementById("design")
+        Promise.all(promises)
+          .then(() => alert("All images uploaded"))
+          .catch((err) => console.log(err));
+      };
+      console.log("images: ", picture);
+      console.log("url", url);
+      console.log("images: ", pictures);
 
+      console.log("url", urls);
+    
     const add = () => {
         const data = {
             title,
             description,
             date,
             instructions,
-            picture: url,
+            designType,
+            picture:url,
             user: {
-                id: 2
+                id: 1
             },
 
-            gallery:
-                [
-                    { "image": "" },
-                    { "image": "" },
-                    { "image": "" }
-                ]
-
-
+            gallery: urls.map((url)=>{
+                return {picture : url}
+            })
 
         }
 
+        console.log(data);
+
         axios
-            .post("http://localhost:8080/utility", data)
+            .post("http://localhost:8080/utility/add/", data)
             .then((res) => {
                 const action = addUtility(res.data)
                 dispatch(action)
@@ -125,6 +144,41 @@ function AddUtility() {
 
 
     }
+    const handleChangeOne=e=>{
+        if(e.target.files[0]){
+          setPicture(e.target.files[0]);
+      
+        }
+      }
+      
+      const handleUploadOne=(e)=>{
+        e.preventDefault()
+        const uploadTask = storage.ref(`image/${picture.name}`).put(picture);
+        uploadTask.on(
+            "state_changed",
+            snapshot => {
+                const progre = Math.round(
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                );
+                setProgre(progre);
+            },
+            error => {
+                console.log(error);
+            },
+            () => {
+                storage
+                   .ref("image")
+                   .child(picture.name)
+                   .getDownloadURL()
+                   .then(url => {
+                       setUrl(url);
+                   });
+            }
+            );
+      
+      }
+      console.log("image :" , picture);
+      
 
     return (
         <div>
@@ -135,12 +189,10 @@ function AddUtility() {
                 <br />
 
                 <input name="title" type="text" class="feedback-input" placeholder="Title" onChange={handelChangeTitle} />
-                <select className="input2" onChange={handelChangeDesignType}>
-                    <option value="hide"> designType </option>
-                    <option value="internal design">internal design</option>
-                    <option value="external design">external design</option>
-
-                </select>
+                <input type="file" placeholder='add '  onChange={handleChangeOne} />
+                <button onClick={handleUploadOne}>Upload</button>
+                <input name="title" type="text" class="feedback-input" placeholder="design Type" onChange={handelChangeDesignType} />
+                
                 <input name="date" type="date" class="feedback-input" placeholder="Service creation date" onChange={handelChangeDate} />
                 <textarea rows={5} name="description" class="feedback-input" placeholder="Description" onChange={handelChangeDescrption}></textarea>
                 <textarea rows={5} name="description" class="feedback-input" placeholder="Instructions" onChange={handelChangeinstructions}></textarea>
@@ -150,55 +202,39 @@ function AddUtility() {
                 <br />
                 <br />
 
-                <input type="file" onChange={handleChange} />
-
-                <button onClick={handleUpload}>Upload</button>
+                <input type="file" id='file_img' className="form-control"onChange={handleChange}/>
+                 <button class="fas fa-lock"  onClick={handleUpload}>Upload</button> 
 
                 <br />
-                {/* {url}  */}
-                <br />
-                <img src={url || "http://via.placeholder.com/300x400"} alt="firebase-image" />
+                {urls.map((url,i)=>(
+                    <div key={i}>
+                      
+
+                    </div>
+                ))
+
+                }
+                <br/>
+                {
+ urls.map((url,i)=>(
+                        <>
+                          <img 
+                          style={{width:"50px"}}
+                           key={i}
+                          src={url }
+         alt="firebase-image"  />
+
+                        </>
+                    ))
+                }
+        
+
+    
             </form>
             <button className='submit' onClick={add}>Submit</button>
-        </div>
-
-        /* <div  className='addServiceForm'>
-                    <div className='container'>
-                    <div className='roww'>
-                        <div className='form-groupp'>
-                          <label for="add">Add New service:</label><br />
-                            <label >Title</label><br />
-                            <input className='form-control' type="text" id="title" name="title" onChange={handelChangeTitle} />
-                        </div>
-                        
-                        <div className='form-group'>
-                            <label >Service creation date</label><br />
-                            <input className='form-control' type="date" id="date" name="date" onChange={handelChangeDate} />
-                        </div>
-         
-                        <div className='form-group'>
-                            <label > Description</label>
-                            <textarea  id="description" rows={5} name="description" className='form-control' onChange={handelChangeDescrption}></textarea>
-                        </div>
-                        
-                        <div className='form-group'>
-                            <label>Instructions</label>
-                            <textarea  id="instructions" rows={5} name="instructions" className='form-control' onChange={handelChangeinstructions}></textarea>
-                        </div>
-                       <div className='form-group'>
-                       {/* <Gallery /> */
-        //    </div>
-        //    <div className='form-group my-3'>
-        //         <button id="brn_service" className='btn' onClick={add}>Add</button>
-        //    </div>
-
-
-
-
-        // </div>
-        // </div>
-        // </div> */}
+        </div> 
 
     )
 }
+
 export default AddUtility

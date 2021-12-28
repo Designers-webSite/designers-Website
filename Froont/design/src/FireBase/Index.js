@@ -6,6 +6,7 @@ import "firebase/compat/storage";
 const firebaseConfig = {
     apiKey: "AIzaSyC261A1M17Tb-2sQMx6jOZYw1elVR0Us1o",
     authDomain: "fir-61d22.firebaseapp.com",
+    databaseURL:"gs://fir-61d22.appspot.com",
     projectId: "fir-61d22",
     storageBucket: "fir-61d22.appspot.com",
     messagingSenderId: "97609169500",

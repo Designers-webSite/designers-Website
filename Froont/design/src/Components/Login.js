@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { useNavigate , Navigate, useLocation } from 'react-router-dom'
+import { useNavigate , Navigate, useLocation, useParams } from 'react-router-dom'
 import { useState } from 'react'
 import {addUser,addToken} from "../reducers/user/action"
 import axios from 'axios'
@@ -59,7 +59,7 @@ setPassword(e.target.value)
           dispatch(token_action);
           console.log(user_action);
           
-           navigate("/");
+           navigate("/profileUser/:user_id");
         
 
     })
@@ -67,8 +67,9 @@ setPassword(e.target.value)
 
         console.log(err);
     });
-   }
 
+   }
+   
     return (
         <div>
 
