@@ -14,6 +14,7 @@ import InternalDesign from './Components/InternalDesign';
 import SearchUtilityByTitle from './Components/SearchUtilityByTitle';
 import AllServies from './Components/AllServies';
 import ProviderServies from './Components/ProviderServies';
+import Utility from './Components/Utility';
 function App() {
   return (
     <BrowserRouter>
@@ -38,6 +39,7 @@ function App() {
           <Route path="/profileUser/:user_id" element={<ProfileUser/>} />
           <Route path="/updateUser/:user_id" element={<UpdateUser/>} />
           <Route path="/providerServies/:user_id" element={<ProviderServies/>}/>
+          <Route path="/Utility/:utility_id" element={<Utility/>}/>
 
 
 

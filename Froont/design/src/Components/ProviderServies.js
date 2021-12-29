@@ -11,15 +11,19 @@ export default function ProviderServies() {
             token: state.userReducer.token
         }
     })
-const[user,setUser]=useState([])
-const{user_id}=useParams()
+    const[user,setUser]=useState()
+    const[loading,setLoading]=useState(false)
+
+    const{user_id}=useParams()
 useEffect(() => {
        
-    axios
-    
+     axios
         .get(`http://localhost:8080/user/${user_id}`)
-        .then(res =>{ setUser(res.data)
-        console.log(res.data);
+        .then(res =>{ 
+            
+            console.log(res.data);
+            setUser(res.data)
+            setLoading(true)
         })
       
         .catch(err => console.log(err));
@@ -29,31 +33,39 @@ useEffect(() => {
     console.log(user)
     return (
         
-        <div className='profile'>
+       
             
             <div className='container'>
-            {user.map((ele=>{
+                {loading?  
+                
+                 <div className='profile'>
+           
+
                 <>
                     
                         <div className="head">
                             {/* Put image src here */}
                             <img src="./images/img4.jpg" alt="" />
                         </div>
-                        <h3>{ele.userName}</h3> 
-                        <h3>{ele.email}</h3> 
+                        <h3>{user.userName}</h3> 
+                        <h3>{user.picture}</h3> 
 
                         </>
                         
-            }))}
+         
+                            </div>
+
+            :<h1>loading</h1>
+            }
                
 
-
+    
                 
                 </div>
             
-                 
+        
                   
-                 </div>
+                
 
                
                 

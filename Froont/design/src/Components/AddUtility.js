@@ -9,11 +9,11 @@ import { storage } from "../FireBase/Index"
 function AddUtility() {
 
     const dispatch = useDispatch()
-    const [title, setTitle] = useState("")
-    const [designType,setDesignType ] = useState("")
-    const [description, setDescription] = useState("")
-    const [date, setDate] = useState("")
-    const [instructions, setInstructions] = useState("")
+    const [title, setTitle] = useState("");
+    const [designType,setDesignType ] = useState("");
+    const [description, setDescription] = useState("");
+    const [date, setDate] = useState("");
+    const [instructions, setInstructions] = useState("");
     const[picture,setPicture]=useState(null)
     const[url,setUrl]=useState("")
      const [progre, setProgre] = useState(0); 
@@ -107,26 +107,27 @@ function AddUtility() {
       console.log("url", url);
       console.log("images: ", pictures);
 
-      console.log("url", urls);
+      console.log("urls", urls);
+      const data = {
+        title: title,
+        description: description,
+        date:date,
+        instructions: instructions,
+        designType :  designType,
+        picture:url,
+        user: {
+            id: 1
+        },
+
+        gallery: urls.map((url)=>{
+            return {picture : url}
+        })
+
+    }
+
     
     const add = () => {
-        const data = {
-            title,
-            description,
-            date,
-            instructions,
-            designType,
-            picture:url,
-            user: {
-                id: 1
-            },
-
-            gallery: urls.map((url)=>{
-                return {picture : url}
-            })
-
-        }
-
+       
         console.log(data);
 
         axios
@@ -191,7 +192,14 @@ function AddUtility() {
                 <input name="title" type="text" class="feedback-input" placeholder="Title" onChange={handelChangeTitle} />
                 <input type="file" placeholder='add '  onChange={handleChangeOne} />
                 <button onClick={handleUploadOne}>Upload</button>
-                <input name="title" type="text" class="feedback-input" placeholder="design Type" onChange={handelChangeDesignType} />
+                {/* <input name="title" type="text" class="feedback-input" placeholder="design Type" onChange={handelChangeDesignType} /> */}
+                <select id="designType" className='input' onChange={handelChangeDesignType}>
+                    <option value="hide" >Design Type</option>
+                    <option value="Internal Design">Internal Design</option>
+                    <option value="External Design">External Design</option>
+
+
+                </select>
                 
                 <input name="date" type="date" class="feedback-input" placeholder="Service creation date" onChange={handelChangeDate} />
                 <textarea rows={5} name="description" class="feedback-input" placeholder="Description" onChange={handelChangeDescrption}></textarea>

@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 export default function InternalDesign() {
     const types = ["internal","external"]
     const [internal,setInternal] = useState([])
-    const [external,setExternal] = useState([])
     const {design_type}=useParams();
     useEffect(() => {
         types.forEach(design_type => {
@@ -15,7 +14,7 @@ export default function InternalDesign() {
           console.log(response);
           console.log(response.data);
     
-          if(design_type === 'internal'){
+          if(design_type === 'internal'|| design_type === 'internal design'){
               setInternal(response.data)
           }
           
@@ -47,13 +46,13 @@ export default function InternalDesign() {
                 </div>
                 <div className="items">
                     {internal.map(ele=>(
-                        <Link to={`/service/${ele.id}`} className="item">
+                        <Link to={`/Utility/${ele.id}`} className="item">
                             <Link to={`/providerServies/${ele.user.id}`} className="user"><img src="./images/img3.jpg" alt="" /></Link>
                        
                           
                             <div className="head">
                              
-                                <img src={ele.picture} alt="" />
+                            <img src={ele.picture} alt="" />
                             </div>
                             {/* <div className="footer"> */}
                                 <h3>{ele.title}</h3>

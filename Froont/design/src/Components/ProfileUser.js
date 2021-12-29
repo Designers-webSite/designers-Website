@@ -12,8 +12,11 @@ export default function ProfileUser() {
         }
     })
     const {user_id} = useParams();
-    console.log(user_id);
+    // console.log(user_id);
     const [user, setUser] = useState([])
+    const[utility,setUtility]=useState([])
+    // const {utility_id}=useParams()
+    // console.log(utility_id);
 
    const x= JSON.parse(localStorage.getItem("user"))
   console.log(x.id);
@@ -22,53 +25,101 @@ export default function ProfileUser() {
         axios
          .get("http://localhost:8080/user/"+x.id)
             .then(res =>{ setUser(res.data)
-            
-            })
+         
           
-            .catch(err => console.log(err));
+             
 
-
-    }
-        , [])
+    }).catch((err)=>{ 
+                    console.log(err);
+                })
+        
+    
+            }, [])
         console.log(user)
 
-        
+        useEffect(() => {
+       
+                    
+                 axios
+                    .get("http://localhost:8080/utility/all/"+x.id)
+                    .then(response=>{setUtility(response.data)
+                    console.log(response.data);})
+                
+              
+                .catch(err => console.log(err));
+    
+    
+      },[])
+// function allUtilityForUser(){
+//     axios
+//     .get(`http://localhost:8080/utility/add/${utility_id}`)
+//     .then(response=>{setUtility(response.data)
+//     console.log(response.data);})
+//     .catch(err=>{console.log(err.data);})
+// }
+
+
 
 
     return (
       
-        <div className='profile'>
+
+        <div className='profile sections'>
             <div className='container'>
-                <div className='top-info'>
-                    <img alt="" src={user.picture} />
-                    <h4 className='text-center'>{user.userName}</h4>  
-                    <hr/>
-                </div>
-            
-                <div className='row'>
-                    <div className='col-md-6'>
-                    <h1>Basic Information</h1>
+                <div className='inner-wrapper'>
+                    <div className='top-wrapper'>
+                        <div className='top-info'>
+                            <img alt="" src={user.picture} />
+                            <h4>{user.fullName}</h4>  
+                        </div>
+                    </div>
+
+                    <div className='row'>
+                    <div className='col-lg-6'>
+                    <h2>Basic Information</h2>
                         <div className='box'>
                            
                             <p>full Name :{user.fullName}</p>
                             <hr />
-                            <p>user Name:{user.userName}</p>
+                            <p>user Name:{user.userName}</p>    
                             <hr />
                             <p>Email:{user.email}</p>
                             
-                        {/* </div>
-                        <Link to ={"/updateUser"}>Edit</Link> */}
-                      <Link to ={`/updateUser/${x.id}`}>Edit</Link>
-                    </div>
-                    <div className='col-md-6'>
-                        
+                            <Link className='btn btn-primary' to ={`/updateUser/${x.id}`}>Edit</Link>       
+                        </div>
                     </div>
                 </div>
-                    
-            </div>            
+                          
+                <div className="items">
+                        <h3 className='my-3'>Gigs</h3>
+                   
+                          {user===0?"":
+                        <div className='row'>
+                        {console.log("utility: ",utility)}
+                         { utility.map((ele)=>{
+                              
+                             return(
+                                 <div className='col-md-4'>
+                                    <div className='item'>
+                                        <div className="head">
+                                        <Link to={`/Utility/${ele.id}`} >  <img className='mw-100' src={ele.picture} alt="" /></Link>
+                                        </div>
+                                        <h4 className='text-white text-center'>{ele.title}</h4>
+                                    </div>
+                                 </div>
+
+                             )
+                            
+                        
+                         })} 
+         
+                         </div>}                                  
+     
+                     </div>   
+                </div> {/* End inner-wrapper  */}        
             
         </div>
-        </div>
-   
+       
+   </div>
     )
 }

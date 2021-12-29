@@ -59,7 +59,23 @@ export default function UpdateUser() {
             .catch(err => { console.log(err.response); })
     }, [])
 
-
+    // const addPersonalPhoto=()=>{
+    //     //       const config = {
+    //     //         headers:{Authorization: `Bearer ${state.token}`}
+    //     //     }
+    //     //     axios
+    //     //     .post(`http://localhost:8080/comment`,data,config)
+    //     //     .then(response=>{
+    //     //         axios
+    //     //         .get(`http://localhost:8080/post/${post_id}`)
+    //     //         .then(response=>{setPost(response.data)})
+    //     //         .catch(err=>{console.log(err.data);})
+    //     //         document.getElementById("textComm").value=""
+    //     //         setComment("")
+    //     //     })
+    //     // }
+    
+    //     //     }
     const updateInfo = () => {
         // if((email).includes("@gmail.com")||(email).includes("@hotmail.com")||(email).includes("@yahoo.com")|| (email).includes("@outlook.com")){
         //         setEmail(true)
