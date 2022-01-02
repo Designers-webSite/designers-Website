@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
 export default function ExternalDesign() {
-    const types = ["internal","external"]
+    const types = ["internal design","external design"]
     const [external,setExternal] = useState([])
     const {design_type}=useParams();
     useEffect(() => {
@@ -15,7 +15,7 @@ export default function ExternalDesign() {
           console.log(response);
           console.log(response.data);
     
-          if(design_type === 'external'){
+          if(design_type === 'external design'){
             setExternal(response.data)
           }
           
@@ -33,11 +33,6 @@ export default function ExternalDesign() {
       }, []);
 
 
-
-
-
-
-
     return (
         <div className='content sections'>
             <div className="section">
@@ -49,16 +44,17 @@ export default function ExternalDesign() {
                 </div>
                 <div className="items">
                     {external.map(ele=>(
-                        <Link to={`/service/${ele.id}`} className="item">
+                         <Link to={`/Utility/${ele.id}`} className="item">
                             <Link to={`/providerServies/${ele.user.id}`} className="user"><img src="./images/img3.jpg" alt="" /></Link>
+
+                            {/* <Link to={`/providerServies/${ele.user.id}`} className="user"><img src="./images/img3.jpg" alt="" /></Link> */}
                             <div className="head">
                                 {/* Put image src here */}
                                 <img src="./images/img4.jpg" alt="" />
                             </div>
                            
                                 <h3>{ele.title}</h3>
-                            
-                            
+                        
                         </Link>
                     ))}
                 </div>

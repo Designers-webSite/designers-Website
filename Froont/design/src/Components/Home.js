@@ -32,12 +32,13 @@ const[search,setSearch]=useState();
                                 {/* <Link to="/CreateDesigner" className='main-btn'>Find Job</Link> */}
                             </div>
                         </div>
-                    </div>
-                    <div className="col-md-6">
+                        <div className="col-md-6">
                         <div className="images">
                             <img src="./images/img1.jpg" alt="" className="main-img" />
                         </div>
                     </div>
+                    </div>
+                    
                 </div>
             </div>
             <div className="ex-design">
@@ -45,13 +46,15 @@ const[search,setSearch]=useState();
                     <Link to={`/externalDesign/:design_type`}><h4>Exterior Design</h4> </Link>
                 </div>
             </div>
+
             <div className="in-design">
                 <div className="text-card right">
                     <Link to={`/internalDesign/:design_type`}><h4>Interior Design</h4> </Link>
                 </div>
+                
             </div>
 
-
+            
 
 
             <footer>

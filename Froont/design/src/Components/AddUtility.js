@@ -116,7 +116,7 @@ function AddUtility() {
         designType :  designType,
         picture:url,
         user: {
-            id: 1
+            id: state.user.id
         },
 
         gallery: urls.map((url)=>{
@@ -190,16 +190,23 @@ function AddUtility() {
                 <br />
 
                 <input name="title" type="text" class="feedback-input" placeholder="Title" onChange={handelChangeTitle} />
-                <input type="file" placeholder='add '  onChange={handleChangeOne} />
+                
+                <div className='custom-upload'>
+                    <label htmlFor='up0'>قم برفع الصورة</label>
+                <input type="file" placeholder='add ' id='up0'  onChange={handleChangeOne} />
+                </div>
+                
+                
                 <button onClick={handleUploadOne}>Upload</button>
+
                 {/* <input name="title" type="text" class="feedback-input" placeholder="design Type" onChange={handelChangeDesignType} /> */}
-                <select id="designType" className='input' onChange={handelChangeDesignType}>
+                <div className='form-group my-3'>
+                <select id="designType" className='form-select input' onChange={handelChangeDesignType}>
                     <option value="hide" >Design Type</option>
                     <option value="Internal Design">Internal Design</option>
                     <option value="External Design">External Design</option>
-
-
                 </select>
+                </div>
                 
                 <input name="date" type="date" class="feedback-input" placeholder="Service creation date" onChange={handelChangeDate} />
                 <textarea rows={5} name="description" class="feedback-input" placeholder="Description" onChange={handelChangeDescrption}></textarea>

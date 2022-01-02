@@ -46,7 +46,7 @@ const deleteUser=()=>{
             <Link to="/" className="logo">Logo</Link>
             <div className="nav-links">
                 <Link to="/">Home</Link>
-                <Link to="/sections">sections</Link>
+                <Link to="/AllServies">sections</Link>
                 {/* <Link to="/support">support</Link> */}
                 <Link to="/signUp">Register</Link>
                 <Link to="/login">Login</Link>

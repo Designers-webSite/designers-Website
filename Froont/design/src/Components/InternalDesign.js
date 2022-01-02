@@ -3,9 +3,10 @@ import axios  from 'axios';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 export default function InternalDesign() {
-    const types = ["internal","external"]
+    const types = ["internal design","external design"]
     const [internal,setInternal] = useState([])
     const {design_type}=useParams();
+    console.log(design_type);
     useEffect(() => {
         types.forEach(design_type => {
             axios.get(`http://localhost:8080/utility/col/${design_type}`)
@@ -14,7 +15,7 @@ export default function InternalDesign() {
           console.log(response);
           console.log(response.data);
     
-          if(design_type === 'internal'|| design_type === 'internal design'){
+          if( design_type === 'internal design'){
               setInternal(response.data)
           }
           

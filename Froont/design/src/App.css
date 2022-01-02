@@ -44,6 +44,7 @@ body{
   border-bottom: 1px solid #d1d1d1;
   background: var(--color2);
   z-index: 999;
+  top: 0;
 }
  .top-nav .logo{
   font-size: 20px;
@@ -118,8 +119,9 @@ body{
   background: var(--color2);
 }
 .home .page-top{
-  min-height: 80vh;
+  min-height: 90vh;
   padding-top: 50px;
+  padding-bottom: 50px;
 }
 .home .page-top .text{
   color: #f2f2f2;
@@ -128,16 +130,36 @@ body{
 .home .page-top .main-img{
   width: 250px;
   height: 300px;
-  border-radius: 0 10px 50% 10px;
+  border-radius: 10px 0 10px 50%;
   display: block;
-  margin-right: auto;
+  margin-left: auto;
 }
 .home .ex-design,.home .in-design{
-  height: 400px;
+  height: 800px;
   width: 100%;
-  border-radius: 10px 10px 0 0;
+  border-radius: 20px 20px 0 0;
   margin-bottom: 50px;
   position: relative;
+  background: rgba(0, 0, 0, 0.5);
+  
+}
+.home .ex-design::before, .home .in-design::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px 20px 0 0;
+  z-index: 1;
+}
+.home .ex-design::before{
+  background-image: url('https://picsum.photos/id/400/600/600');
+} 
+.home .in-design::before{
+  background-image: url('https://picsum.photos/id/2/600/600');
 }
 .text-card{
   position: absolute;
@@ -226,7 +248,7 @@ body{
     background: var(--color2);
     border-radius: 30px 0 30px 0;
     position: relative;
-    margin-bottom: 20px;
+    margin: 15px;
     /* margin-left: 20px; */
 }
 .sections .items .item .user{
@@ -281,6 +303,7 @@ body{
     border: none;
     outline: none;
     font-size: 10px;
+    text-align: center;
 }
 .search-box button{
     position: absolute;
@@ -288,13 +311,14 @@ body{
     border-radius: 20px;
     padding: 5px 15px;
     font-size: 12px;
-    width: 50px;
+    width: 70px;
     border: none;
     outline: none;
     right: 5px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
+    text-align: center;
 }
 
 /*addServiceForm*/
@@ -513,7 +537,13 @@ p.exist span {
     }}
 
   
-.form-1 { max-width:420px; margin:5px auto; } 
+.form-1 {
+   max-width:600px; 
+   margin:100px auto; 
+   border-radius: 10px;
+   border: 1px solid #333;
+   padding: 20px;
+  } 
 
 .feedback-input {
   padding-top: 50px;
@@ -613,6 +643,7 @@ textarea {
 .utility{
   padding: 100px 20px 50px;
   background:rgb(231, 226, 226);
+
 }
 .utility .inner-wrapper{
   width: 70%;
@@ -621,4 +652,12 @@ textarea {
   border-radius: 0 50px 0 50px;
   padding: 50px 15px;
   position: relative;
+}
+.box1{
+margin: 20px;
+
+}
+.profile1{
+  padding: 100px 20px 50px;
+  background: gray;
 }

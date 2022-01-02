@@ -46,7 +46,7 @@ const [allutility,setAllutility] = useState([])
                 </div>
                 <div className="items">
                     {allutility.map(ele=>(
-                        <Link to={`/service/${ele.id}`} className="item">
+                           <Link to={`/Utility/${ele.id}`} className="item">
                         <Link to={`/providerServies/${ele.user.id}`} className="user"><img src="./images/img3.jpg" alt="" /></Link>                            <div className="head">
                                 {/* Put image src here */}
                                 <img src={ele.picture} alt="" />

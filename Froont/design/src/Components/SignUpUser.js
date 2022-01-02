@@ -15,9 +15,9 @@ const[password,setPassword]=useState("")
 const[password2,setPassword2]=useState("")
 const[fill,setFill]=useState("")
 const[matchPas,setMatchPass]=useState("")
-const[picture,setPicture]=useState(null)
-const[url,setUrl]=useState("")
-const [progress, setProgress] = useState(0);
+// const[picture,setPicture]=useState(null)
+// const[url,setUrl]=useState("")
+// const [progress, setProgress] = useState(0);
 
 const dispatch=useDispatch();
 const navigate=useNavigate()
@@ -38,40 +38,40 @@ const handlChangePassword=(e)=>{
  const handlChangePassword2=(e)=>{
     setPassword2(e.target.value)
  }
- const handleChange=e=>{
-    if(e.target.files[0]){
-      setPicture(e.target.files[0]);
+//  const handleChange=e=>{
+//     if(e.target.files[0]){
+//       setPicture(e.target.files[0]);
   
-    }
-  }
+//     }
+//   }
   
-  const handleUpload=(e)=>{
-    e.preventDefault()
-    const uploadTask = storage.ref(`images/${picture.name}`).put(picture);
-    uploadTask.on(
-        "state_changed",
-        snapshot => {
-            const progress = Math.round(
-                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-            );
-            setProgress(progress);
-        },
-        error => {
-            console.log(error);
-        },
-        () => {
-            storage
-               .ref("images")
-               .child(picture.name)
-               .getDownloadURL()
-               .then(url => {
-                   setUrl(url);
-               });
-        }
-        );
+//   const handleUpload=(e)=>{
+//     e.preventDefault()
+//     const uploadTask = storage.ref(`images/${picture.name}`).put(picture);
+//     uploadTask.on(
+//         "state_changed",
+//         snapshot => {
+//             const progress = Math.round(
+//                 (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+//             );
+//             setProgress(progress);
+//         },
+//         error => {
+//             console.log(error);
+//         },
+//         () => {
+//             storage
+//                .ref("images")
+//                .child(picture.name)
+//                .getDownloadURL()
+//                .then(url => {
+//                    setUrl(url);
+//                });
+//         }
+//         );
   
-  }
-  console.log("image :" , picture);
+//   }
+//   console.log("image :" , picture);
   
   
 
@@ -82,7 +82,7 @@ const data={
         userName,
         email,
         password,
-        picture:url,
+        //  picture:url,
         "role":1
      
 }
@@ -166,13 +166,13 @@ axios
 
                 </div>
                 
-                <div  className="form-group custom-upload mt-2"> <i class="fas fa-lock"></i>
+                {/* <div  className="form-group custom-upload mt-2"> <i class="fas fa-lock"></i>
                  <label htmlFor='file_img'>Upload Photo</label>
                  <input type="file" id='file_img' className="form-control"onChange={handleChange}/>
                  <button class="fas fa-lock"  onClick={handleUpload}>Upload</button> 
                     {/* <div  className="image"><i  className="fas fa-eye"></i></div> */}
-
-                </div>
+{/* 
+                </div> */} 
                 
             </form> 
             <button type="button"  className="btn btn-success mt-5" onClick={add}>Get satrted now</button>

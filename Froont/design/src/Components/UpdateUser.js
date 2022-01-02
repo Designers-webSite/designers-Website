@@ -3,12 +3,13 @@ import { useState, useEffect } from 'react'
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios';
-
-// INSERT INTO utilities (id,title,description,duration,price,design_type,instructions, user_id,gallery_id) VALUES (1,"front","fghjkl","2020-12-03", 200,"internal","ggg", 2,2);
-
+import { addUser } from '../reducers/user/action';
+import { useDispatch } from 'react-redux';
+import {storage} from "../FireBase/Index"
 
 
 export default function UpdateUser() {
+    const dispatch=useDispatch()
     const state = useSelector((state) => {
         return {
             user: state.userReducer,
@@ -21,6 +22,10 @@ export default function UpdateUser() {
     const [userName, setUserName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const[picture,setPicture]=useState(null)
+    const[url,setUrl]=useState("")
+    const [progress, setProgress] = useState(0);
+    const[update,SetUpdate]=useState()
 
     const [fill, setFill] = useState("")
 
@@ -28,6 +33,7 @@ export default function UpdateUser() {
         "fullName": fullName,
         "userName": userName,
         "email": email,
+        "password":password
 
 
     }
@@ -39,6 +45,9 @@ export default function UpdateUser() {
     };
     const handelChangeEmail = (e) => {
         setEmail(e.target.value);
+    };
+    const handelChangePassword = (e) => {
+        setPassword(e.target.value);
     };
 
     const config = {
@@ -54,28 +63,15 @@ export default function UpdateUser() {
                 setFullName(`${res.data.fullName}`)
                 setUserName(`${res.data.userName}`)
                 setEmail(`${res.data.email}`)
+              
 
             })
             .catch(err => { console.log(err.response); })
     }, [])
 
-    // const addPersonalPhoto=()=>{
-    //     //       const config = {
-    //     //         headers:{Authorization: `Bearer ${state.token}`}
-    //     //     }
-    //     //     axios
-    //     //     .post(`http://localhost:8080/comment`,data,config)
-    //     //     .then(response=>{
-    //     //         axios
-    //     //         .get(`http://localhost:8080/post/${post_id}`)
-    //     //         .then(response=>{setPost(response.data)})
-    //     //         .catch(err=>{console.log(err.data);})
-    //     //         document.getElementById("textComm").value=""
-    //     //         setComment("")
-    //     //     })
-    //     // }
+  
     
-    //     //     }
+
     const updateInfo = () => {
         // if((email).includes("@gmail.com")||(email).includes("@hotmail.com")||(email).includes("@yahoo.com")|| (email).includes("@outlook.com")){
         //         setEmail(true)
@@ -83,7 +79,7 @@ export default function UpdateUser() {
         //     }else 
         //     setEmail(false) 
 
-        if (fullName.length < 1 || email.length < 1 || userName.length < 1) {
+        if (fullName.length < 1 || userName.length < 1 || email.length < 1) {
             setFill("required filed")
         }
 
@@ -94,7 +90,7 @@ export default function UpdateUser() {
             axios
                 .put(`http://localhost:8080/user/${user_id}`, data, config)
                 .then((res) => {
-                    navigate(`/${user_id}`)
+                    navigate("/")
 
 
                 })
@@ -102,14 +98,102 @@ export default function UpdateUser() {
 
                     console.log(err);
                 });
+            }
         }
+                const data1={
+    
+                    picture:url,
+                  
+                
+              }
+            
+              
+                
+                const updatePic=()=>{
+                    axios
+                .put(`http://localhost:8080/user/pic/${user_id}`, data1, config)
+                .then((res) => {
+                    navigate("/")
+                })
+                .catch((err) => {
 
-    }
+                    console.log(err);
 
+                })
+                }
+        
+        
 
+    const handleChange=e=>{
+            if(e.target.files[0]){
+              setPicture(e.target.files[0]);
+          
+            }
+          }
+          
+          const handleUpload=(e)=>{
+            e.preventDefault()
+            const uploadTask = storage.ref(`images/${picture.name}`).put(picture);
+            uploadTask.on(
+                "state_changed",
+                snapshot => {
+                    const progress = Math.round(
+                        (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                    );
+                    setProgress(progress);
+                },
+                error => {
+                    console.log(error);
+                },
+                () => {
+                    storage
+                       .ref("images")
+                       .child(picture.name)
+                       .getDownloadURL()
+                       .then(url => {
+                           setUrl(url);
+                       });
+                }
+                );
+          
+          }
+          console.log("image :" , picture);
+          
+          
+        
+
+//    const add=()=>{ 
+//       axios
+//      .post("http://localhost:8080/user",data1)
+//          .then(res =>{ 
+//     const action=addUser(res.data)
+//     dispatch(action)
+     
+      
+         
+// }).catch((err)=>{ 
+//                 console.log(err);
+//             })
+    
+
+//         }  
+
+   
 
     return (
         <div>
+            <br/>
+            <br/>
+            <br/>
+             <div  className="form-group custom-upload mt-2"> <i class="fas fa-lock"></i>
+                 <label htmlFor='file_img'>Upload Photo</label>
+                 <input type="file" id='file_img' className="form-control"onChange={handleChange}/>
+                 <button class="fas fa-lock"  onClick={handleUpload}>Upload</button> 
+                  <button class="fas fa-lock"  onClick={updatePic}>Add</button>  
+
+                    {/* <div  className="image"><i  className="fas fa-eye"></i></div> */}
+ 
+                </div> 
             <form className="sign-up">
                 <h2 className="heading mb-4">Update User</h2>
                 <div className="form-group fone mt-2"> <i class="fas fa-user"></i>
@@ -118,6 +202,9 @@ export default function UpdateUser() {
                 <div className="form-group fone mt-2"> <i class="fas fa-user"></i>
                     <input type="name" className="form-control" placeholder={fill.length > 1 ? fill : "userName"} onChange={handelChangeUserName} />
                 </div>
+
+                
+                
                 <div className="form-group fone mt-2"> <i class="fas fa-envelope"></i>
                     <input type="email" className="form-control" placeholder={fill.length > 1 ? fill : "email"} onChange={handelChangeEmail} /> </div>
                 {/* <div className={matchEmail ? "form_message form_message-error m-hidden " : "form_message form_message-error "}>you have enterd an invalid e-mail please try agin.</div> */}
@@ -134,4 +221,6 @@ export default function UpdateUser() {
 
 
     )
-}
+    }
+
+    

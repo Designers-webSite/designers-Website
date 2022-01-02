@@ -25,7 +25,7 @@ function App() {
 					<Route path="/" element={<Home />} />
 		
 			
-          <Route path="/sections/:design_type" element={<Sections/>} />
+          {/* <Route path="/AllServies" element={</>} /> */}
           <Route path="/externalDesign/:design_type" element={<ExternalDesign/>} />
           <Route path="/internalDesign/:design_type" element={<InternalDesign/>} />
           <Route path="/searchUtilityByTitle/:title" element={<SearchUtilityByTitle/>} />
