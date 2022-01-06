@@ -192,7 +192,13 @@ function AddUtility() {
                 <input name="title" type="text" class="feedback-input" placeholder="Title" onChange={handelChangeTitle} />
                 
                 <div className='custom-upload'>
+                <progress value={progress} max="100"  className='progr'/>
                     <label htmlFor='up0'>قم برفع الصورة</label>
+                 
+                    <input type="file" placeholder='add ' id='up0'  onChange={handleChangeOne} />
+                    <br></br>
+                    <img src={url}  style={{width:"50px"}}/>
+                <br />
                 <input type="file" placeholder='add ' id='up0'  onChange={handleChangeOne} />
                 </div>
                 

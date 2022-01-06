@@ -37,7 +37,9 @@ export default function ExternalDesign() {
         <div className='content sections'>
             <div className="section">
                 <div className="header">
-                    <h1 className="main-title">Exterior Design services</h1>
+                
+                    <h2 className="main-title">Exterior Design services</h2>
+                   
                     <select name="" id="">
                         <option value="">Filter</option>
                     </select>
@@ -45,7 +47,7 @@ export default function ExternalDesign() {
                 <div className="items">
                     {external.map(ele=>(
                          <Link to={`/Utility/${ele.id}`} className="item">
-                            <Link to={`/providerServies/${ele.user.id}`} className="user"><img src="./images/img3.jpg" alt="" /></Link>
+                            <Link to={`/ProfileUser/${ele.user.id}`} className="user"><img src={ele.user.picture} alt="" /></Link>
 
                             {/* <Link to={`/providerServies/${ele.user.id}`} className="user"><img src="./images/img3.jpg" alt="" /></Link> */}
                             <div className="head">
@@ -53,7 +55,7 @@ export default function ExternalDesign() {
                                 <img src="./images/img4.jpg" alt="" />
                             </div>
                            
-                                <h3>{ele.title}</h3>
+                            <p className='title'>{ele.title}</p>
                         
                         </Link>
                     ))}

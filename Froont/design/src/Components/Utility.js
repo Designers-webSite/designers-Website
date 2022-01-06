@@ -19,6 +19,7 @@ export default function Utility() {
 	const navigate = useNavigate();
 	const [ utility, setUtility ] = useState([]);
 	const [ gallery, setGallery ] = useState([]);
+	const [ user, setUser ] = useState([]);
 
 	// const [loading, setLoading] = useState(false)
 
@@ -29,11 +30,10 @@ export default function Utility() {
 			.get(`http://localhost:8080/utility/row/${utility_id}`)
 			.then((response) => {
 				setUtility(response.data);
-				
+				setUser(response.data.user);
 				console.log(response.data.gallery);
-                setGallery(response.data.gallery)
-                console.log(response.data.gallery);
-
+				setGallery(response.data.gallery);
+				console.log(response.data.gallery);
 			})
 			.catch((err) => {
 				console.log(err.data);
@@ -67,49 +67,76 @@ export default function Utility() {
 							<div className="head">
 								<div className="utility.box">
 									{/* Put image src here */}
-									<div className='row justify-content-center'>
-										<div className='col-md-10'>
-										<div className=''>
-											<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-											<div className="carousel-inner">
-												{gallery.map((ele)=>(
-													<div className="carousel-item active">
-													<img src={ele.picture} className="d-block w-100" alt="..." />
+									<div className="row justify-content-center">
+										<div className="col-md-10">
+											<div className="">
+												<div
+													id="carouselExampleControls"
+													class="carousel slide"
+													data-bs-ride="carousel"
+												>
+													<div className="carousel-inner">
+														{gallery.map((ele) => (
+															<div className="carousel-item active">
+																<img
+																	src={ele.picture}
+																	className="d-block w-100"
+																	alt="..."
+																/>
+															</div>
+														))}
 													</div>
-												))}											
+													<button
+														class="carousel-control-prev"
+														type="button"
+														data-bs-target="#carouselExampleControls"
+														data-bs-slide="prev"
+													>
+														<span class="carousel-control-prev-icon" aria-hidden="true" />
+														<span class="visually-hidden">Previous</span>
+													</button>
+													<button
+														class="carousel-control-next"
+														type="button"
+														data-bs-target="#carouselExampleControls"
+														data-bs-slide="next"
+													>
+														<span class="carousel-control-next-icon" aria-hidden="true" />
+														<span class="visually-hidden">Next</span>
+													</button>
+												</div>
 
-												
-											</div>
-											<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-												<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-												<span class="visually-hidden">Previous</span>
-											</button>
-											<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-												<span class="carousel-control-next-icon" aria-hidden="true"></span>
-												<span class="visually-hidden">Next</span>
-											</button>
-											</div>
-										
+												{console.log(utility.title)}
 
-										<div className="box1">
-											<h3>{utility.title}</h3>
-											<hr />
-											<h3>description :</h3>
-											<p>{utility.description}</p>
-											<hr />
-											<h3>Instruction : </h3>
-											<p> {utility.instructions}</p>
-										</div>
-										
-										
-										
-										<div className='col-12 text-center '>
-										    <button className='btn btn-danger' onClick={deleteUtility}>Delete</button>
+												<div className="box1">
+													<h3>{utility.title}</h3>
+													<hr />
+													<h3>description :</h3>
+													<p>{utility.description}</p>
+													<hr />
+													<h3>Instruction : </h3>
+													<p> {utility.instructions}</p>
+												</div>
+
+												{user.id == state.user.id ? (
+													<div className="col-12 text-center ">
+														<button className="btn btn-danger" onClick={deleteUtility}>
+															Delete
+														</button>
+
+														<Link
+															className="btn btn-primary"
+															to={`/updateUtility/${utility_id}`}
+														>
+															Edit
+														</Link>
+													</div>
+												) : (
+													''
+												)}
+											</div>
 										</div>
 									</div>
-										</div>
-									</div>
-									
 
 									{/* {gallery.map((ele) => {
 										return (
@@ -126,13 +153,11 @@ export default function Utility() {
 									})} */}
 									{/* <img src={utility.picture} className='mw-100' srcalt="./images/img4.jpg" />   */}
 								</div>
-
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			//{' '}
 		</div>
 	);
 }

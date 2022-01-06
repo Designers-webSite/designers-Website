@@ -59,7 +59,7 @@ setPassword(e.target.value)
           dispatch(token_action);
           console.log(user_action);
           
-           navigate("/profileUser/:user_id");
+           navigate("/");
         
 
     })
@@ -84,7 +84,7 @@ setPassword(e.target.value)
         {/* {!state.token ? ( */}
         <div class="col-md-6 rcol">
        
-             {/* <form  className="sign-up" >  */}
+              {/* <form  className="sign-up" >  */}
 
                 <h2  className="heading mb-4">Log In</h2>
                
@@ -98,13 +98,13 @@ setPassword(e.target.value)
                 </div>
                 
                 
-           {/* </form>  */}
+           {/* </form>   */}
             
              
             <button type="button"  className="btn btn-success mt-5" onClick={add}>Get satrted now</button>
             
         </div>
-        ) : (
+       
                 {/* <Navigate to="/" from={{ from: location }} />
               )} */}
     </div>

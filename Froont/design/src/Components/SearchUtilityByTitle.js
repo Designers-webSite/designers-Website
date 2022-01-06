@@ -29,14 +29,20 @@ console.log(searchByTitle);
             console.log(err);
 
           });
-        },[])
+        })
 
     
       
     return (
     
       <div className='content sections'>
+         <div className="section">
+                <div className="header">
+                    <h1 className="main-title">Result Search :</h1>
+                    </div>
+                    </div>
          <div className="items">
+        
           {searchByTitle.map(ele=>(
             <Link to={`/service/${ele.id}`} className="item">
             <Link to="/profileUser" className="user"><img src="./images/img3.jpg" alt="" /></Link>

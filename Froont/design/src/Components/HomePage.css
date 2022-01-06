@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Island+Moments&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto",sans-serif;
+  }
+  
+  .contain{
+    width: 100%;
+    height: 110vh;
+     background-image: linear-gradient(rgba(0, 0, 0, 0.541),rgba(41, 39, 39, 0.336)),url("https://linesmag.com/wp-content/uploads/2020/05/contemprory15.jpg");
+    background-position: center;
+    background-size: cover;
+
+  
+  }
+
+  /* .container2{
+    width: 100%;
+    height: 1000px;
+  } */
+  .roww{
+    display: flex;
+    height: 88%;
+    align-items: center;
+  
+  
+  }
+  .colom{
+    flex-basis: 50%;
+  
+  }
+  .h1-homePage{
+    color: #fff;
+    font-size: 150px;
+    margin: 20px;
+    font-family: 'Island Moments', cursive;
+    position: absolute;
+    top: 90px;
+    left:37%;
+  }
+
+  .p-homePage{
+    color: #fff;
+    font-size:17px ;
+    line-height: 15px;
+    margin: 20px;
+    position: absolute;
+    top: 48%;
+    left:34%;
+  
+  }
+  .p-homePage2{
+    color: #fff;
+    font-size:17px ;
+    line-height: 15px;
+    margin: 20px;
+    position: absolute;
+    top: 52%;
+    left:34%;
+  
+  }
+  .butn-homePage{
+    width: 150px;
+    height: 30px;
+    color: #000;
+    border-color: #fff;
+    font-size: 14px ;
+    background-color: #fff;
+    padding: 0;
+    border-radius: 10px;
+    outline: none;
+    margin-top: 30px;
+    margin: 20px;
+    position: absolute;
+    top: 58%;
+    left:46%;
+    opacity: 70%;
+  }
+  .fo-home{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    /* align-items: center; */
+    color: #000;
+   border-bottom: 1px solid #d1d1d1; 
+  
+   background: #f2f2f2;
+   /* opacity:20%; */
+
+    /* background: rgb(210, 210, 211); */
+   
+    bottom: 0;
+    
+  }
+
+  .fo-home h2 {
+    position: absolute;
+    top:100%;
+    left:49%;
+    height:80px ;
+  }
+
+  /* .card-btn1{
+  
+    display: inline-block;
+    width:16%;
+    height: 80px;
+    background-color:rgb(235, 230, 230);
+    opacity: 80%; 
+    text-align: center;
+    padding-top: 20px;
+    border-radius: 10px;
+    padding: 20px ;
+    margin: 10px 15px;
+    position: absolute;
+    top:59%;
+    left:80%;
+  } */
+  .card-btn1{
+  
+    display: inline-block;
+    width:16%;
+    height: 80px;
+    background-color:rgb(235, 230, 230);
+    opacity: 80%; 
+    text-align: center;
+    padding-top: 20px;
+    border-radius: 10px;
+    padding: 20px ;
+    margin: 10px 15px;
+    /* left: 90px; */
+    position: absolute;
+    top:80%;
+    left:56%;
+  }
+
+  /* .card-btn2{
+    display: inline-block;
+    width:16%;
+    height: 80px;
+    background-color:rgb(235, 230, 230);
+    opacity: 80%; 
+    text-align: center;
+    padding-top: 20px;
+    border-radius: 10px;
+    padding: 20px ;
+    margin: 10px 15px;
+    position: absolute;
+    top:59%;
+    left:62%;
+  } */
+  .card-btn2{
+    display: inline-block;
+    width:16%;
+    height: 80px;
+    background-color:rgb(235, 230, 230);
+    opacity: 80%; 
+    text-align: center;
+    padding-top: 20px;
+    border-radius: 10px;
+    padding: 20px ;
+    margin: 10px 15px;
+    /* left: 90px; */
+    position: absolute;
+    top:80%;
+    left:32%;
+  }
+  .card-btn3{
+    display: inline-block;
+    width:10%;
+    height: 15px;
+    background-color:rgb(235, 230, 230);
+    opacity: 80%; 
+    text-align: center;
+    padding-top: 5px;
+    border-radius: 10px;
+    padding: 17px ;
+    margin: 10px 15px;
+    /* left: 90px; */
+    position: absolute;
+    top:60%;
+    left:45%;
+  }
+.h-find{
+  padding-top: -70px;
+}
+  .card-home2{
+    width: 100px;
+    height: 20x;
+    display: inline-block;
+    border-radius: 10px;
+  
+    padding: 50px 25px;
+    
+  
+    padding-bottom: 150px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 10px 15px;
+    background-color: #ccc;
+    /* background-image: url("https://2.bp.blogspot.com/-OnCspBkZAjg/XJqzp5ooLoI/AAAAAAADRoc/E3W5_Jh1imArP7qscpXDNyMq3im6ISOfACLcBGAs/s1600/c0d84b4b7300c360b7558ea07951e91c.jpg"); */
+    background-position: center;
+    background-size: cover;
+   
+  }
+  .social-icons{
+    position: absolute;
+    top:108%;
+    left:47%;
+    font-size: 22px;
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px auto;
+    height: 90px;
+  }

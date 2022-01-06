@@ -37,8 +37,9 @@ const Sections = () => {
 
 
       }, []);
-
-
+      
+     
+          
 
     return (
         <div className='content sections'>
@@ -54,6 +55,7 @@ const Sections = () => {
                     </select>
                 </div>
                 <div className="items">
+                <div className="item">
                     {internal.map(ele=>(
                         <Link to={`/service/${ele.id}`} className="item">
                         <Link to="/profileUser" className="user"><img src="./images/img3.jpg" alt="" /></Link>
@@ -95,6 +97,7 @@ const Sections = () => {
                     ))}
                 </div>
             </div>
+        </div>
         </div>
     )
 }

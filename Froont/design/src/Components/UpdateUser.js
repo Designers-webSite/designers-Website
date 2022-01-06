@@ -6,6 +6,8 @@ import axios from 'axios';
 import { addUser } from '../reducers/user/action';
 import { useDispatch } from 'react-redux';
 import {storage} from "../FireBase/Index"
+import Alert from "react-bootstrap/Alert";
+
 
 
 export default function UpdateUser() {
@@ -18,22 +20,23 @@ export default function UpdateUser() {
     })
     const { user_id } = useParams()
     const navigate = useNavigate();
-    const [fullName, setFullName] = useState("")
-    const [userName, setUserName] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const[picture,setPicture]=useState(null)
-    const[url,setUrl]=useState("")
+    const [fullName, setFullName] = useState("");
+    const [userName, setUserName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const[picture,setPicture]=useState(null);
+    const[url,setUrl]=useState("");
     const [progress, setProgress] = useState(0);
-    const[update,SetUpdate]=useState()
+    const[update,SetUpdate]=useState();
 
-    const [fill, setFill] = useState("")
+    const [fill, setFill] = useState("");
 
     const data = {
         "fullName": fullName,
         "userName": userName,
         "email": email,
-        "password":password
+        "password":password,
+        picture:url
 
 
     }
@@ -57,12 +60,12 @@ export default function UpdateUser() {
     console.log(x.id);
     useEffect(() => {
         axios
-            //  .get("http://localhost:8080/user/"+x.id)
             .get(`http://localhost:8080/user/${user_id}`)
             .then(res => {
                 setFullName(`${res.data.fullName}`)
                 setUserName(`${res.data.userName}`)
                 setEmail(`${res.data.email}`)
+                setPicture(`${res.data.email}`)
               
 
             })
@@ -73,13 +76,8 @@ export default function UpdateUser() {
     
 
     const updateInfo = () => {
-        // if((email).includes("@gmail.com")||(email).includes("@hotmail.com")||(email).includes("@yahoo.com")|| (email).includes("@outlook.com")){
-        //         setEmail(true)
-        //         navigate("/login");
-        //     }else 
-        //     setEmail(false) 
-
-        if (fullName.length < 1 || userName.length < 1 || email.length < 1) {
+      
+        if (fullName.length < 1 || userName.length < 1 || email.length < 1 || picture.length < 1) {
             setFill("required filed")
         }
 
@@ -90,6 +88,11 @@ export default function UpdateUser() {
             axios
                 .put(`http://localhost:8080/user/${user_id}`, data, config)
                 .then((res) => {
+                //     <Alert variant="success" style={{ width: "42rem" }}>
+                //     <Alert.Heading>
+                //       This is a success alert which has green background
+                //     </Alert.Heading>
+                //   </Alert>
                     navigate("/")
 
 
@@ -100,27 +103,7 @@ export default function UpdateUser() {
                 });
             }
         }
-                const data1={
-    
-                    picture:url,
-                  
-                
-              }
-            
-              
-                
-                const updatePic=()=>{
-                    axios
-                .put(`http://localhost:8080/user/pic/${user_id}`, data1, config)
-                .then((res) => {
-                    navigate("/")
-                })
-                .catch((err) => {
-
-                    console.log(err);
-
-                })
-                }
+               
         
         
 
@@ -162,21 +145,6 @@ export default function UpdateUser() {
           
         
 
-//    const add=()=>{ 
-//       axios
-//      .post("http://localhost:8080/user",data1)
-//          .then(res =>{ 
-//     const action=addUser(res.data)
-//     dispatch(action)
-     
-      
-         
-// }).catch((err)=>{ 
-//                 console.log(err);
-//             })
-    
-
-//         }  
 
    
 
@@ -185,16 +153,9 @@ export default function UpdateUser() {
             <br/>
             <br/>
             <br/>
-             <div  className="form-group custom-upload mt-2"> <i class="fas fa-lock"></i>
-                 <label htmlFor='file_img'>Upload Photo</label>
-                 <input type="file" id='file_img' className="form-control"onChange={handleChange}/>
-                 <button class="fas fa-lock"  onClick={handleUpload}>Upload</button> 
-                  <button class="fas fa-lock"  onClick={updatePic}>Add</button>  
-
-                    {/* <div  className="image"><i  className="fas fa-eye"></i></div> */}
- 
-                </div> 
-            <form className="sign-up">
+            <form className='form-1'>
+            
+           
                 <h2 className="heading mb-4">Update User</h2>
                 <div className="form-group fone mt-2"> <i class="fas fa-user"></i>
                     <input type="name" className="form-control" placeholder={fill.length > 1 ? fill : "Name"} onChange={handelChangeFullName} />
@@ -207,13 +168,20 @@ export default function UpdateUser() {
                 
                 <div className="form-group fone mt-2"> <i class="fas fa-envelope"></i>
                     <input type="email" className="form-control" placeholder={fill.length > 1 ? fill : "email"} onChange={handelChangeEmail} /> </div>
-                {/* <div className={matchEmail ? "form_message form_message-error m-hidden " : "form_message form_message-error "}>you have enterd an invalid e-mail please try agin.</div> */}
 
 
+                <div  className="form-group custom-upload mt-2"> <i class="fas fa-lock"></i>
+                 <label htmlFor='file_img'>Upload Photo</label>
+                 <input type="file" id='file_img' className="form-control"onChange={handleChange}/>
+                 <button class="fas fa-lock"  onClick={handleUpload}>Upload</button> 
+                  {/* <button class="fas fa-lock"  onClick={updatePic}>Add</button>   */}
 
-            </form>
+                    {/* <div  className="image"><i  className="fas fa-eye"></i></div> */}
+ 
+                </div> 
+            
             <button type="button" className="btn btn-success mt-5" onClick={updateInfo}>Update</button>
-
+            </form>
         </div>
 
 

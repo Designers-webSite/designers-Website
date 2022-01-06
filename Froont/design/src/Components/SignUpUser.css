@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    box-sizing: border-box;
+    font-family: "Mountserrate"
+;
+}
+/* body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+} */
+/* p span{
+    font-size: 18px;
+    color: rgb(85, 83, 83);
+    margin-left: 45px;
+
+}
+.fa-times{
+    opacity: 0;
+
+}
+.fa-check{
+    opacity: 1;
+}
+ .containPass p .fa-check.fa-check
+ {
+    position: absolute;
+    text-align: center;
+    width: 32px;
+    height: 32px;
+    line-height: 30px;
+    font-size: large;
+    border-radius: 50%;
+    color: rgb(85, 83, 83);
+    border: 2px solid;
+}
+#show-hide{
+    color: rgb(56, 55, 55);
+    font-size: 22px;
+    transform: translateX(260px)translateY(34px);
+    cursor: pointer;
+}
+
+ */

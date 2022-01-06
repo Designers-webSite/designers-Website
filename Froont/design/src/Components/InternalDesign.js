@@ -46,9 +46,10 @@ export default function InternalDesign() {
                     </select>
                 </div>
                 <div className="items">
+                    
                     {internal.map(ele=>(
                         <Link to={`/Utility/${ele.id}`} className="item">
-                            <Link to={`/providerServies/${ele.user.id}`} className="user"><img src="./images/img3.jpg" alt="" /></Link>
+                            <Link to={`/ProfileUser/${ele.user.id}`} className="user"><img src={ele.user.picture} alt="" /></Link>
                        
                           
                             <div className="head">
@@ -56,7 +57,7 @@ export default function InternalDesign() {
                             <img src={ele.picture} alt="" />
                             </div>
                             {/* <div className="footer"> */}
-                                <h3>{ele.title}</h3>
+                            <p className='title'>{ele.title}</p>
                             
                             {/* </div> */}
                             

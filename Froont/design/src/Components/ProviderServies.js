@@ -21,9 +21,10 @@ export default function ProviderServies() {
     const{utility_id}=useParams()
     console.log(utility_id);
     
+    
 useEffect(() => {
        
-     axios
+     axios 
         .get(`http://localhost:8080/user/${user_id}`)
         .then(res =>{ 
             
@@ -39,29 +40,40 @@ useEffect(() => {
     console.log(user)
     return (
         
-       
-             <div className='container'> 
+        <div className='profile sections'>
+        <div className='container'>
+            <div className='inner-wrapper'>
+             
                 {loading?  
                 
                  <div className='profile1'>
            
-                        <div className='row'>
-                            <div className='col-md-6'>Col 1</div>
-                            <div className='col-md-6'>Col 2</div>
-                        </div>
+                      
                 <>
-                <Link to={`/Utility/${utility_id}`} className="item">Test</Link>
+                {/* <Link to={`/Utility/${utility_id}`} className="item">Test</Link> */}
                   {/* {navigate(`/Utility/${utility_id}`)}   */}
                         {/* <div className="head"> */}
                             {/* Put image src here */}
-                            <img src="./images/img4.jpg" alt="" />
+                            <div className='top-wrapper'>
+                        <div className='top-info'>
+                            <img alt="" src={user.picture}  />
+                            {/* <img src=""/> */}
+                            <h4>{user.fullName}</h4>  
+                        </div>
+                    </div>
+                            
                         {/* </div> */}
-                        <h3>{user.fullName}</h3> 
+                        <hr/>
+                       <h3 >Personal Information</h3>
+                        <p> {user.fullName}</p> 
+                       
 
-                        <h3>{user.userName}</h3> 
+                        <p>{user.userName}</p> 
+                       
+
                         <p>{user.email}</p> 
 
-                        <img src={user.picture}/>
+                       
 
                         
 
@@ -76,6 +88,8 @@ useEffect(() => {
 
     
                 
+                </div>
+                </div>
                 </div>
             
         

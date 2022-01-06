@@ -44,6 +44,10 @@ const[search,setSearch]=useState();
             <div className="ex-design">
                 <div className="text-card">
                     <Link to={`/externalDesign/:design_type`}><h4>Exterior Design</h4> </Link>
+                    <div class="text-block">
+    <h4>Nature</h4>
+    <p>What a beautiful sunrise</p>
+  </div>
                 </div>
             </div>
 

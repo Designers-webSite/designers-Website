@@ -5,7 +5,15 @@ import { useDispatch } from 'react-redux';
 import {addUser} from "../reducers/user/action"
 import { useNavigate } from 'react-router-dom';
 import {storage} from "../FireBase/Index"
+import { BsFillPersonFill,BsHouseDoorFill ,BsFileLock2Fill,BsFillTelephoneFill} from "react-icons/bs";
+import {IoEyeSharp }  from"react-icons/io5";
+import Validaiton from './Validaiton';
+import Swal from 'sweetalert2'
+// import 'sweetalert2/src/sweetalert2.scss'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faCheck, faEyeSlash, faTimes } from '@fortawesome/free-solid-svg-icons';
+import  "./SignUpUser.css"
 
 export default function SignUpUser() {
 const[fullName,setFullName]=useState("")
@@ -15,6 +23,10 @@ const[password,setPassword]=useState("")
 const[password2,setPassword2]=useState("")
 const[fill,setFill]=useState("")
 const[matchPas,setMatchPass]=useState("")
+const[ message,setMessage]=useState("")
+const [errors, setErrors] = useState({});
+const[show,setShow]=useState(false)
+const[matchEmail,setMatchEmail]=useState(true)
 // const[picture,setPicture]=useState(null)
 // const[url,setUrl]=useState("")
 // const [progress, setProgress] = useState(0);
@@ -22,7 +34,77 @@ const[matchPas,setMatchPass]=useState("")
 const dispatch=useDispatch();
 const navigate=useNavigate()
  
+// const validationResult =  Validaiton( fullName,userName ,email, password,password2)
 
+    //     if(validationResult) {
+    //         setErrors(validationResult);}
+
+
+
+const add=(e)=>{
+    e.preventDefault();
+
+    let validationResult =  Validaiton( fullName,userName ,email, password,password2)
+    console.log(fullName);
+    console.log(validationResult);
+        if(validationResult) 
+            setErrors(validationResult);
+        else 
+        setErrors({})
+    
+
+
+
+    // if((email).includes("@gmail.com")||(email).includes("@hotmail.com")||(email).includes("@yahoo.com")|| (email).includes("@outlook.com")){
+    //              setMatchEmail(true)
+    //              navigate("/login");
+
+    //        }else {
+    //        setMatchEmail(false) }
+
+    
+   
+
+if (validationResult==null){
+
+    console.log("llloooged here");
+    axios
+    .post("http://localhost:8080/user",data)
+    .then((res)=>{
+        const action=addUser(res.data)
+        dispatch(action)
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500
+          })
+       
+    })
+    .catch((err)=>{
+    //     Swal.fire({
+    //         title: 'Error!',
+    //        text: 'Do you want to continue',
+    //          icon: 'error',
+    //        confirmButtonText: 'Cool'
+    //    })
+        console.log(err);
+    });
+
+
+
+}
+
+     
+        
+   
+    
+
+
+
+
+}
 const handelChangeFullName=(e)=>{
       setFullName(e.target.value);
      };
@@ -32,11 +114,48 @@ const handelChangeUserName=(e)=>{
 const handelChangeEmail=(e)=>{
     setEmail(e.target.value);
 };
+
+
+const valid=(item,v_icon,inv_icon )=>{
+    let text=document.querySelector(`#${item}`)
+    text.style.opacity="1";
+    let valid_icon =document.querySelector(`#${item}.#${v_icon}`)
+    valid_icon.style.opacity="1";
+
+    let invalid_icon =document.querySelector(`#${item}.#${inv_icon}`)
+    invalid_icon.style.opacity="0";
+    
+
+}
 const handlChangePassword=(e)=>{
     setPassword(e.target.value)
 }
+//     const pasword=e.target.value;
+//     if(pasword.match(/[A-Z]/!=null)){
+//         valid('capital','fa-check','fa-times')
+//     }else{
+//         invalid('capital','fa-check','fa-times');
+//     }
+// }
+// const invalid=(item,v_icon,inv_icon )=>{
+//     let text=document.querySelector(`#${item}`)
+//     text.style.opacity=".5";
+//     let valid_icon =document.querySelector(`#${item}.#${v_icon}`)
+//     valid_icon.style.opacity="0";
+
+//     let invalid_icon =document.querySelector(`#${item}.#${inv_icon}`)
+//     invalid_icon.style.opacity="1";
+    
+
+
+// }
  const handlChangePassword2=(e)=>{
     setPassword2(e.target.value)
+ }
+
+ const handelShowHide=()=>{
+    setShow(!show);
+
  }
 //  const handleChange=e=>{
 //     if(e.target.files[0]){
@@ -82,8 +201,8 @@ const data={
         userName,
         email,
         password,
-        //  picture:url,
-        "role":1
+         picture:"https://firebasestorage.googleapis.com/v0/b/fir-61d22.appspot.com/o/images%2F2740212.png?alt=media&token=25419864-1e0b-43f4-b2ac-7a35ef41d5fc",
+        "role":"designer"
      
 }
             
@@ -92,45 +211,7 @@ const data={
 
 
 
-const add=(e)=>{
-    e.preventDefault();
-    // if((email).includes("@gmail.com")||(email).includes("@hotmail.com")||(email).includes("@yahoo.com")|| (email).includes("@outlook.com")){
-        //         setEmail(true)
-        //         navigate("/login");
-        //     }else 
-        //     setEmail(false) 
-        
-    if(  fullName.length<1 || email.length<1|| userName.length<1 || password.length<1 || password.length<1 || password2<1  ){
-       setFill("required filed")
-     }
-     else {
-        if(password2!=password){ 
-            setMatchPass("not match")
-        }
 
-
-     
-
-    else{   
-    
-
-axios
-    .post("http://localhost:8080/user",data)
-    .then((res)=>{
-        const action=addUser(res.data)
-        dispatch(action)
-         navigate("/login")
-
-    })
-    .catch((err)=>{
-
-        console.log(err);
-    });
-}
-
-}
-
-}
     return (
         
         <div>
@@ -146,22 +227,66 @@ axios
             <form  className="sign-up">
                 <h2  className="heading mb-4">Sign up</h2>
                 <div className="form-group fone mt-2"> <i class="fas fa-user"></i>
-                 <input type="name" className="form-control" placeholder={fill.length>1?fill:"Name"} onChange={ handelChangeFullName}/> 
+                <label for="name"><b><BsFillPersonFill/>Name :</b></label>
+                 <input type="name" className="form-control"  onChange={ handelChangeFullName} required/> 
+                 {errors.fullName && <p className="error">{errors.fullName}</p>}
                  </div>
                  <div className="form-group fone mt-2"> <i class="fas fa-user"></i>
-                 <input type="name" className="form-control" placeholder={fill.length>1?fill:"userName"} onChange={ handelChangeUserName}/> 
+                 <label for="userName"><b><BsFillPersonFill/>userName :</b></label>
+                 <input type="userName" className="form-control"  onChange={ handelChangeUserName} required/> 
+                 {errors.userName && <p className="error">{errors.userName}</p>}
                  </div>
                 <div  className="form-group fone mt-2"> <i class="fas fa-envelope"></i> 
-                <input type="email" className="form-control" placeholder={fill.length>1?fill:"email"} onChange={ handelChangeEmail}/> </div>
-                {/* <div className={matchEmail ? "form_message form_message-error m-hidden " : "form_message form_message-error "}>you have enterd an invalid e-mail please try agin.</div> */}
+                <label for="email"><b>Email:</b></label>
+                <input type="email" className="form-control"onChange={ handelChangeEmail}  required />
+                {errors.email && <p className="error">{errors.email}</p>}
+                 </div>
+
+                 
                 <div  className="form-group fone mt-2"> <i class="fas fa-lock"></i>
-                 <input type="password" className="form-control" placeholder={fill.length>1?fill:"Password"} onChange={ handlChangePassword}/>
+              
+                <label for="pasword"><b>{show ? (<FontAwesomeIcon  id="show-hide"icon={faEye} onClick={handelShowHide} required/> ):(<FontAwesomeIcon className='fa-times icon' icon={faEyeSlash}  onClick={handelShowHide} />)}  pasword:</b></label>
+                 <input type="pasword"  className="form-control" onChange={ handlChangePassword} required/>
+                 {/* {show ? "txt" :" password"}  className="form-control"  placeholder={fill.length>1?fill:" "} */}
+                 {errors.password && <p className="error">{errors.password}</p>}
+                 {/* <div className='containPass'>
+                 <p id="capital"> */}
+                 {/* <FontAwesomeIcon className='fa-times icon' icon={faTimes} />
+                 <FontAwesomeIcon  lassName='fa-Check icon' icon={faCheck} />
+                 <span>Capital Letters</span>
+
+                 </p>
+                 <p id="char">
+                 <FontAwesomeIcon className='fa-times icon' icon={faTimes} />
+                 <FontAwesomeIcon className='fa-Check icon ' icon={faCheck} />
+                 <span>Spcial Letters</span>
+                 
+                 </p>
+                 <p id="num">
+                 <FontAwesomeIcon className='fa-times icon ' icon={faTimes} />
+                 <FontAwesomeIcon  lassName='fa-Check icon' icon={faCheck} />
+                 <span>Use Numbers</span>
+                 
+                 </p>
+                 <p id="more8">
+                 <FontAwesomeIcon className='fa-times icon' icon={faTimes} />
+                 <FontAwesomeIcon  lassName='fa-Check icon'icon={faCheck} />
+                 <span>8+ Characters</span>
+                 
+                 </p>
+                 </div> */}
+
                     <div  className="image"><i  className="fas fa-eye"></i></div>
+                    <br/>
+                    <br/>
 
                 </div>
 
                 <div  className="form-group fone mt-2"> <i class="fas fa-lock"></i>
-                 <input type="password" className="form-control" placeholder={fill.length>1?fill:matchPas,"confirm Password"} onChange={ handlChangePassword2}/>
+                <label for=" confirm pasword"><b><BsFillPersonFill/>confirm pasword:</b></label>
+                 <input type="password" className="form-control" onChange={ handlChangePassword2} required/>
+                 {errors.password2 && <p className="error">{errors.password2}</p>}
+
                     <div  className="image"><i  className="fas fa-eye"></i></div>
 
                 </div>
@@ -176,7 +301,8 @@ axios
                 
             </form> 
             <button type="button"  className="btn btn-success mt-5" onClick={add}>Get satrted now</button>
-            <p  className="exist mt-4">Existing user? <span onClick={()=>{navigate("/login")}}>Log in </span></p>
+            <p  className="exist mt-3" >Existing user? <span onClick={()=>
+            {navigate("/login")}}>Log in </span></p>
         </div>
     </div>
 </div>
