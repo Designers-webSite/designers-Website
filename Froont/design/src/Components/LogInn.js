@@ -1,4 +1,5 @@
 import React from 'react';
+import './LogInn.css';
 import { useDispatch } from 'react-redux';
 import { useNavigate, Navigate, useLocation, useParams } from 'react-router-dom';
 import { useState } from 'react';
@@ -12,8 +13,7 @@ import { faEye, faCheck, faEyeSlash, faTimes } from '@fortawesome/free-solid-svg
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { BiUser } from "react-icons/bi"
 
-
-const Login = () => {
+export default function LogInn() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -22,8 +22,7 @@ const Login = () => {
 
 	const state = useSelector((state) => {
 		return {
-			user: state.userReducer.user,
-			token: state.userReducer.token
+			user: state.userReducer.user
 		};
 	});
 
@@ -70,73 +69,53 @@ const Login = () => {
 				navigate('/');
 			})
 			.catch((err) => {
-				Swal.fire({
-					title: 'Error!',
-				  text: 'pasword or userName inCorrect',
-					icon: 'error',
-				  confirmButtonText: 'Cool'
-			  })
 				console.log(err);
 			});
 	};
 
 	return (
-		<div>
-			<div class="container d-flex justify-content-center" id="sig" >
-				<div class="row my-4">
-					<div class="col-md-5 text-left text-white lcols">
-						<div class="greeting" id="gre">
-							<h4>
-								Welcome to <span class="txt">Designers webSite</span>
-							</h4>
+		<div className="boddy">
+			<div className="containerr" id="containerr">
+				
+				<div class="form-container sign-in-container">
+					<form action="#">
+						<h1>Sign in</h1>
+						<label for="userName">
+							<b>
+							<BiUser  />userName :
+							</b>
+						</label>
+						<input type="name" placeholder="userName" onChange={handelChangeUserName} />
+
+						<label for="pasword">
+							<b>
+								{' '}
+								<FontAwesomeIcon id="show-hide" icon={faEye} required /> pasword:
+							</b>
+						</label>
+						<input type="password" placeholder="Password" onChange={handlChangePassword} />
+						<button>Sign In</button>
+					</form>
+				</div>
+				<div className="overlay-container">
+					<div className="overlayy">
+						<div className="overlay-panel overlay-left">
+							<h1>Welcome Back!</h1>
+							<p>To keep connected with us please login with your personal info</p>
+							<button className="ghost" id="signIn">
+								Sign In
+							</button>
+						</div>
+						<div className="overlay-panel overlay-right">
+							<h1>Hello, Friend!</h1>
+							<p>Enter your personal details and start journey with us</p>
+							<button className="ghost" id="signUp">
+								Sign Up
+							</button>
 						</div>
 					</div>
-					{/* {!state.token ? ( */}
-					<div class="col-md-4 rcol" id="borders">
-						{/* <form  className="sign-up" >  */}
-
-						<h2 className="heading mb-4">Log In</h2>
-
-						
-						<div className="input-group input-group-icon">
-								<input type="text" onChange={handelChangeUserName} required />
-								<div className="input-icon">
-									<i class="fa fa-user" />
-									< BiUser  />
-								</div>
-							</div>
-
-							<div class="input-group input-group-icon">
-									<input
-										type="pasword"
-										onChange={handlChangePassword}
-										required
-									/>
-									<div class="input-icon">
-										<i class="fa fa-envelope">
-											{' '}
-											<FontAwesomeIcon
-												id="show-hide"
-												icon={faEye}
-												required
-											/>{' '}
-										</i>
-									</div>
-									</div>
-
-						{/* </form>   */}
-
-						<button type="button" className="btn btn-success mt-5" id="btttn" onClick={add}>
-							Get satrted now
-						</button>
-					</div>
-
-					{/* <Navigate to="/" from={{ from: location }} />
-              )} */}
 				</div>
 			</div>
 		</div>
 	);
-};
-
-export default Login;
+}

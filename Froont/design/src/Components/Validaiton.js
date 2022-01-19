@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Validaiton( fullName,userName, email, password,password2) {
+export default function Validaiton( fullName,userName,phone, email, password,password2) {
 
         let errors={};
         if(!fullName){
@@ -10,6 +10,10 @@ export default function Validaiton( fullName,userName, email, password,password2
         if(!userName){
             errors.username="Username is required."
         }
+        if(!phone){
+            errors.phone="phone is required."}
+             
+                  
         if(!email){
             errors.email="email is required"
         }
@@ -27,7 +31,8 @@ export default function Validaiton( fullName,userName, email, password,password2
         else if(password2 !=password){
             errors.password2="passwords do not match"
         }
-        return  errors.fullName || errors.username || errors.email || errors.password ||errors.password2 ? errors: null;
+
+        return  errors.fullName || errors.phone|| errors.username || errors.email || errors.password ||errors.password2 ? errors: null;
 
     }
    

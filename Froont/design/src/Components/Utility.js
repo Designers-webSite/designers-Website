@@ -6,7 +6,11 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Carousel } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AliceCarousel from 'react-alice-carousel';
+import "react-alice-carousel/lib/alice-carousel.css";
+import { FaUserEdit, FaTrashAlt } from 'react-icons/fa';
 
+import Swal from 'sweetalert2';
 export default function Utility() {
 	const state = useSelector((state) => {
 		return {
@@ -17,9 +21,9 @@ export default function Utility() {
 	});
 	console.log(state.utility);
 	const navigate = useNavigate();
-	const [ utility, setUtility ] = useState([]);
-	const [ gallery, setGallery ] = useState([]);
-	const [ user, setUser ] = useState([]);
+	const [utility, setUtility] = useState([]);
+	const [gallery, setGallery] = useState([]);
+	const [user, setUser] = useState([]);
 
 	// const [loading, setLoading] = useState(false)
 
@@ -34,6 +38,7 @@ export default function Utility() {
 				console.log(response.data.gallery);
 				setGallery(response.data.gallery);
 				console.log(response.data.gallery);
+
 			})
 			.catch((err) => {
 				console.log(err.data);
@@ -49,10 +54,24 @@ export default function Utility() {
 			.delete(`http://localhost:8080/utility/${utility_id}`, config)
 			.then((res) => {
 				console.log(res.data);
+				Swal.fire({
+					position: 'top-end',
+					icon: 'success',
+					title: 'service successfully deleted',
+					showConfirmButton: false,
+					timer: 1500
+				})
+				navigate("/")
 
 				navigate('/');
 			})
 			.catch((err) => {
+				Swal.fire({
+					title: 'Error!',
+				  text: 'dont delete',
+					icon: 'error',
+				  confirmButtonText: 'Cool'
+			  })
 				console.log(err.data);
 			});
 	}
@@ -70,47 +89,24 @@ export default function Utility() {
 									<div className="row justify-content-center">
 										<div className="col-md-10">
 											<div className="">
-												<div
-													id="carouselExampleControls"
-													class="carousel slide"
-													data-bs-ride="carousel"
-												>
-													<div className="carousel-inner">
-														{gallery.map((ele) => (
-															<div className="carousel-item active">
-																<img
-																	src={ele.picture}
-																	className="d-block w-100"
-																	alt="..."
-																/>
-															</div>
-														))}
-													</div>
-													<button
-														class="carousel-control-prev"
-														type="button"
-														data-bs-target="#carouselExampleControls"
-														data-bs-slide="prev"
-													>
-														<span class="carousel-control-prev-icon" aria-hidden="true" />
-														<span class="visually-hidden">Previous</span>
-													</button>
-													<button
-														class="carousel-control-next"
-														type="button"
-														data-bs-target="#carouselExampleControls"
-														data-bs-slide="next"
-													>
-														<span class="carousel-control-next-icon" aria-hidden="true" />
-														<span class="visually-hidden">Next</span>
-													</button>
-												</div>
+												<AliceCarousel autoPlay autoPlayInterval="3000">
+													{gallery.map((ele) => (
+														<div className='sliderimg'>
+															<img
+																src={ele.picture}
+																className="d-block w-80"
+																alt="..."
+															/>
+														</div>
+													))}
+												</AliceCarousel>
+
 
 												{console.log(utility.title)}
 
 												<div className="box1">
-													<h3>{utility.title}</h3>
-													<hr />
+													<h3 className="modTitle">{utility.title}</h3>
+													<br />
 													<h3>description :</h3>
 													<p>{utility.description}</p>
 													<hr />
@@ -120,15 +116,16 @@ export default function Utility() {
 
 												{user.id == state.user.id ? (
 													<div className="col-12 text-center ">
-														<button className="btn btn-danger" onClick={deleteUtility}>
-															Delete
+														<button className="btnDelete" id="bEdit1" onClick={deleteUtility}>
+															<FaTrashAlt />
 														</button>
 
 														<Link
 															className="btn btn-primary"
 															to={`/updateUtility/${utility_id}`}
 														>
-															Edit
+															<FaUserEdit />
+
 														</Link>
 													</div>
 												) : (
@@ -138,20 +135,7 @@ export default function Utility() {
 										</div>
 									</div>
 
-									{/* {gallery.map((ele) => {
-										return (
-											<div>
-											
-												{console.log(ele)}{' '}
-												
-										
-												<img src={ele.picture} className="mw-100" srcalt="./images/img4.jpg" />
-											
-											</div>
-										
-										);
-									})} */}
-									{/* <img src={utility.picture} className='mw-100' srcalt="./images/img4.jpg" />   */}
+
 								</div>
 							</div>
 						</div>

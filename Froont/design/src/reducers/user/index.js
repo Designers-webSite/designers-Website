@@ -32,6 +32,13 @@ const userReducer=(state=initialState,{type,payload})=>{
                 user:{},
                 isLog:false
             }
+            case "LOG_OUT":
+      localStorage.removeItem("user");
+      localStorage.removeItem("token");
+      return {
+        user: {},
+        isLog: false,
+      };
 
     
         default:

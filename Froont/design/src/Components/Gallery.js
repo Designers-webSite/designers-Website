@@ -118,3 +118,8 @@ console.log("image :" , picture);
 }
 
 export default Gallery
+
+
+
+
+

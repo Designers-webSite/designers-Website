@@ -12,7 +12,7 @@ const[search,setSearch]=useState();
 
     return (
         <div className='content home'>
-            <div className="container">
+            <div className="container1">
                 <div className="page-top">
                     <div className="row">
                         <div className="col-md-6">

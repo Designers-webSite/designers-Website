@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Island+Moments&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Island+Moments&display=swap'); */
 *{
     margin: 0;
     padding: 0;
@@ -8,7 +8,7 @@
   .contain{
     width: 100%;
     height: 110vh;
-     background-image: linear-gradient(rgba(0, 0, 0, 0.541),rgba(41, 39, 39, 0.336)),url("https://linesmag.com/wp-content/uploads/2020/05/contemprory15.jpg");
+     /* background-image: linear-gradient(rgba(207, 202, 202, 0.541),rgba(223, 217, 217, 0.336)),url("https://linesmag.com/wp-content/uploads/2020/05/contemprory15.jpg"); */
     background-position: center;
     background-size: cover;
 
@@ -37,7 +37,7 @@
     font-family: 'Island Moments', cursive;
     position: absolute;
     top: 90px;
-    left:37%;
+    left:30%;
   }
 
   .p-homePage{
@@ -79,8 +79,7 @@
   }
   .fo-home{
     width: 100%;
-    height: 150px;
-    display: flex;
+    height: 220px;
     /* align-items: center; */
     color: #000;
    border-bottom: 1px solid #d1d1d1; 
@@ -120,8 +119,8 @@
   .card-btn1{
   
     display: inline-block;
-    width:16%;
-    height: 80px;
+    width:20%;
+    height: 58px;
     background-color:rgb(235, 230, 230);
     opacity: 80%; 
     text-align: center;
@@ -131,7 +130,7 @@
     margin: 10px 15px;
     /* left: 90px; */
     position: absolute;
-    top:80%;
+    top:75%;
     left:56%;
   }
 
@@ -152,8 +151,8 @@
   } */
   .card-btn2{
     display: inline-block;
-    width:16%;
-    height: 80px;
+    width:20%;
+    height: 58px;
     background-color:rgb(235, 230, 230);
     opacity: 80%; 
     text-align: center;
@@ -163,19 +162,20 @@
     margin: 10px 15px;
     /* left: 90px; */
     position: absolute;
-    top:80%;
+    top:75%;
     left:32%;
   }
   .card-btn3{
     display: inline-block;
     width:10%;
-    height: 15px;
+    height: 10px;
     background-color:rgb(235, 230, 230);
     opacity: 80%; 
+    padding-top: 20px;
     text-align: center;
-    padding-top: 5px;
-    border-radius: 10px;
-    padding: 17px ;
+    border-radius: 30px;
+    padding: 20px ;
+    justify-content: center;
     margin: 10px 15px;
     /* left: 90px; */
     position: absolute;
@@ -184,6 +184,9 @@
   }
 .h-find{
   padding-top: -70px;
+}
+.footer-dark{
+  background-color: blanchedalmond;
 }
   .card-home2{
     width: 100px;
@@ -206,8 +209,8 @@
   }
   .social-icons{
     position: absolute;
-    top:108%;
-    left:47%;
+    top:120%;
+    left:55%;
     font-size: 22px;
     width: 200px;
     display: flex;
@@ -215,3 +218,90 @@
     margin: 20px auto;
     height: 90px;
   }
+  .banner{
+      width: 100%;
+      height: 100vh;
+      background-image: linear-gradient(rgba(31, 30, 30, 0.75),rgba(19, 18, 18, 0.336)),url("https://res.cloudinary.com/brosa-design/image/fetch/f_auto,q_auto:good/https://s3-ap-southeast-2.amazonaws.com/brosadesign.com/products/3755/original/Seta%2520Armchair_Seta%2520Sofa_Mia%2520Coffee%2520Table%2520w%2520Drawer_Lifestyle.jpg");
+      background-size: cover;
+      background-position: center;
+      /* https://nestia-food.obs.ap-southeast-3.myhuaweicloud.com/202103/31/4ecc6bd55af1e634f56e013e6730ab06.jpg */
+
+  }
+
+.content1 {
+    width: 100%;
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: white;
+
+}
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@300&family=EB+Garamond&family=Inconsolata&family=Island+Moments&family=Lora&display=swap');
+.content1 h1{
+    font-size: 70px;
+    margin-top: 80px;
+    font-weight: 500;
+    font-family: 'EB Garamond', serif;
+
+}
+.content1 p{
+    margin:20px auto;
+    font-weight: 100;
+    line-height: 25px;
+    font-family: 'Bitter', serif;
+
+}
+.button1{
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    border:2px solid rgb(235, 230, 230);
+    background: transparent;
+    color:white;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    
+}
+.span1{
+    background: rgb(247, 233, 211);
+    height: 100%;
+    width: 0;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: 0.5s;
+    color:black
+    
+  
+}
+link{
+  color: #000;
+}
+.button1{
+  padding: 20px;
+}
+  .button1:hover span{
+
+    width: 100%;
+  
+
+  }
+  .button1:hover{
+      border:none;
+  }
+  #texxt{
+    padding-left:5px;
+    color:gray;
+  }
+  #texxt1{
+    padding-left:15px;
+    color:gray;
+  }
+  

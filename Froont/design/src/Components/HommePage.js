@@ -1,45 +1,30 @@
-import React from 'react';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './HomePage.css';
-import 'typeface-roboto';
+import React from 'react'
+import  "./HommePage.css"
 import { BiPhoneCall } from 'react-icons/bi';
 import { AiTwotoneMail } from 'react-icons/ai';
+import { Link, useNavigate } from 'react-router-dom';
+export default function HommePage() {
+const navigate=useNavigate()
 
-const HomePage = () => {
-	return (
-		<div className="contain">
-			<div className="roww">
-				<div className="colom">
-					<h1 className="h1-homePage">Designers</h1>
-					<h1 className="p-homePage">Best Services from Best Designers in Arabic World</h1>
+    return (
+		
+		<div>
+        <div className='banner'>
+            	
+            <div className='content1'>
+                <h1>DESIGNERS WEB SITE</h1>
+                <p className='pHome'>Best Services from Best Designers in Arabic World
+                </p>
+                <div className='linkDesign'>
+                    <Link to={`/internalDesign/:design_type`} className='button1'><span  className='span1'></span>
+						
+					INTERNAL DESIGN 	</Link> 
+					<Link to={`/externalDesign/:design_type`} className='button1'><span className='span1' ></span> EXTERNAL DESIGN</Link>
 
-					<br />
-					<br />
-
-					<p className="p-homePage2">is the third area in which energy conservation gains may be made</p>
-					{/* <div className='card-btn3'>
-       <Link to="/addutility" ><h5 className="text-black" id="find">find job</h5></Link>
-       </div> */}
+                </div>
 				</div>
-				<div className="colom">
-					<div className="card-btn1">
-						<Link to={`/internalDesign/:design_type`}>
-							{' '}
-							<h5 className="text-black">internal design </h5>
-						</Link>
-					</div>
-
-					<div className="card-btn2">
-						<Link to={`/externalDesign/:design_type`}>
-							{' '}
-							<h5 className="text-black">External Design </h5>
-						</Link>
-					</div>
 				</div>
-			</div>
-
-			<div className="fo-home">
+                <div className="fo-home">
 				<div className="text-center text-lg-start bg-light text-muted">
 					<div className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
 						<div className="container text-center text-md-start mt-5">
@@ -48,7 +33,7 @@ const HomePage = () => {
 									<h6 className="text-uppercase fw-bold mb-4">
 										<i className="fas fa-gem me-3" />Thuria Decor
 									</h6>
-									<p>
+									<p id="texxt1">
 										full-service architectural, interior,<br /> and landscaping design
 										<br />
 										Building Your Dreams
@@ -60,13 +45,13 @@ const HomePage = () => {
 									<p>
 										<Link to={`/AllServies/:design_type`}>
 											{' '}
-											<p className="text-black">Servies </p>
+											<p  id="texxt">Servies </p>
 										</Link>
 									</p>
 									<p>
 										<Link to={`/login`}>
 											{' '}
-											<p className="text-black">Log In </p>
+											<p  id="texxt" >Log In </p>
 										</Link>
 									</p>
 								</div>
@@ -90,13 +75,14 @@ const HomePage = () => {
 									</p>
 								</div>
 							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		//   </div>
-	);
-};
+                            </div>
+                            </div>
+                            </div>
+                            </div>
 
-export default HomePage;
+            </div>
+
+        
+            
+    )
+}
