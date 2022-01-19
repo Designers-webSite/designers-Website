@@ -5,14 +5,16 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 export default function AllServies() {
-	const [ user, setUser ] = useState();
+	const [user, setUser] = useState();
 	const navigate = useNavigate();
 	let a;
 	const { user_id } = useParams();
-	const [ search, setSearch ] = useState();
+	const [search, setSearch] = useState();
 
-	const [ allutility, setAllutility ] = useState([]);
+	const [allutility, setAllutility] = useState([]);
 	const { design_type } = useParams();
+	     //--------------------------------------get all utility-------------------------------------
+
 	useEffect(() => {
 		axios
 			.get('http://localhost:8080/utility/all')
@@ -26,6 +28,9 @@ export default function AllServies() {
 				console.log(err);
 			});
 	}, []);
+
+	     //--------------------------------------get user by id-------------------------------------
+
 	useEffect(() => {
 		axios
 			.get(`http://localhost:8080/user/${user_id}`)
@@ -71,12 +76,9 @@ export default function AllServies() {
 							</Link>
 							{console.log(ele.user.picture)}{' '}
 							<div className="head">
-								{/* Put image src here */}
 								<img src={ele.picture} alt="" />
 							</div>
-							{/* <div className="footer"> */}
 							<p className="title" id="t">{ele.title}</p>
-							{/* </div> */}
 						</Link>
 					))}
 				</div>

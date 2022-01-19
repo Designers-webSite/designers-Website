@@ -296,7 +296,25 @@ justify-content:space-between;
   width: 200px;
   display: flex;
   justify-content: space-between;
-  margin: 20px auto;
+  /* margin: 20px auto; */
+  
+  
+}
+.loader {
+  /* padding :2rem 4rem; */
+  /* font-family :monospace; */
+  /* font-weight: bold; */
+  /* border-width: 1vmin; */
+  /* font-size :2rem; */
+  /* --charge: 'hsl(%s, 80%, 50%)' % var(--h, 0); */
+  /* border-image :conic-gradient(var(--charge) var(--a), transparent calc(var(--a) + 0.3deg)) 30; */
+  /* animation: load 2s infinite ease-in-out; */
+}
+.imgUtility{
+margin:2%
+}
+#area{
+  border-color: rgb(211, 208, 208);
 }
 /* Section page */
 .sections{   
@@ -479,10 +497,12 @@ body {
 .lcols {
   background-image:  linear-gradient(rgba(0, 0, 0, 0.75),rgba(7, 4, 4, 0.336)),url("https://2.bp.blogspot.com/-OnCspBkZAjg/XJqzp5ooLoI/AAAAAAADRoc/E3W5_Jh1imArP7qscpXDNyMq3im6ISOfACLcBGAs/s1600/c0d84b4b7300c360b7558ea07951e91c.jpg" );
   border-radius: 10px 0 0 10px;
-  opacity:0.7;    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+  opacity:0.7; 
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
     0 10px 10px rgba(0,0,0,0.22);
 
   height: 400px;
+  width: 400px;
   padding: 0 35px;
 }
 .text-white {
@@ -513,7 +533,10 @@ body {
 
 }
 span.txt {
-    color: #ffd556
+    color: #c0c082;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    
 }
 
 .greeting {
@@ -523,7 +546,7 @@ span.txt {
 
     margin: center;
     text-align: center;
-    font-size: 25px;
+    font-size: 20px;
     
 }
 
@@ -767,7 +790,7 @@ textarea {
   background-size: 20%;
 }
 .profile .inner-wrapper{
-  width: 70%;
+  width: 60%;
   margin: 100px auto;
   background: rgb(248, 245, 245);
   border-radius: 0 50px 0 50px;
@@ -858,9 +881,10 @@ margin: 20px;
   border-radius: 200px;
 }
 .sliderimg{
-  width: 100%;
+  margin-left: 7%;
+  width: 100vh;
   height: 500px;
-  object-fit: cover
+
 }
 
 .service{
@@ -873,8 +897,17 @@ margin: 20px;
   border-radius: 5px;
   margin-left: 10px;
 }
+.btnDelete :hover{
+  background-color: brown;
+  border:none;
+  outline: none;
+}
 #bEdit1{
-  margin-left: 20px;
+  margin: 2%;
+
+}
+#bEdit1:hover{
+  border: brown;
 
 }
 .btnUp{
@@ -1046,9 +1079,11 @@ margin-bottom: 20px;
   font-size:13px;
   margin-bottom:0;
 }
-#signUp{
+.signUp{
   padding-top: 20px;
-  /* margin-left: 15%; */
+  margin-left: 25%;
+  width: 1050px;
+  margin-right: 10%;
 }
 #sig{
   padding-top: 5%;
@@ -1226,7 +1261,7 @@ body {
   padding-top: 5%;
 }
 #btto{
-  background-color: rgb(12, 9, 4);
+  background-color: burlywood;
   font-size: 16px;
   color: white;
 border:none;
@@ -1235,6 +1270,13 @@ margin: 2%;
 width: 20%;  
 position: relative;
 right: -35%;
+
+
+}
+#btto:hover{
+  background-color: rgb(243, 226, 226);
+  font-size: 16px;
+  color: burlywood;
 
 }
 #bttos{
@@ -1262,8 +1304,10 @@ right: -35%;
  }
  #btttn{
    background-color: burlywood;
-   font-size: 16px;
+   font-size: 14px;
+   text-align: center;
    color: white;
+   height: 40px;
  }
  #btttn:hover{
   background-color:rgb(243, 226, 226);

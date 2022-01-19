@@ -34,6 +34,7 @@ const Login = () => {
 	const handlChangePassword = (e) => {
 		setPassword(e.target.value);
 	};
+     //--------------------------------------Log in by user name and password-------------------------------------
 
 	const add = () => {
 		const data = {
@@ -91,9 +92,7 @@ const Login = () => {
 							</h4>
 						</div>
 					</div>
-					{/* {!state.token ? ( */}
 					<div class="col-md-4 rcol" id="borders">
-						{/* <form  className="sign-up" >  */}
 
 						<h2 className="heading mb-4">Log In</h2>
 
@@ -124,15 +123,12 @@ const Login = () => {
 									</div>
 									</div>
 
-						{/* </form>   */}
 
 						<button type="button" className="btn btn-success mt-5" id="btttn" onClick={add}>
-							Get satrted now
+							log in 
 						</button>
 					</div>
 
-					{/* <Navigate to="/" from={{ from: location }} />
-              )} */}
 				</div>
 			</div>
 		</div>

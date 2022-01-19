@@ -82,7 +82,7 @@ useEffect(() => {
             <div className="nav-links">
                 <Link to="/">Home</Link>
                 <Link to="/AllServies/:user_id">services</Link>
-                <Link to="/AboutUs">About Us</Link>
+                <Link to="/About">About Us</Link>
 
                 {/* <Link to="/support">support</Link> */}
                 <Link to="/signUp">Register</Link>

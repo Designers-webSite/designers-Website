@@ -119,8 +119,8 @@ export default function SignUpUser() {
 
 	return (
 		<div >
-			<div class="container d-flex justify-content-center" id="signUp">
-				<div class="row my-4">
+			<div  className="signUp">
+				<div class="row my-5">
 					<div class="col-md-4 text-left text-white lcol">
 						<div class="greeting">
                             <div className=''>

@@ -27,7 +27,6 @@ export default function UpdateUtility() {
     const [picture, setPicture] = useState(null)
     const [url, setUrl] = useState("")
     const [progre, setProgre] = useState(0);
-
     const [pictures, setPictures] = useState([])
     const [urls, setUrls] = useState([])
     const [progress, setProgress] = useState(0);
@@ -179,7 +178,8 @@ export default function UpdateUtility() {
         headers: { Authorization: `Bearer ${state.token}` 
    }
     }
-    console.log(x.id);
+             //--------------------------------------get information utility for update -------------------------------------
+
     useEffect(() => {
         axios
             .get(`http://localhost:8080/utility/row/${utility_id}`)
@@ -188,7 +188,6 @@ export default function UpdateUtility() {
                 setTitle(`${res.data.title}`)
                 setDesignType(`${res.data.designType}`)
                 setDescription(`${res.data.description}`)
-                // setDate(`${res.data.date}`)
                 setInstructions(`${res.data.instructions}`)
                 setPicture(`${res.data.picture}`)
                 console.log(res.data.picture);
@@ -203,6 +202,7 @@ export default function UpdateUtility() {
             .catch(err => { console.log(err.response); })
     }, [])
 
+     //--------------------------------------Update information utility -------------------------------------
 
     const updateInfo = () => {
 
@@ -275,13 +275,13 @@ export default function UpdateUtility() {
 
                 <div className='custom-upload'>
                     <label htmlFor='up0'>upload photo</label><br />
+                    <progress  value={progre} max="100" /> 
+
 
                     <input type="file" placeholder='add ' id='up0' onChange={handleChangeOne} />
 
                 </div>
-                <br />
-                <img src={picture} style={{ width: "50px" }} />
-                <br />
+                <img  className='imgUtility'src={picture} style={{ width: "50px" }} />
                 <br />
                 <button  className='btn btn-warning'  id="btnUtiliy1" onClick={handleUploadOne}>Upload</button>
 <br/>
@@ -298,16 +298,18 @@ export default function UpdateUtility() {
                 <br/>
                 {console.log(pictures)}
 
-                <textarea rows={5} name="description" class="feedback-input" placeholder={description} onChange={handelChangeDescrption}></textarea>
+                <textarea rows={5} name="description" class="feedback-input"  id="area"placeholder={description} onChange={handelChangeDescrption}></textarea>
                 {errors.description && <p className="error">{errors.description}</p>}
 
-                <textarea rows={5} name="description" class="feedback-input" placeholder={instructions} onChange={handelChangeinstructions}></textarea>
+                <textarea rows={5} name="description" class="feedback-input"id="area" placeholder={instructions} onChange={handelChangeinstructions}></textarea>
                 {errors.instructions && <p className="error">{errors.instructions}</p>}
+               
 
 
-                <label>Gallery Add</label><br />
+                <label>Gallery Add</label>
                 {/* <progress value={progress} max="100" /> */}
                 <br />
+                <progress  value={progress} max="100" /> 
                 <br />
 
                 <input type="file" id='file_img' className="form-control" onChange={handleChange} />
@@ -322,7 +324,7 @@ export default function UpdateUtility() {
                     <>
 
 
-                        <img
+                        <img className='imgUtility'
                             style={{ width: "50px" }}
 
                             src={picture}

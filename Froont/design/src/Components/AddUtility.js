@@ -14,7 +14,6 @@ function AddUtility() {
 
     const dispatch = useDispatch()
     const [errors, setErrors] = useState({});
-
     const [title, setTitle] = useState("");
     const [designType,setDesignType ] = useState("");
     const [description, setDescription] = useState("");
@@ -22,8 +21,7 @@ function AddUtility() {
     const [instructions, setInstructions] = useState("");
     const[picture,setPicture]=useState(null)
     const[url,setUrl]=useState("")
-     const [progre, setProgre] = useState(0); 
-
+    const [progre, setProgre] = useState(0); 
     const [pictures, setPictures] = useState([])
     const [urls, setUrls] = useState([])
     const [progress, setProgress] = useState(0);
@@ -75,6 +73,8 @@ function AddUtility() {
         console.log(pictures);
 
     }
+         //--------------------------------------Upload  pictures-------------------------------------
+
     const handleUpload = (e) => {
         e.preventDefault()
         const promises = [];
@@ -134,7 +134,7 @@ function AddUtility() {
 
     }
 
-    
+    //--------------------------------------create utility-------------------------------------- 
     const add = () => { 
         let validationResult =  ValidaitonAddUtility( title,designType,description, instructions )
         console.log(validationResult);
@@ -190,6 +190,7 @@ function AddUtility() {
       
         }
       }
+     //--------------------------------------Upload one picture-------------------------------------
       
       const handleUploadOne=(e)=>{
         e.preventDefault()
@@ -236,7 +237,7 @@ function AddUtility() {
 
                 
                 <div className='custom-upload'>
-                {/* <progress value={progress} max="100"  className='progr'/> */}
+                { <progress value={progre} max="100"  className='progr'/> }
                     <label htmlFor='up0'>upload photo</label>
                    
                  
@@ -252,7 +253,6 @@ function AddUtility() {
 
                 <img src={url}  style={{width:"50px"}}/>
 
-                {/* <input name="title" type="text" class="feedback-input" placeholder="design Type" onChange={handelChangeDesignType} /> */}
                 <div className='form-group my-3'>
                 <select id="designType" className='form-select input' onChange={handelChangeDesignType}>
                     <option value="hide" >Design Type</option>
@@ -273,7 +273,7 @@ function AddUtility() {
                 <textarea rows={5} name="description" class="feedback-input" placeholder="Instructions" onChange={handelChangeinstructions}></textarea>
                 {errors.instructions && <p className="error">{errors.instructions}</p>}
                  {/* <div className="files">  */}
-                {/* <progress value={progress} max="100" /> */}
+                 <progress  value={progress} max="100" /> 
                 <br />
                 <br />
                 <label >Gallery Add</label>
@@ -306,7 +306,6 @@ function AddUtility() {
                     ))
                 }
         
-       {/* </div>  */}
       
     
             </form>

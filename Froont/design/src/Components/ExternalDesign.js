@@ -7,6 +7,8 @@ export default function ExternalDesign() {
 	const types = [ 'internal design', 'external design' ];
 	const [ external, setExternal ] = useState([]);
 	const { design_type } = useParams();
+	     //-------------------------------------- get utility by design Type-------------------------------------
+
 	useEffect(() => {
 		types.forEach((design_type) => {
 			axios

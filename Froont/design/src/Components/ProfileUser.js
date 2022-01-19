@@ -26,14 +26,13 @@ export default function ProfileUser() {
 		dispatch(logOut())
 		}
 	const { user_id } = useParams();
-	// console.log(user_id);
 	const [ user, setUser ] = useState();
 	const [ utility, setUtility ] = useState([]);
 	const { utility_id } = useParams();
 
 	const x = JSON.parse(localStorage.getItem('user'));
-	// console.log(x?"11":"22");
-	console.log(user_id);
+	     //--------------------------------------get user by id-------------------------------------
+
 	useEffect(
 		() => {
 			axios
@@ -50,6 +49,7 @@ export default function ProfileUser() {
 		},
 		[user_id]
 	);
+     //--------------------------------------get all utility for  user by id-------------------------------------
 
 	useEffect(
 		() => {
@@ -63,6 +63,7 @@ export default function ProfileUser() {
 		},
 		[ user_id ]
 	);
+     //--------------------------------------delete Acount -------------------------------------
 
 	function deleteUser() {
 		const config = {
@@ -148,9 +149,9 @@ export default function ProfileUser() {
 							)}</>
 							: ""}
 
-<br/>
-<div className="my-servies">
-	<br/>
+               <br/>
+          <div className="my-servies">
+	         <br/>
 						<h3> My Servies</h3>
 					</div>
 					<div className="items">

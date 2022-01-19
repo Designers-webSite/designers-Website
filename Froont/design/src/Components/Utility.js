@@ -45,6 +45,8 @@ export default function Utility() {
 			});
 	}, []);
 	console.log(utility);
+	     //--------------------------------------Delete utility  -------------------------------------
+
 
 	function deleteUtility() {
 		const config = {
@@ -82,22 +84,23 @@ export default function Utility() {
 			<div className="profile sections">
 				<div className="container">
 					<div className="utility .inner-wrapper">
-						<div className="top-wrapper">
-							<div className="head">
+					
 								<div className="utility.box">
 									{/* Put image src here */}
 									<div className="row justify-content-center">
-										<div className="col-md-10">
+										<div className="col-md-17">
 											<div className="">
 												<AliceCarousel autoPlay autoPlayInterval="3000">
 													{gallery.map((ele) => (
-														<div className='sliderimg'>
-															<img
-																src={ele.picture}
-																className="d-block w-80"
-																alt="..."
-															/>
-														</div>
+														<img className='sliderimg'
+															src={ele.picture}/>
+														// <div className='sliderimg'>
+														// 	<img
+														// 		src={ele.picture}
+														// 		className="d-block w-80"
+														// 		alt="..."
+														// 	/>
+														// </div>
 													))}
 												</AliceCarousel>
 
@@ -141,7 +144,6 @@ export default function Utility() {
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
+		
 	);
 }
