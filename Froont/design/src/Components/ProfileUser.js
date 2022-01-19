@@ -157,7 +157,7 @@ export default function ProfileUser() {
 					<div className="items">
 						<br />
 						<br />
-						<h3 className="my-3" />
+						<h3 className="my-4" />
 						<hr />
 						{user === 0 ? (
 							''

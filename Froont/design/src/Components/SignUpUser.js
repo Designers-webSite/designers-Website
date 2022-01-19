@@ -120,9 +120,9 @@ export default function SignUpUser() {
 	return (
 		<div >
 			<div  className="signUp">
-				<div class="row my-5">
-					<div class="col-md-4 text-left text-white lcol">
-						<div class="greeting">
+				<div className="row my-4">
+					<div className="col-md-4 text-left text-white lcol">
+						<div className="greeting">
                             <div className=''>
                             <img className='lg' src="https://th.bing.com/th/id/R.49a960950209a09f51c9a819cad5cc2b?rik=p6qkKxhFEecmLg&pid=ImgRaw&r=0" width="60%" />
 
@@ -132,7 +132,7 @@ export default function SignUpUser() {
 							</h4>
 						</div>
 					</div>
-					<div class="col-md-6 rcol" id="border">
+					<div className="col-md-6 rcol" id="border">
 						<form className="sign-up">
 							<h2 className="heading mb-4">Sign up</h2>
 
@@ -140,7 +140,7 @@ export default function SignUpUser() {
 								<input type="text" id=" texxt" onChange={handelChangeFullName} required />
 								{errors.fullName && <p className="error">{errors.fullName}</p>}
 								<div className="input-icon">
-									<i class="fa fa-user">
+									<i className="fa fa-user">
 										<BsFillPersonFill />
 									</i>
 								</div>
@@ -150,15 +150,15 @@ export default function SignUpUser() {
 								<input type="text" onChange={handelChangeUserName} required />
 								{errors.userName && <p className="error">{errors.userName}</p>}
 								<div className="input-icon">
-									<i class="fa fa-user" />
+									<i className="fa fa-user" />
 									<BiUser />
 								</div>
 							</div>
-							<div class="input-group input-group-icon">
-								<input type="phone" onChange={handlChangePhone} pattern="^\d{10}$" required />
+							<div className="input-group input-group-icon">
+								<input type="phone" onChange={handlChangePhone} pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required/> 
 								{errors.phone && <p className="error">{errors.phone}</p>}
-								<div class="input-icon">
-									<i class="fa fa-envelope">
+								<div className="input-icon">
+									<i className="fa fa-envelope">
 										<BiPhoneCall />
 									</i>
 								</div>
@@ -167,23 +167,23 @@ export default function SignUpUser() {
 							<div class="input-group input-group-icon">
 								<input type="email" onChange={handelChangeEmail} required />
 								{errors.email && <p className="error">{errors.email}</p>}
-								<div class="input-icon">
-									<i class="fa fa-envelope">
+								<div className="input-icon">
+									<i className="fa fa-envelope">
 										<AiTwotoneMail />
 									</i>
 								</div>
 							</div>
 
 							
-								<div class="input-group input-group-icon">
+								<div className="input-group input-group-icon">
 									<input
 										type="pasword"
 										onChange={handlChangePassword}
 										required
 									/>
                                     	{errors.password && <p className="error">{errors.password}</p>}
-									<div class="input-icon">
-										<i class="fa fa-envelope">
+									<div className="input-icon">
+										<i className="fa fa-envelope">
 											{' '}
 											<FontAwesomeIcon
 												id="show-hide"

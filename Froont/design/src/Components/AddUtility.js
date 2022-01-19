@@ -17,7 +17,7 @@ function AddUtility() {
     const [title, setTitle] = useState("");
     const [designType,setDesignType ] = useState("");
     const [description, setDescription] = useState("");
-    const [date, setDate] = useState("");
+    // const [date, setDate] = useState("");
     const [instructions, setInstructions] = useState("");
     const[picture,setPicture]=useState(null)
     const[url,setUrl]=useState("")
@@ -51,10 +51,10 @@ function AddUtility() {
 
     }
 
-    const handelChangeDate = (e) => {
-        setDate(e.target.value)
+    // const handelChangeDate = (e) => {
+    //     setDate(e.target.value)
 
-    }
+    // }
     const handelChangeDescrption = (e) => {
         setDescription(e.target.value)
     }
@@ -120,7 +120,7 @@ function AddUtility() {
       const data = {
         title: title,
         description: description,
-        date:date,
+        // date:date,
         instructions: instructions,
         designType :  designType,
         picture:url,
@@ -149,7 +149,7 @@ function AddUtility() {
     if (validationResult==null){
        
         console.log(data);
-        if (title.length < 1 || designType.length < 1 ||description.length<1 || date.length<1||instructions.length<1||url.length<1 ||urls.length<1) {
+        if (title.length < 1 || designType.length < 1 ||description.length<1 ||instructions.length<1||url.length<1 ||urls.length<1) {
             setRequired("This Field is Requierd");
         }else{
         axios
@@ -232,7 +232,7 @@ function AddUtility() {
                 <h2 className="heading mb-4" id="heah2">Add New Service</h2> 
                 <br />
 
-                <input name="title" type="text" class="feedback-input" placeholder="Title" onChange={handelChangeTitle} />
+                <input name="title" type="text" class="feedback-input" placeholder="Title" id="area" onChange={handelChangeTitle} />
                 {errors.title && <p className="error">{errors.title}</p>}
 
                 
@@ -249,7 +249,6 @@ function AddUtility() {
                 <br/>
                 <button onClick={handleUploadOne}  className='btn btn-warning' id="btnUtiliy" >Upload</button>
                 <br/>
-                <br/>
 
                 <img src={url}  style={{width:"50px"}}/>
 
@@ -265,12 +264,12 @@ function AddUtility() {
                
                 </div >
                 <br/>
-                <div >
+                {/* <div >
                 <input name="date" type="date" class="feedback-input" placeholder="Service creation date" onChange={handelChangeDate} />
-                </div>
-                <textarea rows={5} name="description" class="feedback-input" placeholder="Description" onChange={handelChangeDescrption}></textarea>
+                </div> */}
+                <textarea rows={8} name="description" class="feedback-input" id="area" placeholder="Description" onChange={handelChangeDescrption}></textarea>
                 {errors.description && <p className="error">{errors.description}</p>}
-                <textarea rows={5} name="description" class="feedback-input" placeholder="Instructions" onChange={handelChangeinstructions}></textarea>
+                <textarea rows={8} name="description" class="feedback-input" placeholder="Instructions" id="area" onChange={handelChangeinstructions}></textarea>
                 {errors.instructions && <p className="error">{errors.instructions}</p>}
                  {/* <div className="files">  */}
                  <progress  value={progress} max="100" /> 

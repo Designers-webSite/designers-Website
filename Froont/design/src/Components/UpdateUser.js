@@ -34,7 +34,7 @@ export default function UpdateUser() {
 
 	const [ picture, setPicture ] = useState(null);
 	const [ url, setUrl ] = useState('');
-	const [ progress, setProgress ] = useState(0);
+	const [ progre, setProgre ] = useState(0);
 	const [ update, SetUpdate ] = useState();
 
 	const [ fill, setFill ] = useState('');
@@ -45,7 +45,15 @@ export default function UpdateUser() {
 		phone: phone,
 		email: email,
 		password: password,
-		picture: picture
+		picture: url
+	};
+    const data1 = {
+		fullName: fullName,
+		userName: userName,
+		phone: phone,
+		email: email,
+		password: password,
+		picture: url
 	};
 	const handelChangeFullName = (e) => {
 		setFullName(e.target.value);
@@ -73,6 +81,7 @@ export default function UpdateUser() {
 
 
 	useEffect(() => {
+    
 		axios
 			.get(`http://localhost:8080/user/${user_id}`)
 			.then((res) => {
@@ -89,6 +98,7 @@ export default function UpdateUser() {
 
 	console.log('get pic heeereee', picture);
      //--------------------------------------Update information user -------------------------------------
+     console.log(data);
 
 	const updateInfo = () => {
 		let validationResult = ValidaitonUpdateUser(fullName, userName, email, picture);
@@ -101,6 +111,7 @@ export default function UpdateUser() {
 			console.log('here');
 
 			console.log('dddaaatttaaa', data);
+            console.log("piiiccccccc",picture);
 
 			axios
 				.put(`http://localhost:8080/user/${user_id}`, data, config)
@@ -125,31 +136,38 @@ export default function UpdateUser() {
 				});
 		}
 	};
-
+console.log(data);
 	const handleChange = (e) => {
+        // // console.log("here is e ",e);
 		if (e.target.files[0]) {
 			setPicture(e.target.files[0]);
 		}
 	};
 
 	const handleUpload = (e) => {
-		e.preventDefault();
-		const uploadTask = storage.ref(`images/${picture.name}`).put(picture);
-		uploadTask.on(
-			'state_changed',
-			(snapshot) => {
-				const progress = Math.round(snapshot.bytesTransferred / snapshot.totalBytes * 100);
-				setProgress(progress);
-			},
-			(error) => {
-				console.log(error);
-			},
-			() => {
-				storage.ref('images').child(picture.name).getDownloadURL().then((url) => {
-					setUrl(url);
-				});
-			}
-		);
+        e.preventDefault()
+        const uploadTask = storage.ref(`image/${picture.name}`).put(picture);
+        uploadTask.on(
+            "state_changed",
+            snapshot => {
+                const progre = Math.round(
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                );
+                setProgre(progre);
+            },
+            error => {
+                console.log(error);
+            },
+            () => {
+                storage
+                   .ref("image")
+                   .child(picture.name)
+                   .getDownloadURL()
+                   .then(url => {
+                       setUrl(url);
+                   });
+            }
+            );
 	};
 	console.log('image :', picture);
 
@@ -199,7 +217,7 @@ export default function UpdateUser() {
 						<div className="form-group custom-upload1 mt-2">
 							{' '}
 							<i class="fas fa-lock" />
-                            <progress  value={progress} max="100" /> 
+                            <progress  value={progre} max="100" /> 
 
 							<label htmlFor="file_img">Upload Photo</label>
 							<input type="file" id="file_img" className="form-control" onChange={handleChange} />

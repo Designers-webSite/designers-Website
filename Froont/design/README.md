@@ -4,8 +4,8 @@ This webSite  An important gateway to find new clients and new design work, the 
 
 
 ## Advantage:
-all designer in one place حتي يكون لديك العديد من الخيارات 
-There are many reasons for creating an interior design project. However, the goal is usually the same – to improve how a space functions and to make it more visually appealing.
+There are many reasons for creating an  designers project. However, the goal is All designers are in one place and the user can choose the right services for hime 
+
 
 ## pages:
 Home page:

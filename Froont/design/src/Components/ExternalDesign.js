@@ -45,7 +45,7 @@ export default function ExternalDesign() {
 							</Link>
 
 							<div className="head">
-								<img src="./images/img4.jpg" alt="" />
+								<img src={ele.picture} alt="" />
 							</div>
 
 							<p className="title">{ele.title}</p>

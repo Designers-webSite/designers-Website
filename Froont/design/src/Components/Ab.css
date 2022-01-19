@@ -124,3 +124,35 @@ h1:last-of-type {
 .a{
     background-color: black;
 }
+/* mobile screen  */
+@media screen and (max-width:400px){
+    .sliderimg {
+        
+            width: 40vh;
+            height: 100px;
+            margin-left: -25%;
+        
+    }
+    .modTitle{
+     
+          
+        margin-top: -20%;
+        font-size: 18px;
+        margin-right: 80%;
+        }
+    
+    
+}
+@media screen and (max-width:586px){
+
+.nav-links {
+   
+    margin-right: 190px;
+}
+.nav-links a {
+   
+    font-size: 12px;
+    text-decoration: none;
+    
+}
+}
