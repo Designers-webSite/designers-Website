@@ -26,13 +26,9 @@ export default function InternalDesign() {
 	}, []);
 	return (
 		<div className="content sections">
-			
 			<div className="section">
 				<div className="header">
-				<h2 className="main-title">Interior Design services</h2>
-					{/* <select name="" id="">
-						<option value="">Filter</option>
-					</select> */}
+					<h2 className="main-title">Interior Design services</h2>
 				</div>
 				<div className="items">
 					{internal.map((ele) => (
@@ -45,8 +41,6 @@ export default function InternalDesign() {
 								<img src={ele.picture} alt="" />
 							</div>
 							<p className="title">{ele.title}</p>
-
-							{/* </div> */}
 						</Link>
 					))}
 				</div>

@@ -17,7 +17,6 @@ function AddUtility() {
     const [title, setTitle] = useState("");
     const [designType,setDesignType ] = useState("");
     const [description, setDescription] = useState("");
-    // const [date, setDate] = useState("");
     const [instructions, setInstructions] = useState("");
     const[picture,setPicture]=useState(null)
     const[url,setUrl]=useState("")
@@ -249,8 +248,9 @@ function AddUtility() {
                 <br/>
                 <button onClick={handleUploadOne}  className='btn btn-warning' id="btnUtiliy" >Upload</button>
                 <br/>
+                <br/>
 
-                <img src={url}  style={{width:"50px"}}/>
+                <img  className='srcImage'  src={url}  style={{width:"50px"}}/>
 
                 <div className='form-group my-3'>
                 <select id="designType" className='form-select input' onChange={handelChangeDesignType}>
@@ -271,7 +271,6 @@ function AddUtility() {
                 {errors.description && <p className="error">{errors.description}</p>}
                 <textarea rows={8} name="description" class="feedback-input" placeholder="Instructions" id="area" onChange={handelChangeinstructions}></textarea>
                 {errors.instructions && <p className="error">{errors.instructions}</p>}
-                 {/* <div className="files">  */}
                  <progress  value={progress} max="100" /> 
                 <br />
                 <br />

@@ -1,4 +1,4 @@
-# Designer website:
+# Designers website:
 
 This webSite  An important gateway to find new clients and new design work, the designer can subscribe to the site and then open a new design-related service, allocating it to the design for internal designer and external design
 
@@ -8,34 +8,34 @@ There are many reasons for creating an  designers project. However, the goal is 
 
 
 ## pages:
-Home page:
+-Home page:
 contain two seciton internal design and external design 
 and nave bar
 
-About Us:
+-About Us:
 contain information aboutweb site 
 
 
-Serviec:
+-Serviec:
 contain search serviece
 contain all services
 
-Register:
+-Register:
 sign up user
 
 
-Log in 
+-Log in 
 
-Profile:
+-Profile:
 info for user +services for user
-can add and update acount by current user
+-can delete and update acount by current user
 
-add servieces :
+-add servieces :
  the designer can add serviece 
-and update utility for self
+-and update utility for self
 
 
-log out
+-log out
 
 
 

@@ -64,9 +64,7 @@ export default function AllServies() {
 							Search
 						</button>
 					</div>
-					{/* <select className="" name="" id="">
-						<option value="filter">Filter</option>
-					</select> */}
+					
 				</div>
 				<div className="items">
 					{allutility.map((ele) => (

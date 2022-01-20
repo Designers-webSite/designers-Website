@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import NavBar from './NavBar';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -64,9 +65,7 @@ export default function UpdateUser() {
 	const handelChangeEmail = (e) => {
 		setEmail(e.target.value);
 	};
-	const handelChangePassword = (e) => {
-		setPassword(e.target.value);
-	};
+	
 
 	const handelChangePhone = (e) => {
 		setPhone(e.target.value);
@@ -89,6 +88,7 @@ export default function UpdateUser() {
 				setUserName(`${res.data.userName}`);
 				setEmail(`${res.data.email}`);
 				setPicture(`${res.data.picture}`);
+				setUrl(`${res.data.picture}`);
 				setPhone(`${res.data.phone}`);
 			})
 			.catch((err) => {
@@ -108,11 +108,6 @@ export default function UpdateUser() {
 		else setErrors({});
 
 		if (validationResult == null) {
-			console.log('here');
-
-			console.log('dddaaatttaaa', data);
-            console.log("piiiccccccc",picture);
-
 			axios
 				.put(`http://localhost:8080/user/${user_id}`, data, config)
 				.then((res) => {
@@ -240,16 +235,7 @@ console.log(data);
 	);
 }
 
-{
-	/* //     const dispatch=useDispatch() */
-}
-{
-	/* //     const state = useSelector((state) => { */
-}
-{
-	/* //         return { */
-}
-{
+
 	/* //             user: state.userReducer,
 //             token: state.userReducer.token
 //         }
@@ -480,4 +466,4 @@ console.log(data);
 //     }
 
      */
-}
+

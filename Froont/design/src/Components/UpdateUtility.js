@@ -307,7 +307,6 @@ export default function UpdateUtility() {
 
 
                 <label>Gallery Add</label>
-                {/* <progress value={progress} max="100" /> */}
                 <br />
                 <progress  value={progress} max="100" /> 
                 <br />

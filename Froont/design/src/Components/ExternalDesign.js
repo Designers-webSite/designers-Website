@@ -33,9 +33,7 @@ export default function ExternalDesign() {
 				<div className="header">
 					<h2 className="main-title">Exterior Design services</h2>
 
-					{/* <select name="" id="">
-						<option value="">Filter</option>
-					</select> */}
+					
 				</div>
 				<div className="items">
 					{external.map((ele) => (

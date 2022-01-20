@@ -1,14 +1,17 @@
 import React from 'react'
-import  "./HommePage.css"
+import { useState, useEffect } from 'react';
 import { BiPhoneCall } from 'react-icons/bi';
 import { AiTwotoneMail } from 'react-icons/ai';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import {  } from 'react-router-dom';
 export default function HommePage() {
-const navigate=useNavigate()
+const location=useLocation()
+const da=document.querySelector(d)
+da.window.location.reload()
 
     return (
-		
-		<div>
+		<div id="d">
+			{window.location.reload()}
         <div className='banner'>
             	
             <div className='content1'>
@@ -45,7 +48,13 @@ const navigate=useNavigate()
 									<p>
 										<Link to={`/AllServies/:design_type`}>
 											{' '}
-											<p  id="texxt">Servies </p>
+											<p  id="texxt">Serviؤes </p>
+										</Link>
+									</p>
+									<p>
+										<Link to={`/About`}>
+											{' '}
+											<p  id="texxt" >About Us </p>
 										</Link>
 									</p>
 									<p>
@@ -69,10 +78,7 @@ const navigate=useNavigate()
 										<i className="fas fa-phone me-3" />
 										<BiPhoneCall />+ 966 534 567 88{' '}
 									</p>
-									<p>
-										<i className="fas fa-print me-3" />
-										<BiPhoneCall />+ 966 534 544 88
-									</p>
+									
 								</div>
 							</div>
                             </div>

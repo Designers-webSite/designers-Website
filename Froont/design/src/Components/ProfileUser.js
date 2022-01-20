@@ -72,7 +72,6 @@ export default function ProfileUser() {
 		axios
 			.delete(`http://localhost:8080/user/${user_id}`)
 			.then((res) =>{
-				// dispatch(logOut)
 				console.log(res.data);
 				Swal.fire({
 					position: 'top-end',

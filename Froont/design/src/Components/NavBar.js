@@ -82,7 +82,6 @@ useEffect(() => {
                 <Link to="/AllServies/:user_id">services</Link>
                 <Link to="/About">About Us</Link>
 
-                {/* <Link to="/support">support</Link> */}
                 <Link to="/signUp">Register</Link>
                 
                 

@@ -5,7 +5,8 @@ h1 {
 
 .pp {
   font-family: 'Open Sans', sans-serif;
-  text-align: justify; }
+  text-align: justify;
+ }
 
 .blue-bg {
   position: fixed;
@@ -16,13 +17,15 @@ h1 {
   height: 500px;
   width: 100vw;
   z-index: -1;
-  overflow-x: hidden; }
+  overflow-x: hidden; 
+}
   #bo{
     width: 23%;
     height: 15%;
   }
+  
 .about{
-  font-weight: 900;
+  font-weight: 550;
   font-size:25px;
 }
 .white-bg {
@@ -57,4 +60,115 @@ h1 {
     background-color:white;
   }
   
-  
+  :root {
+    
+    --veryLightGray: hsl(0, 0%, 98%);
+    --weight1: 200;
+    --weight2: 400;
+    --weight3: 600;
+}
+
+body {
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+h1:first-of-type {
+    font-weight: var(--weight1);
+    color: var(--varyDarkBlue);
+
+}
+
+h1:last-of-type {
+    color: var(--varyDarkBlue);
+}
+
+@media (max-width: 400px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+
+
+
+.box p {
+    color: var(--grayishBlue);
+}
+
+.box {
+    border-radius: 5px;
+    box-shadow: 0px 30px 40px -20px var(--grayishBlue);
+    padding: 30px;
+    margin: 20px;  
+}
+
+.imgg {
+    float: right;
+}
+
+@media (max-width: 450px) {
+    .box {
+        height: 180px;
+    }
+}
+
+@media (max-width: 950px) and (min-width: 450px) {
+    .box {
+        text-align: center;
+        height: 180px;
+    }
+}
+
+.cyan {
+    border-top: 3px solid rgb(228, 207, 168);
+}
+.cyan:hover{
+  background-color: rgb(245, 239, 234);
+}
+.red {
+    border-top: 3px solid rgb(241, 224, 207);
+}
+.red:hover{
+  background-color: rgb(245, 239, 234);
+
+}
+.blue:hover {
+
+  background-color: rgb(245, 239, 234);
+}
+.blue {
+    border-top: 3px solid rgb(228, 207, 168)
+}
+.orange {
+    border-top: 3px solid var(--orange);
+}
+
+
+
+
+@media (min-width: 950px) {
+    .row1-container {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .row2-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .box {
+        width: 20%;
+     
+    }
+    .header p {
+        width: 30%;
+    }
+
+    
+}
+
