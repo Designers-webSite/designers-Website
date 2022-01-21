@@ -312,9 +312,7 @@ export default function UpdateUtility() {
                 <br />
 
                 <input type="file" id='file_img' className="form-control" onChange={handleChange} />
-                {/* <button  className='btn btn-warning' onClick={handleUpload}>Upload</button>
 
-                <br/> */}
                 <br />
 
 

@@ -6,12 +6,10 @@ import { Link, useLocation } from 'react-router-dom';
 import {  } from 'react-router-dom';
 export default function HommePage() {
 const location=useLocation()
-const da=document.querySelector(d)
-da.window.location.reload()
+
 
     return (
-		<div id="d">
-			{window.location.reload()}
+		<div >
         <div className='banner'>
             	
             <div className='content1'>

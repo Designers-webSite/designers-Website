@@ -17,7 +17,6 @@ export default function Utility() {
 	const state = useSelector((state) => {
 		return {
 			user: state.userReducer.user,
-			// utility:state.utilityReducer.utility,
 			token: state.userReducer.token
 		};
 	});
