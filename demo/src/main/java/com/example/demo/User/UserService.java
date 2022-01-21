@@ -1,7 +1,6 @@
 package com.example.demo.User;
 
 
-import com.example.demo.Role.Role;
 import com.example.demo.Role.RoleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,7 +17,6 @@ import java.util.List;
 @Service
 public class UserService implements UserDetailsService {
     private  final UserRepository userRepository;
-//   private final RoleRepo roleRepo;
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
@@ -26,18 +24,7 @@ public class UserService implements UserDetailsService {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
-//    @Override
-//    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-//        User user = userRepository.findByUserName(userName);
-//        if(user  == null){
-//            throw new UsernameNotFoundException("User not found in the database");
-//        }
-//        Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
-//        user.getRoles().forEach(role -> {
-//            authorities.add(new SimpleGrantedAuthority(role.getName()));
-//        });
-//        return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(), authorities);
-//    }
+
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         User user= userRepository.findByUserName(userName);
@@ -58,8 +45,11 @@ public class UserService implements UserDetailsService {
     }
 
     public User getUser(String id ) {
+        System.out.println(id);
         Long user_id=Long.parseLong(id);
-        return userRepository.findById(user_id).orElse(null);
+        User u = userRepository.findById(user_id).orElse(null);
+        System.out.println(u);
+        return u;
     }
     public User register(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -70,21 +60,35 @@ public class UserService implements UserDetailsService {
 
 
     public void updateUser(String id, User data) {
+        System.out.println("input data: "+data);
         Long user_id = Long.parseLong(id);
         User user = userRepository.findById(user_id).orElse(null);
         if (user != null) {
-            user.setFullName(data.getFullName());
-            user.setUserName(data.getUserName());
-            user.setStatus(data.isStatus());
-            user.setCreationDate(data.getCreationDate());
+            if (data.getFullName() != null) user.setFullName(data.getFullName());
+            if (data.getUserName() != null)user.setUserName(data.getUserName());
+            if (data.getEmail() != null)user.setEmail(data.getEmail());
+            if (data.getPicture() != null)user.setPicture(data.getPicture());
+
             userRepository.save(user);
         }
     }
 
-    public void deleteuser(String id) {
+
+
+    public void deleteUser(String id) {
         Long user_id=Long.parseLong(id);
         userRepository.deleteById(user_id);
     }
 
+
+    public void updatePicture(String id, String picUrl) {
+        Long user_id = Long.parseLong(id);
+        User user = userRepository.findById(user_id).orElse(null);
+        if (user != null) {
+
+            user.setPicture(picUrl);
+            userRepository.save(user);
+        }
+    }
 
 }

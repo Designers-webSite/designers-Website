@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="Galleries")
+@Table(name="Gallery")
 public class Gallery {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

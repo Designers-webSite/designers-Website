@@ -23,41 +23,49 @@ public class UtilityController {
     public List<Utility> getAllUtilities(){
         return  utilityService.getAllUtilities();
     }
-    // get utility by id
 
+    // get  all utility for user
+
+    @GetMapping("all/{id}")
+    public List<Utility> getAllUtilitiesForUser(@PathVariable String id){
+        return  utilityService.getAllUtilitiesForUser(id);
+    }
+
+    //get utility by id
     @GetMapping("row/{id}")
     public Utility getUtility(@PathVariable String id){
         System.out.println(id);
         return utilityService.getUtilities(id);
     }
+    // add utility
     @PostMapping("add")
     public Utility addUtility(@RequestBody Utility s){
-//       Gallery g=GalleryRepository.findById(s.getGallery().getID()).orElse(null);
-//        s.setDesigner(d);
-//        s.setGallery(g);
-        System.out.println(s);
-        System.out.println(s.getUser());
-        System.out.println(s.getGallery());
+
         return  utilityService.addUtility(s);
     }
 
 
     // search utility by title
     @GetMapping("search/{title}")
-    public Utility getByTitle(@PathVariable String title){
+    public List<Utility> getAllByTitle(@PathVariable String title){
         return utilityService.getByTitle(title);
     }
-
-    @GetMapping("search/{designType}")
-    public Utility getUtilityByDesignType(@PathVariable String designType){
+   // get utility by design type
+    @GetMapping("col/{designType}")
+    public List<Utility> getUtilityByDesignType(@PathVariable String designType){
         return utilityService.getUtilityByDesignType(designType);
     }
+    // delete utility
     @DeleteMapping("/{id}")
     public  void deleteUtility(@PathVariable String id ){
         utilityService.deleteUtility(id);
     }
+
+    // update info for utility
     @PutMapping("update/{id}")
     public void updateUtility(@PathVariable String id,@RequestBody Utility data){
+        System.out.println("id"+id);
+        System.out.println("data"+data);
         utilityService.updateUtility(id,data);
     }
 

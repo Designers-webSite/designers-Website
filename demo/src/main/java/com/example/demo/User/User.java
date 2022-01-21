@@ -1,15 +1,15 @@
 package com.example.demo.User;
 
-import com.example.demo.Role.Role;
 import com.example.demo.Utility.Utility;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name="Users")
+@Table(name="User")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,13 +21,18 @@ public class User {
     private String email;
     private Date creationDate;
     private boolean status;
+    @Column(length = 1000)
+    private String picture;
     private String role;
+    private int phone;
+
     @OneToMany(mappedBy = "user")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Utility> utilities;
 
     public  User(){}
 
-    public User(Long id, String fullName, String userName, String password, String email, Date creationDate, boolean status, String role, List<Utility> utilities) {
+    public User(Long id, String fullName, String userName, String password, String email, Date creationDate, boolean status, String picture, String role, List<Utility> utilities) {
         this.id = id;
         this.fullName = fullName;
         this.userName = userName;
@@ -35,8 +40,16 @@ public class User {
         this.email = email;
         this.creationDate = creationDate;
         this.status = status;
+        this.picture = picture;
         this.role = role;
         this.utilities = utilities;
+    }
+    public User(Long id, String fullName, String userName, String password, String email) {
+        this.id = id;
+        this.fullName = fullName;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
     }
 
     public Long getId() {
@@ -108,19 +121,40 @@ public class User {
         this.role = role;
     }
 
+    public String getPicture() {
+        return picture;
+    }
 
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
 
+    public List<Utility> getUtilities() {
+        return utilities;
+    }
+
+    public void setUtilities(List<Utility> utilities) {
+        this.utilities = utilities;
+    }
+
+    public int getPhone() {
+        return phone;
+    }
+
+    public void setPhone(int phone) {
+        this.phone = phone;
+    }
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", fullName='" + fullName + '\'' +
+                "fullName='" + fullName + '\'' +
                 ", userName='" + userName + '\'' +
-                ", password=" + password +
+                ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", creationDate=" + creationDate +
-                ", status=" + status +
+                ", picture='" + picture + '\'' +
+                ", role='" + role + '\'' +
+                ", phone=" + phone +
                 '}';
     }
 }

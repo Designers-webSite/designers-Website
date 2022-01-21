@@ -1,14 +1,16 @@
 package com.example.demo.Utility;
 import com.example.demo.Gallery.Gallery;
 import com.example.demo.User.User;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name="Utilities")
+@Table(name="Utility")
 public class Utility {
 
     @Id
@@ -20,17 +22,31 @@ public class Utility {
     private double price;
     private String designType;
     private String instructions;
+    private String picture;
+
 
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JsonIgnoreProperties("utilities")
     private User user;
-    //        @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "utility")
     private List<Gallery> gallery;
 
     public Utility(){}
 
-
+    public Utility(Long id, String title, String description, Date duration, double price, String designType, String instructions, String picture, User user, List<Gallery> gallery) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.duration = duration;
+        this.price = price;
+        this.designType = designType;
+        this.instructions = instructions;
+        this.picture = picture;
+        this.user = user;
+        this.gallery = gallery;
+    }
 
     public Long getId() {
         return id;
@@ -48,17 +64,6 @@ public class Utility {
         this.title = title;
     }
 
-    public Utility(Long id, String title, String description, Date duration, double price, String DesignType, String instructions, User user, List<Gallery> gallery) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.duration = duration;
-        this.price = price;
-        this.designType =DesignType;
-        this.instructions = instructions;
-        this.user = user;
-        this.gallery = gallery;
-    }
 
     public String getDescription() {
         return description;
@@ -90,7 +95,7 @@ public class Utility {
     }
 
     public void setDesignType(String designType) {
-        designType = designType;
+        this.designType = designType;
     }
 
     public User getUser() {
@@ -115,6 +120,14 @@ public class Utility {
 
     public void setInstructions(String instructions) {
         this.instructions = instructions;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }
 

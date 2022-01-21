@@ -53,19 +53,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-//       http.authorizeRequests().anyRequest().permitAll();
         http.authorizeRequests().antMatchers(  HttpMethod.POST,"/login").permitAll();
         http.authorizeRequests().antMatchers( HttpMethod.POST,"/user").permitAll();
-        http.authorizeRequests().antMatchers( "/user").permitAll();
-        http.authorizeRequests().antMatchers("/user/**").hasAnyAuthority("Designer");
-       http.authorizeRequests().antMatchers( HttpMethod.POST,"/gallery").permitAll();
+        http.authorizeRequests().antMatchers( HttpMethod.GET,"/user/**").permitAll();
+
+        http.authorizeRequests().antMatchers( "/user/**").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.PUT,"/user/**").permitAll();http.authorizeRequests().antMatchers( HttpMethod.POST,"/gallery").permitAll();
         http.authorizeRequests().antMatchers( HttpMethod.GET,"/gallery").permitAll();
-        http.authorizeRequests().antMatchers( HttpMethod.POST,"/gallery/**").permitAll();
-       http.authorizeRequests().antMatchers( HttpMethod.POST,"/utility").permitAll();
-       http.authorizeRequests().antMatchers( HttpMethod.POST,"/utility/**").permitAll();
+        http.authorizeRequests().antMatchers( HttpMethod.POST,"/gallery/**").permitAll();http.authorizeRequests().antMatchers( HttpMethod.POST,"/utility").permitAll();
+        http.authorizeRequests().antMatchers( HttpMethod.POST,"/utility/**").permitAll();
 
         http.authorizeRequests().antMatchers(HttpMethod.GET,"/utility/**").permitAll();
-      http.authorizeRequests().antMatchers( HttpMethod.DELETE,"/utility/**").hasAuthority("designer");
+      http.authorizeRequests().antMatchers( HttpMethod.DELETE,"/utility/**").permitAll();
       http.authorizeRequests().antMatchers( HttpMethod.PUT,"/utility/**").hasAuthority("designer");
       http.authorizeRequests().antMatchers( HttpMethod.DELETE,"/gallery/**").hasAuthority("designer");
        http.authorizeRequests().antMatchers( HttpMethod.PUT,"/gallery/**").hasAuthority("designer");
