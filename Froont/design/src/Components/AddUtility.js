@@ -50,10 +50,7 @@ function AddUtility() {
 
     }
 
-    // const handelChangeDate = (e) => {
-    //     setDate(e.target.value)
-
-    // }
+    
     const handelChangeDescrption = (e) => {
         setDescription(e.target.value)
     }
@@ -119,7 +116,6 @@ function AddUtility() {
       const data = {
         title: title,
         description: description,
-        // date:date,
         instructions: instructions,
         designType :  designType,
         picture:url,
@@ -230,7 +226,8 @@ function AddUtility() {
                 <br />
                 <h2 className="heading mb-4" id="heah2">Add New Service</h2> 
                 <br />
-
+                <lable className="lab">Title :</lable>
+                <br/>
                 <input name="title" type="text" class="feedback-input" placeholder="Title" id="area" onChange={handelChangeTitle} />
                 {errors.title && <p className="error">{errors.title}</p>}
 
@@ -264,11 +261,13 @@ function AddUtility() {
                
                 </div >
                 <br/>
-                {/* <div >
-                <input name="date" type="date" class="feedback-input" placeholder="Service creation date" onChange={handelChangeDate} />
-                </div> */}
+               
+                <lable className="lab">Description</lable>
+                <br/>
                 <textarea rows={8} name="description" class="feedback-input" id="area" placeholder="Description" onChange={handelChangeDescrption}></textarea>
                 {errors.description && <p className="error">{errors.description}</p>}
+                <lable className="lab">Instructions</lable>
+                <br />
                 <textarea rows={8} name="description" class="feedback-input" placeholder="Instructions" id="area" onChange={handelChangeinstructions}></textarea>
                 {errors.instructions && <p className="error">{errors.instructions}</p>}
                  <progress  value={progress} max="100" /> 
@@ -279,7 +278,7 @@ function AddUtility() {
 
                 <input type="file" id='up0' className="form-control"onChange={handleChange}/>
                 <br/>
-                 <button className="fas fa-lock" className='btn btn-warning'  id="btnUtiliy"onClick={handleUpload}>Upload</button> 
+                 <button className="fas fa-lock" className='btn btn-warning'  id="btnUtiliy"onChange={handleUpload}>Upload</button> 
 
                 <br />
                 {urls.map((url,i)=>(

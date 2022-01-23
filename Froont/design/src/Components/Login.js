@@ -61,7 +61,7 @@ const Login = () => {
 				dispatch(token_action);
 				console.log(user_action);
 				Swal.fire({
-					position: 'top-end',
+					position: "center",
 					icon: 'success',
 					title: 'Your sucess log in ',
 					showConfirmButton: false,
@@ -137,6 +137,8 @@ const Login = () => {
 						<div className="overlay-panel overlay-right">
 							 <img className='lg' src="https://th.bing.com/th/id/R.49a960950209a09f51c9a819cad5cc2b?rik=p6qkKxhFEecmLg&pid=ImgRaw&r=0" width="60%" />
 							<h1>Hello, Friend!</h1>
+							<button className='lllog' onClick={() => {
+									navigate('/signUp')}}>Sign Up </button>
 							
 						</div>
 						</div>
@@ -147,7 +149,3 @@ const Login = () => {
 };
 
 export default Login;
-
-
-
-

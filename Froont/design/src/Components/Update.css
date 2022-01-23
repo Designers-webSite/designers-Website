@@ -68,16 +68,18 @@ select {
 }
 
 .input-group {
-  margin-bottom: 1em;
-  zoom: 1;
+  margin-bottom: 0.5em;
+  display:block;
+  /* zoom: 1; */
 }
+
 .input-group:before,
 .input-group:after {
   content: "";
-  display: table;
+  /* display: table; */
 }
 .input-group:after {
-  clear: both;
+  /* clear: both; */
 }
 .input-group-icon {
   position: relative;
@@ -103,18 +105,18 @@ select {
   display: block;
   border-right: 1px solid #e5e5e5;
   content: "";
-  -webkit-transition: 0.35s ease-in-out;
-  -moz-transition: 0.35s ease-in-out;
-  -o-transition: 0.35s ease-in-out;
-  transition: 0.35s ease-in-out;
-  transition: all 0.35s ease-in-out;
+  /* -webkit-transition: 0.35s ease-in-out; */
+  /* -moz-transition: 0.35s ease-in-out; */
+  /* -o-transition: 0.35s ease-in-out; */
+  /* transition: 0.35s ease-in-out; */
+  /* transition: all 0.35s ease-in-out; */
 }
 .input-group-icon .input-icon i {
-  -webkit-transition: 0.35s ease-in-out;
+  /* -webkit-transition: 0.35s ease-in-out;
   -moz-transition: 0.35s ease-in-out;
   -o-transition: 0.35s ease-in-out;
   transition: 0.35s ease-in-out;
-  transition: all 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out; */
 }
 .containerUser {
   max-width: 50em;

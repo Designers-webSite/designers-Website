@@ -4,18 +4,17 @@ import NavBar from './NavBar';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { addUser } from '../reducers/user/action';
 import { useDispatch } from 'react-redux';
 import { storage } from '../FireBase/Index';
-import Alert from 'react-bootstrap/Alert';
 import { BsFillPersonFill } from 'react-icons/bs';
 import Swal from 'sweetalert2';
 import ValidaitonUpdateUser from './ValidaitonUpdateUser';
 import './Update.css';
-import { BiPhoneCall, BiUser } from 'react-icons/bi';
+import { BiPhoneCall, BiAt  } from 'react-icons/bi';
 import { AiTwotoneMail } from 'react-icons/ai';
 
-export default function UpdateUser() {
+export default function UpdateUser({setReload}) {
+
 	const dispatch = useDispatch();
 	const state = useSelector((state) => {
 		return {
@@ -23,6 +22,11 @@ export default function UpdateUser() {
 			token: state.userReducer.token
 		};
 	});
+	 const refreshPage = ()=>{
+	 	window.location.reload();
+		//  navigate("/")
+	  }
+	
 	const [ errors, setErrors ] = useState({});
 
 	const { user_id } = useParams();
@@ -118,10 +122,14 @@ export default function UpdateUser() {
 						showConfirmButton: false,
 						timer: 1500
 					});
-					navigate('/');
+					// refreshPage()
+					setReload("{}")
+					navigate('/')
+					console.log("hereis nav");
 				})
 				.catch((err) => {
 					Swal.fire({
+						position: "center",
 						title: 'Error!',
 						text: 'not update ',
 						icon: 'error',
@@ -187,7 +195,7 @@ console.log(data);
 							{errors.userName && <p className="error">{errors.userName}</p>}
 							<div className="input-icon">
 								<i class="fa fa-user" />
-								<BiUser />
+								<BiAt /> 
 							</div>
 						</div>
 						<div class="input-group input-group-icon">
@@ -228,12 +236,14 @@ console.log(data);
 					</div>
 				</form>
 			</div>
-			<button type="button" className="btn btn-warning" id="bttos" onClick={updateInfo}>
+			
+			<button type="button" className="btn btn-warning" id="bttos" onClick={()=>{updateInfo();
+			}}>
 				Update
 			</button>
+			
 		</div>
 	);
 }
 
 
-	

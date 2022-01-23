@@ -45,7 +45,7 @@ export default function AllServies() {
 		<div className="content sections">
 			<div className="section">
 				<div className="header">
-					<h2 className="main-title"> services</h2>
+					<h2 className="main-title"> Services</h2>
 					<div className="search-box my-4">
 						<input
 							type="text"

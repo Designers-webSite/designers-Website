@@ -77,10 +77,14 @@ body {
 	border-bottom: 1px solid #f5f2f2;
 	background: var(--color2);
 	z-index: 999;
-	padding-right: 40px;
-	margin-right: 2px;
+	
 }
-l .top-nav .logo {
+.lab{
+	font-weight: bold;
+	font-size: 18px;
+
+}
+ .top-nav .logo {
 	width: 120px;
 	cursor: pointer;
 	font-size: 20px;
@@ -1038,7 +1042,7 @@ textarea {
 	font-size: 16px;
 	color: white;
 	margin-left: 8%;
-	margin-bottom: -4%;
+	/* margin-bottom: -4%; */
 }
 #getStarted:hover {
 	height: 2em;
@@ -1048,13 +1052,26 @@ textarea {
 	background-color: rgb(243, 226, 226);
 	font-size: 16px;
 	color: burlywood;
-	margin-left: 8%;
-	margin-bottom: -4%;
+	/* margin-left: 8%; */
+	/* margin-bottom: -4%; */
 }
 #existing {
-	font-size: 16px;
+	font-size: 15px;
 	text-align: center;
-	padding: -8%;
+/* margin-bottom: -20%; */
+}
+.lllog{
+	border-radius: 20px;
+	background-color: rgb(245, 244, 244);
+	font-size: 16px;
+	color: rgb(3, 3, 3);
+	padding: 12px;
+
+}
+.message{
+	font-size: 20px;
+	margin-left: 20px;
+	color: red;
 }
 
 .formAddUtility {
@@ -1213,7 +1230,7 @@ body {
 	align-items: center;
 	flex-direction: column;
 	font-family: 'Montserrat', sans-serif;
-	height: 120vh;
+	height: 90vh;
 	margin: 5px 0 30px;
 }
 #containerrr {
@@ -1225,6 +1242,7 @@ body {
 	width: 768px;
 	max-width: 100%;
 	min-height: 400px;
+
 }
 #containerr {
 	background-color: #fff;
@@ -1235,6 +1253,7 @@ body {
 	width: 768px;
 	max-width: 100%;
 	min-height: 700px;
+	height: 100%;
 }
 .form-container {
 	position: absolute;

@@ -14,7 +14,7 @@ import"./HomePage.css"
 import { logOut } from '../reducers/user/action';
 
 
-export default function NavBar() {
+export default function NavBar({reload}) {
     
 
 
@@ -66,7 +66,7 @@ useEffect(() => {
        .catch(err => console.log(err));
 
 }
-   , [])
+   , [reload])
 
     const x = JSON.parse(localStorage.getItem('user'));
 

@@ -122,7 +122,7 @@ export default function SignUpUser() {
 				<div class="form-container sign-in-container">
 					<form action="#">
 							
-							<h2 className="heading mb-4">Sign up</h2>
+							<h2 className="heading mb-3">Sign up</h2>
 
 							<div className="input-group input-group-icon">
 								<input type="text" id=" texxt"  placeholder='name'
@@ -212,7 +212,7 @@ export default function SignUpUser() {
 									navigate('/login');
 								}}
 							>
-								Log in
+								Log In
 							</span>{' '}
 						</p>
 						</form>
@@ -231,7 +231,8 @@ export default function SignUpUser() {
 						<img className='lg' src="https://th.bing.com/th/id/R.49a960950209a09f51c9a819cad5cc2b?rik=p6qkKxhFEecmLg&pid=ImgRaw&r=0" width="60%" />
 							<h1>Hello, Friend!</h1>
 							<p>Enter your personal details and start journey with us</p>
-							
+							<button className='lllog' onClick={() => {
+									navigate('/login')}}>Log in </button>
 						</div>
 						</div>
 					</div>

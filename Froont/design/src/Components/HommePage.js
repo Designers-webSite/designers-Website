@@ -6,15 +6,22 @@ import { Link, useLocation } from 'react-router-dom';
 import {  } from 'react-router-dom';
 export default function HommePage() {
 const location=useLocation()
-
+const refreshPage = ()=>{
+	window.location.reload();
+ }
+//  window.onload = function() {
+// 	if(!window.location.hash) {
+// 		window.location = window.location + '#loaded';
+// 		window.location.reload();
+// 	}
+// }
 
     return (
 		<div >
-        <div className='banner'>
-            	
+        <div className='banner'> 	
             <div className='content1'>
                 <h1>DESIGNERS WEB SITE</h1>
-                <p className='pHome'>Best Services from Best Designers in Arabic World
+                <p className='pHome'>Best Services from Best Designers in World
                 </p>
                 <div className='linkDesign'>
                     <Link to={`/internalDesign/:design_type`} className='button1'><span  className='span1'></span>
@@ -32,7 +39,7 @@ const location=useLocation()
 							<div className="row mt-1">
 								<div className="col-md-3 col-lg-3 col-xl-4 mx-auto mb-4">
 									<h6 className="text-uppercase fw-bold mb-4">
-										<i className="fas fa-gem me-3" /> Decor web site
+										<i className="fas fa-gem me-3" /> DecoOr web site
 									</h6>
 									<p id="texxt1">
 										full-service architectural, interior,<br /> and landscaping design
@@ -46,7 +53,7 @@ const location=useLocation()
 									<p>
 										<Link to={`/AllServies/:design_type`}>
 											{' '}
-											<p  id="texxt">Serviؤes </p>
+											<p  id="texxt">Services </p>
 										</Link>
 									</p>
 									<p>

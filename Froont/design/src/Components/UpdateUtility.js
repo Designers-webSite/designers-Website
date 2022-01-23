@@ -233,7 +233,8 @@ export default function UpdateUtility() {
                     console.log(res, "ffff");
                     navigate("/")
                     Swal.fire({
-                        position: 'top-end',
+                        position: "center",
+
                         icon: 'success',
                         title: 'Your sucess update Servies ',
                         showConfirmButton: false,

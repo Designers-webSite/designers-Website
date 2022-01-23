@@ -7,6 +7,8 @@ import { BiDotsVerticalRounded } from 'react-icons/bi';
 import Swal from 'sweetalert2';
 import { logOut } from '../reducers/user/action';
 import { useDispatch } from 'react-redux';
+import{AiFillCaretRight} from "react-icons/ai";
+
 
 export default function ProfileUser() {
 	const [ deleteService, setDeleteService ] = useState();
@@ -184,9 +186,11 @@ export default function ProfileUser() {
 				</div>{' '}
 			
 			
-				
 				 
-		
+				<div className="utt-link">
+									<Link  to={`/AllServies/${user.id}`}><AiFillCaretRight/></Link> 
+									</div>
+						
 		</div>
 		</div>
 		</div>

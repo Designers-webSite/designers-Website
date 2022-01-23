@@ -14,11 +14,13 @@ import Utility from './Components/Utility';
 import UpdateUtility from './Components/UpdateUtility';
 import HommePage from './Components/HommePage';
 import About from './Components/About';
+import { useState } from 'react';
 
 function App() {
+	const [reload , setReload ] = useState()
 	return (
 		<BrowserRouter>
-			<NavBar />
+			<NavBar reload={reload}/>
 
 			<Routes>
 				<Route exact path="/" element={<HommePage />} />
@@ -32,7 +34,8 @@ function App() {
 				<Route path="/login" element={<Login />} />
 				<Route path="/About" element={<About />} />
 				<Route path="/profileUser/:user_id" element={<ProfileUser />} />
-				<Route path="/updateUser/:user_id" element={<UpdateUser />} />
+				{/* setReload={setReload} */}
+				<Route path="/updateUser/:user_id" element={<UpdateUser  setReload={setReload} />} />
 				<Route path="/updateUtility/:utility_id" element={<UpdateUtility />} />
 				<Route path="/Utility/:utility_id" element={<Utility />} />
 			</Routes>

@@ -180,7 +180,7 @@
   .banner{
       width: 100%;
       height: 100vh;
-      background-image: linear-gradient(rgba(31, 30, 30, 0.75),rgba(19, 18, 18, 0.336)),url("https://res.cloudinary.com/brosa-design/image/fetch/f_auto,q_auto:good/https://s3-ap-southeast-2.amazonaws.com/brosadesign.com/products/3755/original/Seta%2520Armchair_Seta%2520Sofa_Mia%2520Coffee%2520Table%2520w%2520Drawer_Lifestyle.jpg");
+      background-image: linear-gradient(rgba(29, 28, 28, 0.75),rgba(153, 150, 150, 0.336)),url("https://res.cloudinary.com/brosa-design/image/fetch/f_auto,q_auto:good/https://s3-ap-southeast-2.amazonaws.com/brosadesign.com/products/3755/original/Seta%2520Armchair_Seta%2520Sofa_Mia%2520Coffee%2520Table%2520w%2520Drawer_Lifestyle.jpg");
       background-size: cover;
       background-position: center;
 
