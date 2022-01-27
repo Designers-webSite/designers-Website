@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { storage } from "../FireBase/Index"
-import { MdSouth } from 'react-icons/md';
 import Swal from 'sweetalert2';
 import "./Update.css"
 

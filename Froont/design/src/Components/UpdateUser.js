@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import NavBar from './NavBar';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -15,17 +14,13 @@ import { AiTwotoneMail } from 'react-icons/ai';
 
 export default function UpdateUser({setReload}) {
 
-	const dispatch = useDispatch();
 	const state = useSelector((state) => {
 		return {
 			user: state.userReducer,
 			token: state.userReducer.token
 		};
 	});
-	 const refreshPage = ()=>{
-	 	window.location.reload();
-		//  navigate("/")
-	  }
+	
 	
 	const [ errors, setErrors ] = useState({});
 
@@ -41,6 +36,7 @@ export default function UpdateUser({setReload}) {
 	const [ url, setUrl ] = useState('');
 	const [ progre, setProgre ] = useState(0);
 	const [ update, SetUpdate ] = useState();
+	const dispatch = useDispatch();
 
 	const [ fill, setFill ] = useState('');
 
@@ -122,7 +118,6 @@ export default function UpdateUser({setReload}) {
 						showConfirmButton: false,
 						timer: 1500
 					});
-					// refreshPage()
 					setReload("{}")
 					navigate('/')
 					console.log("hereis nav");

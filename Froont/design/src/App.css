@@ -1035,30 +1035,24 @@ textarea {
 
 #getStarted {
 	height: 2em;
-
 	font-size: 16px;
 	text-align: center;
 	background-color: burlywood;
 	font-size: 16px;
 	color: white;
 	margin-left: 8%;
-	/* margin-bottom: -4%; */
 }
 #getStarted:hover {
 	height: 2em;
-
 	font-size: 16px;
 	text-align: center;
 	background-color: rgb(243, 226, 226);
 	font-size: 16px;
 	color: burlywood;
-	/* margin-left: 8%; */
-	/* margin-bottom: -4%; */
 }
 #existing {
 	font-size: 15px;
 	text-align: center;
-/* margin-bottom: -20%; */
 }
 .lllog{
 	border-radius: 20px;

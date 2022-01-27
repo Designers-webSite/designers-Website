@@ -4,13 +4,11 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../reducers/user/action';
 import { useNavigate } from 'react-router-dom';
-import { storage } from '../FireBase/Index';
 import { BsFillPersonFill } from 'react-icons/bs';
-import { IoEyeSharp } from 'react-icons/io5';
 import Validaiton from './Validaiton';
 import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faCheck, faEyeSlash, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faEye} from '@fortawesome/free-solid-svg-icons';
 import { AiTwotoneMail } from 'react-icons/ai';
 import { BiPhoneCall } from 'react-icons/bi';
 import { BiAt } from "react-icons/bi"
