@@ -1,0 +1,265 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto",sans-serif;
+  }
+  
+  .contain{
+    width: 100%;
+    height: 110vh;
+    background-position: center;
+    background-size: cover;
+
+  
+  }
+
+  
+  .roww{
+    display: flex;
+    height: 88%;
+    align-items: center;
+  
+  
+  }
+  .colom{
+    flex-basis: 50%;
+  
+  }
+  .h1-homePage{
+    color: #fff;
+    font-size: 150px;
+    margin: 20px;
+    font-family: 'Island Moments', cursive;
+    position: absolute;
+    top: 90px;
+    left:30%;
+  }
+
+  .p-homePage{
+    color: #fff;
+    font-size:17px ;
+    line-height: 15px;
+    margin: 20px;
+    position: absolute;
+    top: 48%;
+    left:34%;
+  
+  }
+  .p-homePage2{
+    color: #fff;
+    font-size:17px ;
+    line-height: 15px;
+    margin: 20px;
+    position: absolute;
+    top: 52%;
+    left:34%;
+  
+  }
+  .butn-homePage{
+    width: 150px;
+    height: 30px;
+    color: #000;
+    border-color: #fff;
+    font-size: 14px ;
+    background-color: #fff;
+    padding: 0;
+    border-radius: 10px;
+    outline: none;
+    margin-top: 30px;
+    margin: 20px;
+    position: absolute;
+    top: 58%;
+    left:46%;
+    opacity: 70%;
+  }
+  .fo-home{
+    width: 100%;
+    height: 220px;
+    color: #000;
+   border-bottom: 1px solid #d1d1d1; 
+  
+   background: #f2f2f2;
+
+   
+    bottom: 0;
+    
+  }
+
+  .fo-home h2 {
+    position: absolute;
+    top:100%;
+    left:49%;
+    height:80px ;
+  }
+
+  
+  .card-btn1{
+  
+    display: inline-block;
+    width:20%;
+    height: 58px;
+    background-color:rgb(235, 230, 230);
+    opacity: 80%; 
+    text-align: center;
+    padding-top: 20px;
+    border-radius: 10px;
+    padding: 20px ;
+    margin: 10px 15px;
+    position: absolute;
+    top:75%;
+    left:56%;
+  }
+
+  
+  .card-btn2{
+    display: inline-block;
+    width:20%;
+    height: 58px;
+    background-color:rgb(235, 230, 230);
+    opacity: 80%; 
+    text-align: center;
+    padding-top: 20px;
+    border-radius: 10px;
+    padding: 20px ;
+    margin: 10px 15px;
+    position: absolute;
+    top:75%;
+    left:32%;
+  }
+  .card-btn3{
+    display: inline-block;
+    width:10%;
+    height: 10px;
+    background-color:rgb(235, 230, 230);
+    opacity: 80%; 
+    padding-top: 20px;
+    text-align: center;
+    border-radius: 30px;
+    padding: 20px ;
+    justify-content: center;
+    margin: 10px 15px;
+    position: absolute;
+    top:60%;
+    left:45%;
+  }
+.h-find{
+  padding-top: -70px;
+}
+.footer-dark{
+  background-color: blanchedalmond;
+}
+  .card-home2{
+    width: 100px;
+    height: 20x;
+    display: inline-block;
+    border-radius: 10px;
+  
+    padding: 50px 25px;
+    
+  
+    padding-bottom: 150px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 10px 15px;
+    background-color: #ccc;
+    background-position: center;
+    background-size: cover;
+   
+  }
+  .social-icons{
+    position: absolute;
+    top:120%;
+    left:55%;
+    font-size: 22px;
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px auto;
+    height: 90px;
+  }
+  .banner{
+      width: 100%;
+      height: 100vh;
+      background-image: linear-gradient(rgba(29, 28, 28, 0.75),rgba(153, 150, 150, 0.336)),url("https://res.cloudinary.com/brosa-design/image/fetch/f_auto,q_auto:good/https://s3-ap-southeast-2.amazonaws.com/brosadesign.com/products/3755/original/Seta%2520Armchair_Seta%2520Sofa_Mia%2520Coffee%2520Table%2520w%2520Drawer_Lifestyle.jpg");
+      background-size: cover;
+      background-position: center;
+
+  }
+
+.content1 {
+    width: 100%;
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: white;
+
+}
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@300&family=EB+Garamond&family=Inconsolata&family=Island+Moments&family=Lora&display=swap');
+.content1 h1{
+    font-size: 70px;
+    margin-top: 80px;
+    font-weight: 500;
+    font-family: 'EB Garamond', serif;
+
+}
+.content1 p{
+    margin:20px auto;
+    font-weight: 100;
+    line-height: 25px;
+    font-family: 'Bitter', serif;
+
+}
+.button1{
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    border:2px solid rgb(235, 230, 230);
+    background: transparent;
+    color:white;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    
+}
+.span1{
+    background: rgb(247, 233, 211);
+    height: 100%;
+    width: 0;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: 0.5s;
+    color:black
+    
+  
+}
+link{
+  color: #000;
+}
+.button1{
+  padding: 20px;
+}
+  .button1:hover span{
+
+    width: 100%;
+  
+
+  }
+  .button1:hover{
+      border:none;
+  }
+  #texxt{
+    padding-left:5px;
+    color:gray;
+  }
+  #texxt1{
+    padding-left:15px;
+    color:gray;
+  }
+  

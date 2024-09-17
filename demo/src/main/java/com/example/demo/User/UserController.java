@@ -14,32 +14,40 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
-
-
+   // get all user
     @GetMapping
     public List<User> getAllUser(){
         return  userService.getAllUser();
     }
+    // get user by id
     @GetMapping("/{id}")
     public User getUser(@PathVariable String id){
         return userService.getUser(id);
     }
+    // register user
 
     @PostMapping
-    public User addUser(@RequestBody User user ){
-        System.out.println(user);
-        return  userService.addUser(user);
+    public User register(@RequestBody User user){
 
+        return userService.register( user);
     }
+    //update information user
+
     @PutMapping("/{id}")
     public void updateUser(@PathVariable String id, @RequestBody User data) {
         userService.updateUser(id, data);
     }
+    //update pic
+    @PutMapping("pic/{id}")
+    public void updatePicture(@PathVariable String id, @RequestBody String picUrl) {
+        userService.updatePicture(id, picUrl);
+    }
+    //delete account user
 
     @DeleteMapping("/{id}")
-    public void deleteuser (@PathVariable String id ){
-        userService.deleteuser(id);
+    public void deleteUser (@PathVariable String id ){
+        userService.deleteUser(id);
     }
+
 
 }

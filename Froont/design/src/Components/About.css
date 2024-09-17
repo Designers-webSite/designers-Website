@@ -1,0 +1,174 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+h1 {
+  font-family: 'Montserrat', sans-serif; }
+
+.pp {
+  font-family: 'Open Sans', sans-serif;
+  text-align: justify;
+ }
+
+.blue-bg {
+  position: fixed;
+  background: url( "https://nestia-food.obs.ap-southeast-3.myhuaweicloud.com/202103/31/4ecc6bd55af1e634f56e013e6730ab06.jpg");
+  background-size: cover;
+  background-color: #eef0f1;
+  top: 0;
+  height: 500px;
+  width: 100vw;
+  z-index: -1;
+  overflow-x: hidden; 
+}
+  #bo{
+    width: 23%;
+    height: 15%;
+  }
+  
+.about{
+  font-weight: 550;
+  font-size:25px;
+}
+.white-bg {
+  position: absolute;
+  top: 0;
+  background-color: #fff;
+  min-height: 500px;
+  margin: 210px 0px;
+  width: 100vw;
+  height: 100vh;
+  transform: skewY(5deg);
+  z-index: -1; }
+
+.content0 {
+  position: absolute;
+  top: 0;
+  margin: 250px 10vw;
+  max-width: 600vw;
+  background-color: transparent; }
+
+.shadow {
+  box-shadow: -2px -5px 5px 0px rgba(0, 0, 0, 0.3); }
+  :root {
+    --surface-color: #fff;
+    --curve: 40;
+  }
+  
+  
+  
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color:white;
+  }
+  
+  :root {
+    
+    --veryLightGray: hsl(0, 0%, 98%);
+    --weight1: 200;
+    --weight2: 400;
+    --weight3: 600;
+}
+
+body {
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+h1:first-of-type {
+    font-weight: var(--weight1);
+    color: var(--varyDarkBlue);
+
+}
+
+h1:last-of-type {
+    color: var(--varyDarkBlue);
+}
+
+@media (max-width: 400px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+
+
+
+.box p {
+    color: var(--grayishBlue);
+}
+
+.box {
+    border-radius: 5px;
+    box-shadow: 0px 30px 40px -20px var(--grayishBlue);
+    padding: 30px;
+    margin: 20px;  
+}
+
+.imgg {
+    float: right;
+}
+
+@media (max-width: 450px) {
+    .box {
+        height: 180px;
+    }
+}
+
+@media (max-width: 950px) and (min-width: 450px) {
+    .box {
+        text-align: center;
+        height: 180px;
+    }
+}
+
+.cyan {
+    border-top: 3px solid rgb(228, 207, 168);
+}
+.cyan:hover{
+  background-color: rgb(245, 239, 234);
+}
+.red {
+    border-top: 3px solid rgb(241, 224, 207);
+}
+.red:hover{
+  background-color: rgb(245, 239, 234);
+
+}
+.blue:hover {
+
+  background-color: rgb(245, 239, 234);
+}
+.blue {
+    border-top: 3px solid rgb(228, 207, 168)
+}
+.orange {
+    border-top: 3px solid var(--orange);
+}
+
+
+
+
+@media (min-width: 950px) {
+    .row1-container {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .row2-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .box {
+        width: 20%;
+     
+    }
+    .header p {
+        width: 30%;
+    }
+
+    
+}
+

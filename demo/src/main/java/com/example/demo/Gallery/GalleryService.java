@@ -24,6 +24,7 @@ public class GalleryService {
     }
 
     public Gallery addGallery(Gallery gallery) {
+//        System.out.println(gallery.toString());
         return galleryRepository.save(gallery);
     }
 
@@ -31,10 +32,9 @@ public class GalleryService {
         Long gallery_id=Long.parseLong(id);
         Gallery gallery=galleryRepository.findById( gallery_id).orElse(null);
         if(gallery != null){
-            gallery.setPictures(data.getPictures());
+            gallery.setPicture(data.getPicture());
             gallery.setId(data.getId());
-            gallery.setName(data.getName());
-            gallery.setDescription(data.getDescription());
+
         }
     }
 
